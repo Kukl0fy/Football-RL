@@ -216,6 +216,53 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1 &551708619
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 551708621}
+  - component: {fileID: 551708620}
+  m_Layer: 0
+  m_Name: ArenaDebugHUD
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &551708620
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 551708619}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be772a4ce81e9bb4c953d15e22cfbe46, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FootballRL.Presentation.ArenaDebugHUD
+  arena: {fileID: 979068365}
+  keyboardSource: {fileID: 1788295523}
+  displayPlayerId: 0
+--- !u!4 &551708621
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 551708619}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &979068364
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -273,6 +320,63 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4a06a1531b8067d4e8dc22e88dab593e, type: 3}
+--- !u!114 &979068365 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5472863050564464259, guid: 4a06a1531b8067d4e8dc22e88dab593e, type: 3}
+  m_PrefabInstance: {fileID: 979068364}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 416c131584451db4ca642972fc994d48, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FootballRL.Gameplay.ArenaController
+--- !u!1 &1788295522
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1788295524}
+  - component: {fileID: 1788295523}
+  m_Layer: 0
+  m_Name: KeyboardCommandSource
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1788295523
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1788295522}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3e3bab480ec41f4da0dff02904d813a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FootballRL.Input.KeyboardCommandSource
+  arena: {fileID: 979068365}
+  playerId: 0
+--- !u!4 &1788295524
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1788295522}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1793138906
 GameObject:
   m_ObjectHideFlags: 0
@@ -372,3 +476,5 @@ SceneRoots:
   - {fileID: 1793138909}
   - {fileID: 105975547}
   - {fileID: 979068364}
+  - {fileID: 1788295524}
+  - {fileID: 551708621}
