@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using FootballRL.Contracts;
+using FootballRL.Scenarios;
 using UnityEngine;
 
 namespace FootballRL.Gameplay
@@ -13,6 +14,8 @@ namespace FootballRL.Gameplay
         [SerializeField] KickConfig kickConfig;
         [SerializeField] RoundConfig roundConfig;
         [SerializeField] ArenaEpisodeSpawnState episodeSpawnState;
+        [SerializeField] ScenarioDefinition defaultScenario;
+        [SerializeField] ExerciseTarget exerciseTarget;
         [SerializeField] GoalDefinition[] goals =
         {
             new GoalDefinition { defendingTeamId = 1, goalLineZ = 10f, enterDirectionZ = 1f },
@@ -43,10 +46,16 @@ namespace FootballRL.Gameplay
         bool _segmentSampleValid;
         Vector3 _frozenBallPos;
         Vector3 _frozenBallVel;
+        Vector3 _frozenBallAngVel;
         Vector3 _frozenPlayerPos;
         Vector3 _frozenPlayerVel;
+        float _frozenPlayerAngVelY;
         bool _ballKinematicBeforeEnded;
         readonly Dictionary<int, bool> _playerKinematicBeforeEnded = new Dictionary<int, bool>();
+        long _physicsTick;
+        ResetEpisodeRequest _lastResetRequest;
+        ScenarioDefinition _activeScenario;
+        bool _exerciseTargetReached;
 
         public MovementConfig MovementConfig => movementConfig;
         public KickConfig KickConfig => kickConfig;
@@ -55,6 +64,33 @@ namespace FootballRL.Gameplay
         public long EpisodeId => _episodeId;
         public float ElapsedSeconds => _elapsedSeconds;
         public RoundEndReason LastEndReason => _endReason;
+        public long PhysicsTick => _physicsTick;
+        public ScenarioDefinition ActiveScenario => _activeScenario;
+        public bool ExerciseTargetReached => _exerciseTargetReached;
+        public Transform ArenaRootTransform => arenaRoot != null ? arenaRoot.transform : transform;
+        public ArenaConfig ArenaConfig => arenaRoot != null ? arenaRoot.ArenaConfig : null;
+        public GoalDefinition[] GoalDefinitions => goals;
+        public string LastResetError { get; private set; }
+        public ScenarioDefinition DefaultScenarioAsset => defaultScenario;
+        public ExerciseTarget ExerciseTargetComponent => exerciseTarget;
+
+        public bool IsKickAngleRegulated
+        {
+            get
+            {
+                if (_activeScenario == null)
+                    return true;
+                if (_activeScenario.kind == ScenarioKind.ShootAtEmptyGoal)
+                    return false;
+                return _activeScenario.regulateKickAngle;
+            }
+        }
+
+        public bool IsKickingEnabled =>
+            _activeScenario == null || _activeScenario.kickingEnabled;
+
+        public float LockedKickLoft =>
+            _activeScenario != null ? _activeScenario.lockedLoft : -1f;
 
         public event Action<KickSucceededEventArgs> KickSucceeded;
         public event Action<RoundEndedEventArgs> RoundEnded;
@@ -76,7 +112,11 @@ namespace FootballRL.Gameplay
 
             RefreshPlayerRegistry();
             CaptureSpawnIfNeeded();
-            BeginEpisodeRunning();
+            _episodeId = 0;
+            _lastResetRequest = ResetEpisodeRequest.ForScenario(
+                defaultScenario,
+                1);
+            ResetEpisode(_lastResetRequest);
         }
 
         public void SetReferences(
@@ -84,6 +124,8 @@ namespace FootballRL.Gameplay
             MovementConfig movement,
             KickConfig kick,
             RoundConfig round,
+            ScenarioDefinition scenario,
+            ExerciseTarget target,
             IEnumerable<PlayerMotor> motors)
         {
             arenaRoot = root;
@@ -92,6 +134,10 @@ namespace FootballRL.Gameplay
                 kickConfig = kick;
             if (round != null)
                 roundConfig = round;
+            if (scenario != null)
+                defaultScenario = scenario;
+            if (target != null)
+                exerciseTarget = target;
             players = motors != null ? new List<PlayerMotor>(motors) : new List<PlayerMotor>();
             if (arenaRoot != null)
             {
@@ -183,9 +229,18 @@ namespace FootballRL.Gameplay
 
         public float GetRemainingSeconds()
         {
-            var limit = roundConfig != null ? roundConfig.roundTimeLimitSeconds : 60f;
+            var limit = GetRoundTimeLimitSeconds();
             return Mathf.Max(0f, limit - _elapsedSeconds);
         }
+
+        float GetRoundTimeLimitSeconds()
+        {
+            if (_activeScenario != null && _activeScenario.roundTimeLimitSeconds > 0f)
+                return _activeScenario.roundTimeLimitSeconds;
+            return roundConfig != null ? roundConfig.roundTimeLimitSeconds : 60f;
+        }
+
+        public ArenaSnapshot CaptureSnapshot() => ArenaStateReader.Capture(this);
 
         public bool TryGetEndState(out ArenaEndState state)
         {
@@ -242,19 +297,55 @@ namespace FootballRL.Gameplay
             if (_phase != ArenaPhase.Ended)
                 return;
 
-            ResetEpisode();
+            ResetEpisode(_lastResetRequest);
         }
 
-        public void ResetEpisode()
+        public void ResetEpisode() => ResetEpisode(_lastResetRequest);
+
+        public void ResetEpisode(ResetEpisodeRequest request)
         {
-            if (!ValidateWorldForReset(out var error))
+            if (!TryResetEpisodeInternal(request, out var error))
             {
-                EndRound(RoundEndReason.InvalidState, false, 0);
-                return;
+                LastResetError = error;
+                Debug.LogError($"ArenaController.ResetEpisode: {error}");
+            }
+        }
+
+        public bool TryResetEpisode(ResetEpisodeRequest request, out string error)
+        {
+            return TryResetEpisodeInternal(request, out error);
+        }
+
+        bool TryResetEpisodeInternal(ResetEpisodeRequest request, out string error)
+        {
+            error = null;
+            LastResetError = null;
+
+            var scenario = request.Scenario != null ? request.Scenario : defaultScenario;
+            if (scenario == null)
+            {
+                error = "Brak scenariusza resetu.";
+                return false;
             }
 
+            var random = new System.Random(request.Seed);
+            if (!SpawnSampler.TrySample(
+                    scenario,
+                    ArenaConfig,
+                    episodeSpawnState,
+                    random,
+                    request.ExactState,
+                    request.UseExactState,
+                    out var layout,
+                    out error))
+                return false;
+
+            RestoreDynamicSimulation();
+
             EnsureBallBody();
-            episodeSpawnState?.Apply(_ballTransform, _ballBody, players.ToArray());
+            episodeSpawnState?.ApplyLayout(_ballTransform, _ballBody, players.ToArray(), layout);
+
+            ApplyExerciseTargetFromLayout(scenario, layout);
 
             foreach (var kv in _motorsByPlayerId)
             {
@@ -271,13 +362,37 @@ namespace FootballRL.Gameplay
             _postRoundDelayRemaining = 0f;
             _pendingSegmentEvaluate = false;
             _segmentSampleValid = false;
+            _exerciseTargetReached = false;
 
+            _activeScenario = scenario;
+            _lastResetRequest = new ResetEpisodeRequest
+            {
+                Seed = request.Seed,
+                Scenario = scenario,
+                UseExactState = request.UseExactState,
+                ExactState = request.ExactState
+            };
             _episodeId++;
             _elapsedSeconds = 0f;
+            _physicsTick = 0;
 
-            RestoreDynamicSimulation();
             SyncPhysicsTransforms();
             BeginEpisodeRunning();
+            return true;
+        }
+
+        void ApplyExerciseTargetFromLayout(ScenarioDefinition scenario, SpawnLayout layout)
+        {
+            if (exerciseTarget == null)
+                return;
+
+            var show = scenario.kind == ScenarioKind.MoveToTarget;
+            exerciseTarget.SetActiveForScenario(show);
+            if (!show)
+                return;
+
+            exerciseTarget.Configure(layout.targetSuccessRadius);
+            exerciseTarget.SetLocalPosition(layout.targetLocalPosition);
         }
 
         void BeginEpisodeRunning()
@@ -322,6 +437,14 @@ namespace FootballRL.Gameplay
         {
             GetPrimaryPlayerBody(out var pos, out _);
             return pos;
+        }
+
+        float GetPrimaryPlayerAngularVelocityY()
+        {
+            foreach (var kv in _motorsByPlayerId)
+                return kv.Value.Body.angularVelocity.y;
+
+            return 0f;
         }
 
         void FixedUpdate()
@@ -394,13 +517,26 @@ namespace FootballRL.Gameplay
             if (_ballBody == null)
                 return;
 
+            _physicsTick++;
+
             var curr = _ballBody.position;
             if (_segmentSampleValid)
                 TryEndRoundFromPhysics(_segmentStartBallPos, curr, deltaTime);
             else
                 _segmentSampleValid = true;
 
+            UpdateExerciseTargetReach();
             _segmentStartBallPos = curr;
+        }
+
+        void UpdateExerciseTargetReach()
+        {
+            if (_exerciseTargetReached || exerciseTarget == null || !exerciseTarget.gameObject.activeInHierarchy)
+                return;
+
+            GetPrimaryPlayerBody(out var pos, out _);
+            if (exerciseTarget.IsPlayerInside(pos))
+                _exerciseTargetReached = true;
         }
 
         void TryEndRoundFromPhysics(Vector3 prevBall, Vector3 currBall, float deltaTime)
@@ -433,8 +569,7 @@ namespace FootballRL.Gameplay
                 return;
             }
 
-            var limit = roundConfig != null ? roundConfig.roundTimeLimitSeconds : 60f;
-            if (_elapsedSeconds >= limit)
+            if (_elapsedSeconds >= GetRoundTimeLimitSeconds())
                 EndRound(RoundEndReason.TimeLimit, false, 0);
         }
 
@@ -454,9 +589,11 @@ namespace FootballRL.Gameplay
             {
                 _frozenBallPos = _ballBody.position;
                 _frozenBallVel = _ballBody.linearVelocity;
+                _frozenBallAngVel = _ballBody.angularVelocity;
             }
 
             GetPrimaryPlayerBody(out _frozenPlayerPos, out _frozenPlayerVel);
+            _frozenPlayerAngVelY = GetPrimaryPlayerAngularVelocityY();
             FreezeBodiesAfterEnd();
 
             var delay = roundConfig != null ? roundConfig.autoResetDelaySeconds : 1.5f;
@@ -476,7 +613,7 @@ namespace FootballRL.Gameplay
 
             _postRoundDelayRemaining -= deltaTime;
             if (_postRoundDelayRemaining <= 0f)
-                ResetEpisode();
+                ResetEpisode(_lastResetRequest);
         }
 
         /// <summary>Jeden krok areny: cooldown → ruch → kopnięcie (tylko Running).</summary>
@@ -552,7 +689,7 @@ namespace FootballRL.Gameplay
                 return;
 
             EnsureBallBody();
-            if (kickConfig == null || _ballBody == null)
+            if (kickConfig == null || _ballBody == null || !IsKickingEnabled)
                 return;
 
             foreach (var kv in _motorsByPlayerId)
@@ -641,6 +778,111 @@ namespace FootballRL.Gameplay
             }
         }
 
+        public bool TryGetBallWorldState(
+            out Vector3 worldPosition,
+            out Vector3 worldVelocity,
+            out Vector3 worldAngularVelocity,
+            out bool present)
+        {
+            EnsureBallBody();
+            present = _ballBody != null;
+            if (_phase == ArenaPhase.Ended && present)
+            {
+                worldPosition = _frozenBallPos;
+                worldVelocity = _frozenBallVel;
+                worldAngularVelocity = _frozenBallAngVel;
+                return true;
+            }
+
+            if (!present)
+            {
+                worldPosition = default;
+                worldVelocity = default;
+                worldAngularVelocity = default;
+                return false;
+            }
+
+            worldPosition = _ballBody.worldCenterOfMass;
+            worldVelocity = _ballBody.linearVelocity;
+            worldAngularVelocity = _ballBody.angularVelocity;
+            return true;
+        }
+
+        public IEnumerable<PlayerSnapshotEntry> GetPlayerSnapshotEntries()
+        {
+            EnsureBallBody();
+            foreach (var kv in _motorsByPlayerId)
+            {
+                var motor = kv.Value;
+                var body = motor.Body;
+                var identity = motor.GetComponent<PlayerIdentity>();
+                var playerId = identity != null ? identity.PlayerId : kv.Key;
+                var teamId = identity != null ? identity.TeamId : 0;
+                var anchor = motor.GetComponent<PlayerKickAnchor>();
+                var cooldown = GetKickCooldownRemaining(playerId);
+                var canKick = kickConfig != null && _ballBody != null && IsKickingEnabled &&
+                              PlayerKicker.CanKickNow(motor, anchor, _ballBody, cooldown, kickConfig);
+
+                Vector3 pos;
+                Vector3 vel;
+                if (_phase == ArenaPhase.Ended)
+                {
+                    pos = _frozenPlayerPos;
+                    vel = _frozenPlayerVel;
+                }
+                else
+                {
+                    pos = body.position;
+                    vel = body.linearVelocity;
+                }
+
+                var angVelY = _phase == ArenaPhase.Ended ? _frozenPlayerAngVelY : body.angularVelocity.y;
+
+                yield return new PlayerSnapshotEntry(
+                    playerId,
+                    teamId,
+                    motor,
+                    pos,
+                    vel,
+                    angVelY,
+                    cooldown,
+                    canKick);
+            }
+        }
+
+        public bool TryGetExerciseTargetLocal(out Vector3 localPosition, out float radius, out bool present)
+        {
+            if (exerciseTarget == null || !exerciseTarget.gameObject.activeInHierarchy ||
+                _activeScenario == null || _activeScenario.kind != ScenarioKind.MoveToTarget)
+            {
+                localPosition = default;
+                radius = 0f;
+                present = false;
+                return false;
+            }
+
+            localPosition = exerciseTarget.transform.localPosition;
+            radius = exerciseTarget.SuccessRadius;
+            present = true;
+            return true;
+        }
+
+        public IReadOnlyList<ObstacleIdentity> GetObstacleEntries()
+        {
+            if (arenaRoot == null || arenaRoot.ObstaclesRoot == null)
+                return Array.Empty<ObstacleIdentity>();
+
+            var list = new List<ObstacleIdentity>();
+            foreach (Transform child in arenaRoot.ObstaclesRoot)
+            {
+                var id = child.GetComponent<ObstacleIdentity>();
+                if (id != null)
+                    list.Add(id);
+            }
+
+            return list;
+        }
+
 #if UNITY_EDITOR
         public void EditorForceElapsedSeconds(float seconds) => _elapsedSeconds = seconds;
 
@@ -688,6 +930,21 @@ namespace FootballRL.Gameplay
         {
             if (roundConfig != null)
                 roundConfig.autoResetEnabled = false;
+        }
+
+        public void EditorPrepareForBatchVerification()
+        {
+            if (arenaRoot == null)
+                arenaRoot = GetComponent<ArenaRoot>();
+            if (episodeSpawnState == null)
+                episodeSpawnState = GetComponent<ArenaEpisodeSpawnState>();
+            EnsureBallBody();
+            RefreshPlayerRegistry();
+        }
+
+        public void EditorSetActiveScenarioForTests(ScenarioDefinition scenario)
+        {
+            _activeScenario = scenario;
         }
 #endif
     }

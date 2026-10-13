@@ -109,7 +109,9 @@ namespace FootballRL.Editor
 
                 var motors = new List<PlayerMotor> { playerMotor };
                 var roundConfig = controller.RoundConfig;
-                controller.SetReferences(arenaRoot, movementConfig, kickConfig, roundConfig, motors);
+                var scenario = controller.DefaultScenarioAsset;
+                var target = controller.ExerciseTargetComponent;
+                controller.SetReferences(arenaRoot, movementConfig, kickConfig, roundConfig, scenario, target, motors);
                 EditorUtility.SetDirty(controller);
 
                 PrefabUtility.SaveAsPrefabAsset(prefabRoot, PrefabPath);

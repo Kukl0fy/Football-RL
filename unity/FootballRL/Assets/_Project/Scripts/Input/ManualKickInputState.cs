@@ -35,5 +35,10 @@ namespace FootballRL.Input
         {
             _selectedKick = Mathf.Clamp(_selectedKick + delta, MinKick, MaxKick);
         }
+
+        public void SetLoft(float loft)
+        {
+            _selectedAngleDeg = Mathf.Clamp((loft + 1f) * FootballRL.Gameplay.KickConfig.LoftScaleDeg, 0f, 55f);
+        }
     }
 }

@@ -111,7 +111,9 @@ namespace FootballRL.Editor
 
                 var motors = new List<PlayerMotor> { playerMotor };
                 var kickConfig = controller.KickConfig;
-                controller.SetReferences(arenaRoot, movementConfig, kickConfig, roundConfig, motors);
+                var scenario = controller.DefaultScenarioAsset;
+                var target = controller.ExerciseTargetComponent;
+                controller.SetReferences(arenaRoot, movementConfig, kickConfig, roundConfig, scenario, target, motors);
 
                 var so = new SerializedObject(controller);
                 so.FindProperty("episodeSpawnState").objectReferenceValue = spawnState;

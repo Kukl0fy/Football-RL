@@ -6,6 +6,23 @@ namespace FootballRL.Gameplay
     /// <summary>Logika kopnięcia — wywoływana z kroku fizyki areny.</summary>
     public static class PlayerKicker
     {
+        /// <summary>Geometria + cooldown (bez progu siły Kick).</summary>
+        public static bool CanKickNow(
+            PlayerMotor motor,
+            PlayerKickAnchor anchor,
+            Rigidbody ballBody,
+            float cooldownRemaining,
+            KickConfig config)
+        {
+            if (config == null || motor == null || ballBody == null)
+                return false;
+
+            if (cooldownRemaining > 0f)
+                return false;
+
+            return PassesKickGeometry(motor, anchor, ballBody, config, out _);
+        }
+
         public static KickAttemptResult TryKick(
             int playerId,
             PlayerMotor motor,
@@ -26,18 +43,52 @@ namespace FootballRL.Gameplay
             if (cooldownRemaining > 0f)
                 return KickAttemptResult.Fail(playerId, KickRejectReason.Cooldown, angleDeg);
 
+            if (!PassesKickGeometry(motor, anchor, ballBody, config, out var rejectReason))
+                return KickAttemptResult.Fail(playerId, rejectReason, angleDeg);
+
+            var impulseMag = KickMath.ComputeImpulseMagnitude(command.Kick, config);
+            if (impulseMag <= 0f)
+                return KickAttemptResult.Fail(playerId, KickRejectReason.BelowThreshold, angleDeg);
+
+            var forward = motor.transform.forward;
+            forward.y = 0f;
+            if (forward.sqrMagnitude < 1e-6f)
+                forward = Vector3.forward;
+            forward.Normalize();
+
+            var direction = KickMath.BuildImpulseDirection(forward, angleDeg);
+            ballBody.WakeUp();
+            ballBody.AddForce(direction * impulseMag, ForceMode.Impulse);
+
+            return KickAttemptResult.SuccessResult(playerId, impulseMag, angleDeg);
+        }
+
+        static bool PassesKickGeometry(
+            PlayerMotor motor,
+            PlayerKickAnchor anchor,
+            Rigidbody ballBody,
+            KickConfig config,
+            out KickRejectReason rejectReason)
+        {
+            rejectReason = KickRejectReason.BelowThreshold;
+
             var kickOrigin = anchor != null
                 ? anchor.GetKickWorldPosition()
                 : motor.transform.TransformPoint(PlayerKickAnchor.DefaultLocalKickOffset);
             var ballCenter = ballBody.worldCenterOfMass;
 
             if (ballCenter.y - config.groundY > config.maxBallCenterHeight + 0.001f)
-                return KickAttemptResult.Fail(playerId, KickRejectReason.TooHigh, angleDeg);
+            {
+                rejectReason = KickRejectReason.TooHigh;
+                return false;
+            }
 
             var toBall = ballCenter - kickOrigin;
-            var distance = toBall.magnitude;
-            if (distance > config.maxRange + 0.001f)
-                return KickAttemptResult.Fail(playerId, KickRejectReason.OutOfRange, angleDeg);
+            if (toBall.magnitude > config.maxRange + 0.001f)
+            {
+                rejectReason = KickRejectReason.OutOfRange;
+                return false;
+            }
 
             var forward = motor.transform.forward;
             forward.y = 0f;
@@ -48,26 +99,26 @@ namespace FootballRL.Gameplay
             var toBallPlanar = toBall;
             toBallPlanar.y = 0f;
             if (toBallPlanar.sqrMagnitude < 1e-6f)
-                return KickAttemptResult.Fail(playerId, KickRejectReason.OutOfCone, angleDeg);
+            {
+                rejectReason = KickRejectReason.OutOfCone;
+                return false;
+            }
 
             toBallPlanar.Normalize();
-            var angleToForward = Vector3.Angle(forward, toBallPlanar);
-            if (angleToForward > config.coneHalfAngleDeg + 0.01f)
-                return KickAttemptResult.Fail(playerId, KickRejectReason.OutOfCone, angleDeg);
+            if (Vector3.Angle(forward, toBallPlanar) > config.coneHalfAngleDeg + 0.01f)
+            {
+                rejectReason = KickRejectReason.OutOfCone;
+                return false;
+            }
 
             var ownerColliders = anchor != null ? anchor.OwnerColliders : motor.GetComponentsInChildren<Collider>();
             if (IsOccluded(kickOrigin, ballCenter, ownerColliders, ballBody, config))
-                return KickAttemptResult.Fail(playerId, KickRejectReason.Occluded, angleDeg);
+            {
+                rejectReason = KickRejectReason.Occluded;
+                return false;
+            }
 
-            var impulseMag = KickMath.ComputeImpulseMagnitude(command.Kick, config);
-            if (impulseMag <= 0f)
-                return KickAttemptResult.Fail(playerId, KickRejectReason.BelowThreshold, angleDeg);
-
-            var direction = KickMath.BuildImpulseDirection(forward, angleDeg);
-            ballBody.WakeUp();
-            ballBody.AddForce(direction * impulseMag, ForceMode.Impulse);
-
-            return KickAttemptResult.SuccessResult(playerId, impulseMag, angleDeg);
+            return true;
         }
 
         static bool IsOccluded(Vector3 origin, Vector3 target, Collider[] ownerColliders, Rigidbody ballBody,

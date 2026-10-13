@@ -44,12 +44,19 @@ namespace FootballRL.Input
             if (arena.Phase != ArenaPhase.Running)
                 return;
 
-            KeyboardKickMapping.ApplyArrowAdjustments(
-                _kickState,
-                keyboard.upArrowKey.wasPressedThisFrame,
-                keyboard.downArrowKey.wasPressedThisFrame,
-                keyboard.leftArrowKey.wasPressedThisFrame,
-                keyboard.rightArrowKey.wasPressedThisFrame);
+            if (arena.IsKickAngleRegulated)
+            {
+                KeyboardKickMapping.ApplyArrowAdjustments(
+                    _kickState,
+                    keyboard.upArrowKey.wasPressedThisFrame,
+                    keyboard.downArrowKey.wasPressedThisFrame,
+                    keyboard.leftArrowKey.wasPressedThisFrame,
+                    keyboard.rightArrowKey.wasPressedThisFrame);
+            }
+            else
+            {
+                _kickState.SetLoft(arena.LockedKickLoft);
+            }
 
             var movement = KeyboardCommandMapping.FromKeyStates(
                 keyboard.wKey.isPressed,

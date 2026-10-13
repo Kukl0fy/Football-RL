@@ -43,6 +43,47 @@ namespace FootballRL.Gameplay
             }
         }
 
+        public void GetStored(out BodySpawnState ballState, out BodySpawnState primaryPlayer)
+        {
+            ballState = ball;
+            primaryPlayer = players != null && players.Length > 0 ? players[0] : default;
+        }
+
+        public void ApplyLayout(
+            Transform ballTransform,
+            Rigidbody ballBody,
+            PlayerMotor[] motors,
+            Scenarios.SpawnLayout layout)
+        {
+            if (ballTransform != null)
+            {
+                ballTransform.localPosition = layout.ballLocalPosition;
+                ballTransform.localRotation = layout.ballLocalRotation;
+            }
+
+            if (ballBody != null)
+            {
+                SyncRigidbodyPose(ballBody, ballTransform);
+                ballBody.linearVelocity = Vector3.zero;
+                ballBody.angularVelocity = Vector3.zero;
+            }
+
+            if (motors == null || motors.Length == 0)
+            {
+                Physics.SyncTransforms();
+                return;
+            }
+
+            var t = motors[0].transform;
+            t.localPosition = layout.playerLocalPosition;
+            t.localRotation = layout.playerLocalRotation;
+            var playerBody = motors[0].Body;
+            SyncRigidbodyPose(playerBody, t);
+            motors[0].ResetMotionState();
+
+            Physics.SyncTransforms();
+        }
+
         public void Apply(Transform ballTransform, Rigidbody ballBody, PlayerMotor[] motors)
         {
             if (ballTransform != null)
@@ -53,12 +94,16 @@ namespace FootballRL.Gameplay
 
             if (ballBody != null)
             {
+                SyncRigidbodyPose(ballBody, ballTransform);
                 ballBody.linearVelocity = Vector3.zero;
                 ballBody.angularVelocity = Vector3.zero;
             }
 
             if (motors == null)
+            {
+                Physics.SyncTransforms();
                 return;
+            }
 
             for (var i = 0; i < motors.Length && i < players.Length; i++)
             {
@@ -66,8 +111,20 @@ namespace FootballRL.Gameplay
                 var t = motor.transform;
                 t.localPosition = players[i].localPosition;
                 t.localRotation = players[i].localRotation;
+                SyncRigidbodyPose(motor.Body, t);
                 motor.ResetMotionState();
             }
+
+            Physics.SyncTransforms();
+        }
+
+        static void SyncRigidbodyPose(Rigidbody body, Transform transform)
+        {
+            if (body == null || transform == null)
+                return;
+
+            body.position = transform.position;
+            body.rotation = transform.rotation;
         }
     }
 }
