@@ -108,7 +108,8 @@ namespace FootballRL.Editor
                 EnsureKickVisualizer(playerMotor.gameObject, anchor, kickConfig);
 
                 var motors = new List<PlayerMotor> { playerMotor };
-                controller.SetReferences(arenaRoot, movementConfig, kickConfig, motors);
+                var roundConfig = controller.RoundConfig;
+                controller.SetReferences(arenaRoot, movementConfig, kickConfig, roundConfig, motors);
                 EditorUtility.SetDirty(controller);
 
                 PrefabUtility.SaveAsPrefabAsset(prefabRoot, PrefabPath);

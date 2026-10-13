@@ -3188,6 +3188,7 @@ GameObject:
   - component: {fileID: 74843621931889359}
   - component: {fileID: 2348905373929553596}
   - component: {fileID: 5472863050564464259}
+  - component: {fileID: 4653695767459995447}
   m_Layer: 0
   m_Name: Arena
   m_TagString: Untagged
@@ -3249,8 +3250,35 @@ MonoBehaviour:
   arenaRoot: {fileID: 2348905373929553596}
   movementConfig: {fileID: 11400000, guid: e2d7a59d652a3384691836bcc8aad313, type: 2}
   kickConfig: {fileID: 11400000, guid: 60d36d1b36bc02f4aa276029e6021cee, type: 2}
+  roundConfig: {fileID: 11400000, guid: cc5d8a412747fb844be10ac742e49c3d, type: 2}
+  episodeSpawnState: {fileID: 4653695767459995447}
+  goals:
+  - defendingTeamId: 1
+    goalLineZ: 10
+    enterDirectionZ: 1
+  - defendingTeamId: 0
+    goalLineZ: -10
+    enterDirectionZ: -1
   players:
   - {fileID: 689256579729331592}
+--- !u!114 &4653695767459995447
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8037990006106543524}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83f7d84c51b12bd46a4632fd512c276a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FootballRL.Gameplay.ArenaEpisodeSpawnState
+  ball:
+    localPosition: {x: 0, y: 0.27, z: 0}
+    localRotation: {x: 0, y: 0, z: 0, w: 1}
+  players:
+  - localPosition: {x: 0, y: 0.5, z: -3}
+    localRotation: {x: 0, y: 0, z: 0, w: 1}
 --- !u!1 &8471012643637506535
 GameObject:
   m_ObjectHideFlags: 0

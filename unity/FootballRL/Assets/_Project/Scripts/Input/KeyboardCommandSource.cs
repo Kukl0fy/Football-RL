@@ -33,6 +33,17 @@ namespace FootballRL.Input
             if (keyboard == null)
                 return;
 
+            if (keyboard.rKey.wasPressedThisFrame)
+            {
+                if (arena.Phase == ArenaPhase.Running)
+                    arena.RequestManualResetWhileRunning();
+                else if (arena.Phase == ArenaPhase.Ended)
+                    arena.RequestManualResetWhileEnded();
+            }
+
+            if (arena.Phase != ArenaPhase.Running)
+                return;
+
             KeyboardKickMapping.ApplyArrowAdjustments(
                 _kickState,
                 keyboard.upArrowKey.wasPressedThisFrame,

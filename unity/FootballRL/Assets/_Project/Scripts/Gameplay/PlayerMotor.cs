@@ -37,6 +37,23 @@ namespace FootballRL.Gameplay
             _body.collisionDetectionMode = CollisionDetectionMode.ContinuousDynamic;
         }
 
+        public Rigidbody Body
+        {
+            get
+            {
+                EnsureBody();
+                return _body;
+            }
+        }
+
+        /// <summary>Reset epizodu: zeruje prędkości (pozycja ustawiana z zewnątrz).</summary>
+        public void ResetMotionState()
+        {
+            EnsureBody();
+            _body.linearVelocity = Vector3.zero;
+            _body.angularVelocity = Vector3.zero;
+        }
+
         /// <summary>Stosuje komendę ruchu/obrotu w jednym kroku fixedDeltaTime.</summary>
         public void ApplyCommand(PlayerCommand command, float deltaTime)
         {

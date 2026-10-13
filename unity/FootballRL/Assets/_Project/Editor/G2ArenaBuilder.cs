@@ -196,7 +196,8 @@ namespace FootballRL.Editor
 
             // Nie zeruj referencji G3 (KickConfig) — G2 aktualizuje tylko ruch i listę zawodników.
             var kickConfig = controller.KickConfig;
-            controller.SetReferences(arenaRoot, movementConfig, kickConfig, motors);
+            var roundConfig = controller.RoundConfig;
+            controller.SetReferences(arenaRoot, movementConfig, kickConfig, roundConfig, motors);
             EditorUtility.SetDirty(controller);
             return controller;
         }

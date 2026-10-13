@@ -40,19 +40,36 @@ namespace FootballRL.Presentation
             var cooldown = arena.GetKickCooldownRemaining(displayPlayerId);
             arena.TryGetLastKickAttempt(displayPlayerId, out var lastAttempt);
             var attemptLine = FormatLastAttempt(lastAttempt);
+            var phaseLine = arena.Phase.ToString();
+            var timeLine = $"{arena.GetRemainingSeconds():F1} s (ep. {arena.EpisodeId})";
+            var endLine = arena.Phase == ArenaPhase.Ended
+                ? FormatEndReason(arena.LastEndReason, arena)
+                : "—";
 
             const int pad = 10;
-            var rect = new Rect(pad, pad, 360f, 210f);
-            GUI.Box(rect, "Arena — ruch i kopnięcie (G3)");
+            var rect = new Rect(pad, pad, 400f, 250f);
+            GUI.Box(rect, "Arena — G4 runda");
 
             var inner = new Rect(rect.x + 8f, rect.y + 24f, rect.width - 16f, rect.height - 32f);
             GUI.Label(inner,
-                $"Player {displayPlayerId}\n" +
+                $"Player {displayPlayerId}  |  Faza: {phaseLine}\n" +
+                $"Czas: {timeLine}  |  Koniec: {endLine}\n" +
                 $"Forward: {cmd.Forward:F2}  Strafe: {cmd.Strafe:F2}  Turn: {cmd.Turn:F2}\n" +
                 $"Kąt: {angleDeg:F1}°  Loft: {loftDisplay:F2}\n" +
                 $"Siła (Kick): {kickDisplay:F2}  Cooldown: {cooldown:F2} s\n" +
                 $"Ostatnia próba: {attemptLine}\n" +
-                "W/S A/D Q/E — ruch | ↑↓ kąt | ←→ siła | Spacja — strzał");
+                "W/S A/D Q/E | ↑↓ kąt | ←→ siła | Spacja — strzał | R — reset");
+        }
+
+        static string FormatEndReason(RoundEndReason reason, ArenaController arena)
+        {
+            if (reason == RoundEndReason.None)
+                return "—";
+
+            if (reason == RoundEndReason.Goal && arena.TryGetEndState(out var state) && state.HasScoringTeam)
+                return $"{reason}, drużyna {state.ScoringTeamId}";
+
+            return reason.ToString();
         }
 
         static string FormatLastAttempt(KickAttemptResult attempt)
