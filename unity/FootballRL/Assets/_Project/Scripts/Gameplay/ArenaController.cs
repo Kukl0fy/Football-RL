@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using FootballRL.Contracts;
 using FootballRL.Scenarios;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace FootballRL.Gameplay
 {
@@ -51,11 +52,14 @@ namespace FootballRL.Gameplay
         Vector3 _frozenPlayerVel;
         float _frozenPlayerAngVelY;
         bool _ballKinematicBeforeEnded;
+        Collider _ballCollider;
+        bool _ballColliderEnabledBeforeEnded;
         readonly Dictionary<int, bool> _playerKinematicBeforeEnded = new Dictionary<int, bool>();
         long _physicsTick;
         ResetEpisodeRequest _lastResetRequest;
         ScenarioDefinition _activeScenario;
         bool _exerciseTargetReached;
+        bool _simulationPaused;
 
         public MovementConfig MovementConfig => movementConfig;
         public KickConfig KickConfig => kickConfig;
@@ -73,6 +77,11 @@ namespace FootballRL.Gameplay
         public string LastResetError { get; private set; }
         public ScenarioDefinition DefaultScenarioAsset => defaultScenario;
         public ExerciseTarget ExerciseTargetComponent => exerciseTarget;
+
+        /// <summary>Wstrzymuje krok fizyki tej areny (inne areny mogą działać dalej).</summary>
+        public void SetSimulationPaused(bool paused) => _simulationPaused = paused;
+
+        public bool IsSimulationPaused => _simulationPaused;
 
         public bool IsKickAngleRegulated
         {
@@ -178,7 +187,7 @@ namespace FootballRL.Gameplay
 
             foreach (var motor in players)
             {
-                if (motor == null)
+                if (motor == null || motor.gameObject.scene != gameObject.scene)
                     continue;
 
                 var identity = motor.GetComponent<PlayerIdentity>();
@@ -493,6 +502,34 @@ namespace FootballRL.Gameplay
                 return;
             }
 
+            StepBeforeSharedSimulation(deltaTime);
+            SimulateArenaPhysics(deltaTime);
+            StepAfterSharedSimulation(deltaTime);
+        }
+
+        /// <summary>Solver fizyki przypisany do sceny tej areny (lokalna fizyka G6+).</summary>
+        public void SimulateArenaPhysics(float deltaTime)
+        {
+            if (_simulationPaused)
+                return;
+
+            var physicsScene = gameObject.scene.GetPhysicsScene();
+            if (physicsScene.IsValid())
+                physicsScene.Simulate(deltaTime);
+        }
+
+        /// <summary>Batch (wiele aren): ruch/kopnięcia przed wspólnym <see cref="Physics.Simulate"/>.</summary>
+        public void StepBeforeSharedSimulation(float deltaTime)
+        {
+            if (_phase == ArenaPhase.Ended)
+            {
+                TickPostRoundDelay(deltaTime);
+                return;
+            }
+
+            if (_simulationPaused)
+                return;
+
             if (_pendingSegmentEvaluate)
                 EvaluateAfterPhysics(deltaTime);
 
@@ -500,11 +537,45 @@ namespace FootballRL.Gameplay
             {
                 _segmentStartBallPos = _ballBody != null ? _ballBody.position : Vector3.zero;
                 StepArenaPhysics(deltaTime);
-                Physics.Simulate(deltaTime);
-                EvaluateAfterPhysics(deltaTime);
-                if (_phase == ArenaPhase.Running && _ballBody != null)
-                    _segmentStartBallPos = _ballBody.position;
             }
+        }
+
+        /// <summary>Batch (wiele aren): reguły po wspólnym <see cref="Physics.Simulate"/>.</summary>
+        public void StepAfterSharedSimulation(float deltaTime)
+        {
+            if (_phase == ArenaPhase.Ended || _simulationPaused)
+                return;
+
+            EvaluateAfterPhysics(deltaTime);
+            if (_phase == ArenaPhase.Running && _ballBody != null)
+                _segmentStartBallPos = _ballBody.position;
+        }
+
+        /// <summary>Krok wielu aren: jedna symulacja na unikalną <see cref="PhysicsScene"/> (wspólna scena = jeden solver).</summary>
+        public static void StepManyWithSharedSimulation(IReadOnlyList<ArenaController> arenas, float deltaTime)
+        {
+            if (arenas == null || arenas.Count == 0)
+                return;
+
+            for (var i = 0; i < arenas.Count; i++)
+                arenas[i]?.StepBeforeSharedSimulation(deltaTime);
+
+            var simulatedScenes = new HashSet<PhysicsScene>();
+            for (var i = 0; i < arenas.Count; i++)
+            {
+                var arena = arenas[i];
+                if (arena == null || arena.IsSimulationPaused)
+                    continue;
+
+                var physicsScene = arena.gameObject.scene.GetPhysicsScene();
+                if (!physicsScene.IsValid() || !simulatedScenes.Add(physicsScene))
+                    continue;
+
+                physicsScene.Simulate(deltaTime);
+            }
+
+            for (var i = 0; i < arenas.Count; i++)
+                arenas[i]?.StepAfterSharedSimulation(deltaTime);
         }
 
         void EvaluateAfterPhysics(float deltaTime)
@@ -539,6 +610,12 @@ namespace FootballRL.Gameplay
                 _exerciseTargetReached = true;
         }
 
+        Vector3 WorldToArenaLocal(Vector3 worldPoint)
+        {
+            var root = ArenaRootTransform;
+            return root != null ? root.InverseTransformPoint(worldPoint) : worldPoint;
+        }
+
         void TryEndRoundFromPhysics(Vector3 prevBall, Vector3 currBall, float deltaTime)
         {
             if (_phase != ArenaPhase.Running)
@@ -555,15 +632,18 @@ namespace FootballRL.Gameplay
                 return;
             }
 
+            var prevLocal = WorldToArenaLocal(prevBall);
+            var currLocal = WorldToArenaLocal(currBall);
+
             if (config != null &&
-                GoalDetector.TryDetectGoal(prevBall, currBall, config.ballRadius, config.HalfGoalWidth,
+                GoalDetector.TryDetectGoal(prevLocal, currLocal, config.ballRadius, config.HalfGoalWidth,
                     config.goalHeight, goals, out var scoringTeam))
             {
                 EndRound(RoundEndReason.Goal, true, scoringTeam);
                 return;
             }
 
-            if (config != null && ArenaBounds.IsBallOutOfPlay(currBall, config.ballRadius, config))
+            if (config != null && ArenaBounds.IsBallOutOfPlay(currLocal, config.ballRadius, config))
             {
                 EndRound(RoundEndReason.BallOut, false, 0);
                 return;
@@ -665,12 +745,66 @@ namespace FootballRL.Gameplay
 
         void EnsureBallBody()
         {
-            if (_ballBody == null && arenaRoot != null)
+            if (_ballBody != null && _ballBody.gameObject.scene != gameObject.scene)
             {
-                _ballBody = arenaRoot.BallBody;
+                _ballBody = null;
+                _ballTransform = null;
+                _ballCollider = null;
+            }
+
+            if (_ballBody == null)
+            {
+                _ballBody = ResolveBallBodyInThisArena();
                 if (_ballBody != null)
                     _ballTransform = _ballBody.transform;
             }
+
+            if (_ballCollider == null && _ballBody != null)
+                _ballCollider = _ballBody.GetComponent<Collider>();
+        }
+
+        Rigidbody ResolveBallBodyInThisArena()
+        {
+            EnsureInstanceArenaReferences();
+            if (arenaRoot == null)
+                return null;
+
+            var fromRoot = arenaRoot.BallBody;
+            if (fromRoot != null && IsRigidbodyOnThisArena(fromRoot))
+                return fromRoot;
+
+            var bodies = arenaRoot.GetComponentsInChildren<Rigidbody>(true);
+            for (var i = 0; i < bodies.Length; i++)
+            {
+                var rb = bodies[i];
+                if (!IsRigidbodyOnThisArena(rb))
+                    continue;
+
+                if (rb.GetComponent<BallPhysicsSetup>() != null)
+                    return rb;
+            }
+
+            return null;
+        }
+
+        bool IsRigidbodyOnThisArena(Rigidbody body)
+        {
+            if (body == null)
+                return false;
+
+            if (body.gameObject.scene != gameObject.scene)
+                return false;
+
+            return arenaRoot != null && body.transform.IsChildOf(arenaRoot.transform);
+        }
+
+        void EnsureInstanceArenaReferences()
+        {
+            if (arenaRoot == null || arenaRoot.gameObject.scene != gameObject.scene)
+                arenaRoot = GetComponent<ArenaRoot>();
+
+            if (episodeSpawnState == null || episodeSpawnState.gameObject.scene != gameObject.scene)
+                episodeSpawnState = GetComponent<ArenaEpisodeSpawnState>();
         }
 
         public void StepPlayerKicks()
@@ -734,6 +868,12 @@ namespace FootballRL.Gameplay
                 _ballBody.linearVelocity = Vector3.zero;
                 _ballBody.angularVelocity = Vector3.zero;
                 _ballBody.isKinematic = true;
+                EnsureBallBody();
+                if (_ballCollider != null)
+                {
+                    _ballColliderEnabledBeforeEnded = _ballCollider.enabled;
+                    _ballCollider.enabled = false;
+                }
             }
 
             foreach (var kv in _motorsByPlayerId)
@@ -751,7 +891,11 @@ namespace FootballRL.Gameplay
         void RestoreDynamicSimulation()
         {
             if (_ballBody != null)
+            {
                 _ballBody.isKinematic = _ballKinematicBeforeEnded;
+                if (_ballCollider != null)
+                    _ballCollider.enabled = _ballColliderEnabledBeforeEnded;
+            }
 
             foreach (var kv in _motorsByPlayerId)
             {
@@ -895,6 +1039,7 @@ namespace FootballRL.Gameplay
             _ballTransform.position = worldPos;
             if (_ballBody != null)
             {
+                _ballBody.position = worldPos;
                 _ballBody.linearVelocity = Vector3.zero;
                 _ballBody.angularVelocity = Vector3.zero;
             }
@@ -903,6 +1048,16 @@ namespace FootballRL.Gameplay
             _segmentStartBallPos = worldPos;
             _segmentSampleValid = false;
             _pendingSegmentEvaluate = false;
+        }
+
+        public void EditorSetBallLinearVelocity(Vector3 worldVelocity)
+        {
+            EnsureBallBody();
+            if (_ballBody == null)
+                return;
+
+            _ballBody.linearVelocity = worldVelocity;
+            _ballBody.WakeUp();
         }
 
         public void EditorConfigureForTests(RoundConfig round, bool autoResetEnabled)
@@ -934,10 +1089,10 @@ namespace FootballRL.Gameplay
 
         public void EditorPrepareForBatchVerification()
         {
-            if (arenaRoot == null)
-                arenaRoot = GetComponent<ArenaRoot>();
-            if (episodeSpawnState == null)
-                episodeSpawnState = GetComponent<ArenaEpisodeSpawnState>();
+            EnsureInstanceArenaReferences();
+            _ballBody = null;
+            _ballTransform = null;
+            _ballCollider = null;
             EnsureBallBody();
             RefreshPlayerRegistry();
         }
