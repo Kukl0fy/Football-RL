@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 377302cacd05b9f429ceb6384d66937c, type: 3}
+  m_Name: ArenaConfig
+  m_EditorClassIdentifier: Assembly-CSharp::FootballRL.Gameplay.ArenaConfig
+  pitchPlayLengthZ: 20
+  pitchWidthX: 12
+  goalWidth: 3
+  goalHeight: 2
+  goalDepth: 1
+  ballRadius: 0.22
+  wallHeight: 2.5
+  wallThickness: 0.2
+  emergencyFloorY: -2
+  emergencyFloorDepth: 0.5
+  pitchColor: {r: 0.18, g: 0.55, b: 0.22, a: 1}
+  wallColor: {r: 0.75, g: 0.75, b: 0.78, a: 1}
+  goalFrameColor: {r: 0.95, g: 0.95, b: 0.95, a: 1}
+  ballColor: {r: 0.95, g: 0.92, b: 0.15, a: 1}

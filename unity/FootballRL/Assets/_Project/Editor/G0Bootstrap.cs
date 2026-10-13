@@ -88,9 +88,10 @@ namespace FootballRL.Editor
             if (File.Exists(ScenePath))
             {
                 var existing = EditorSceneManager.OpenScene(ScenePath, OpenSceneMode.Single);
-                if (existing.IsValid() && GameObject.Find("Ground") != null)
+                if (existing.IsValid() &&
+                    (GameObject.Find("Arena") != null || GameObject.Find("Ground") != null))
                 {
-                    Debug.Log("G0 scene already present: " + ScenePath);
+                    Debug.Log("G0 scene already present (Arena or Ground): " + ScenePath);
                     EditorSceneManager.SaveScene(existing);
                     return true;
                 }
