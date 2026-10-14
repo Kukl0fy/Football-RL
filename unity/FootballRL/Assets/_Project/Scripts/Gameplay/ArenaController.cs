@@ -395,6 +395,7 @@ namespace FootballRL.Gameplay
             _postRoundDelayRemaining = 0f;
             _pendingSegmentEvaluate = false;
             _segmentSampleValid = false;
+            _simulationPaused = false;
             _exerciseTargetReached = false;
 
             _activeScenario = scenario;
@@ -509,6 +510,7 @@ namespace FootballRL.Gameplay
                 return;
             }
 
+            Physics.SyncTransforms();
             EvaluateAfterPhysics(deltaTime);
             if (_phase == ArenaPhase.Running)
             {
@@ -570,6 +572,7 @@ namespace FootballRL.Gameplay
             if (_phase == ArenaPhase.Ended || _simulationPaused)
                 return;
 
+            Physics.SyncTransforms();
             EvaluateAfterPhysics(deltaTime);
             if (_phase == ArenaPhase.Running && _ballBody != null)
                 _segmentStartBallPos = _ballBody.position;
@@ -615,10 +618,17 @@ namespace FootballRL.Gameplay
             _physicsTick++;
 
             var curr = _ballBody.position;
-            if (!_segmentSampleValid)
-                _segmentSampleValid = true;
+            if (_ballTransform != null)
+            {
+                _ballTransform.position = curr;
+                _ballBody.position = curr;
+                Physics.SyncTransforms();
+            }
 
             TryEndRoundFromPhysics(_segmentStartBallPos, curr, deltaTime);
+
+            if (!_segmentSampleValid)
+                _segmentSampleValid = true;
 
             UpdateExerciseTargetReach();
             _segmentStartBallPos = curr;
@@ -659,9 +669,10 @@ namespace FootballRL.Gameplay
             var prevLocal = WorldToArenaLocal(prevBall);
             var currLocal = WorldToArenaLocal(currBall);
 
+            var scoringTeam = 0;
             if (config != null &&
                 GoalDetector.TryDetectGoal(prevLocal, currLocal, config.ballRadius, config.HalfGoalWidth,
-                    config.goalHeight, goals, out var scoringTeam))
+                    config.goalHeight, goals, out scoringTeam))
             {
                 EndRound(RoundEndReason.Goal, true, scoringTeam);
                 return;
@@ -1143,6 +1154,7 @@ namespace FootballRL.Gameplay
         {
             _activeScenario = scenario;
         }
+
 #endif
     }
 }

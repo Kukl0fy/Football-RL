@@ -1,19 +1,38 @@
-VBCSCompilerPreWarmer: pre-warm launched (dotnet PID 40728)
-VBCSCompiler prewarm took 16.62 ms
+VBCSCompilerPreWarmer: pre-warm launched (dotnet PID 37212)
+VBCSCompiler prewarm took 23.14 ms
 [Licensing::Module] Trying to connect to existing licensing client channel...
 Built from '6000.6/staging' branch; Version is '6000.6.2f1 (770e33f6875c) revision 7802419'; Using compiler version '194234433'; Build Type 'Release'
-[Licensing::IpcConnector] Successfully connected to: "LicenseClient-huber" at "2026-10-14T14:23:45.8620937Z"
 OS: 'Windows 11  (10.0.26200) Core' Language: 'pl' Physical Memory: 15576 MB
 BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1
 System  architecture: x64
 Process architecture: x64
-Date: 2026-10-14T14:23:45Z
+Date: 2026-10-14T14:57:30Z
+[Licensing::IpcConnector] Successfully connected to: "LicenseClient-huber" at "2026-10-14T14:57:30.1751377Z"
+[Licensing::Client] Code 10 while verifying Licensing Client signature (process Id: 29404, path: "C:/Program Files/Unity Hub/UnityLicensingClient_V1/Unity.Licensing.Client.exe")
+[Licensing::Module] LicensingClient has failed validation; ignoring
+[Licensing::Client] Handshaking with LicensingClient:
+  Version:                 1.18.3+d7ffd15
+  Session Id:              3cafeca0cc6c4bb88eb36d100b902b44
+  Correlation Id:          b7e1b8662df2f8e5bb74c5cc44ace04a
+  External correlation Id: 7054920383290121078
+  Machine Id:              7nrxQ9WPW2YQq1xgSIJZt9KUb4s=
+[Licensing::Module] Successfully connected to LicensingClient on channel: "LicenseClient-huber" (connect: 0.00s, validation: 0.00s, handshake: 0.09s)
+[Licensing::IpcConnector] Successfully connected to: "LicenseClient-huber-notifications" at "2026-10-14T14:57:30.2717364Z"
+[Licensing::Module] Error: Access token is unavailable; failed to update
+[Licensing::Client] Successfully resolved entitlement details
+[Licensing::Module] License group:
+  Id: 7972623085896-UnityPersXXXX
+  Product: Unity Personal
+  Type: Assigned
+  Expiration: Unlimited
+[Licensing::Client] Successfully updated license, isAsync: True, time: 0.00
+[Licensing::Client] Successfully resolved entitlement details
+[Licensing::Module] Licensing Background thread has ended after 0.12s
 
 COMMAND LINE ARGUMENTS:
 C:\Program Files\Unity\Hub\Editor\6000.6.2f1\Editor\Unity.exe
 -batchmode
 -nographics
--quit
 -projectPath
 D:\projekty\Football-RL\unity\FootballRL
 -executeMethod
@@ -22,4 +41,1488 @@ FootballRL.Editor.G6Verification.RunBatch
 D:\projekty\Football-RL\unity\g6-verify.log
 Successfully changed project path to: D:\projekty\Football-RL\unity\FootballRL
 D:/projekty/Football-RL/unity/FootballRL
-[ExitDontLaunchBugReporter] Exiting without the bug reporter. Application will exit with return code 1
+[UnityMemory] Configuration Parameters - Can be set up in boot.config
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-nav-mesh-worker=65536"
+    "memorysetup-temp-allocator-size-audio-worker=65536"
+    "memorysetup-temp-allocator-size-cloud-worker=32768"
+    "memorysetup-temp-allocator-size-gfx=262144"
+    "memorysetup-remapper-allocator-initial-capacity=32768"
+    "memorysetup-temp-allocator-size-preload-manager=33554432"
+    "memorysetup-allocator-temp-initial-block-size-main=262144"
+    "memorysetup-allocator-temp-initial-block-size-worker=262144"
+    "memorysetup-temp-allocator-size-job-worker=262144"
+    "memorysetup-temp-allocator-size-background-worker=32768"
+    "memorysetup-bucket-allocator-granularity=16"
+    "memorysetup-bucket-allocator-bucket-count=8"
+    "memorysetup-bucket-allocator-block-size=33554432"
+    "memorysetup-bucket-allocator-block-count=8"
+    "memorysetup-main-allocator-block-size=16777216"
+    "memorysetup-thread-allocator-block-size=16777216"
+    "memorysetup-main-allocator-mimalloc-enabled=1"
+    "memorysetup-gfx-main-allocator-block-size=16777216"
+    "memorysetup-gfx-thread-allocator-block-size=16777216"
+    "memorysetup-cache-allocator-block-size=4194304"
+    "memorysetup-typetree-allocator-block-size=2097152"
+    "memorysetup-profiler-bucket-allocator-granularity=16"
+    "memorysetup-profiler-bucket-allocator-bucket-count=8"
+    "memorysetup-profiler-bucket-allocator-block-size=33554432"
+    "memorysetup-profiler-bucket-allocator-block-count=8"
+    "memorysetup-profiler-allocator-block-size=16777216"
+    "memorysetup-profiler-editor-allocator-block-size=1048576"
+    "memorysetup-temp-allocator-size-main=16777216"
+    "memorysetup-job-temp-allocator-block-size=2097152"
+    "memorysetup-job-temp-allocator-block-size-background=1048576"
+    "memorysetup-job-temp-allocator-reduction-small-platforms=262144"
+Logging is directed to a specific file, skipping project log.
+Player connection [18376]  Target information:
+
+Player connection [18376]  * "[IP] 192.168.100.49 [Port] 55504 [Flags] 2 [Guid] 430404242 [EditorId] 430404242 [Version] 1048832 [Id] WindowsEditor(7,Hubert) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" 
+
+Player connection [18376] Host joined multi-casting on [225.0.0.222:54997]...
+Player connection [18376] Host joined alternative multi-casting on [225.0.0.222:34997]...
+Input System module state changed to: Initialized.
+[Physics::Module] Initialized fallback backend.
+[Physics::Module] Id: 0xdecafbad
+Initialising UDS system complete:
+  - System type: Client
+  - Resource namespace: aed420a2e48709ce034677fd6dd5e66a
+  - Shared memory size: 1073741824
+  - Command buffer id: 1052576
+  - Command buffer size: 8192
+  - Hashmap size: 4194304
+  - Service connected: false
+[Package Manager] Connected to IPC stream "Upm-42536" after 0.6 seconds.
+[Licensing::Client] Successfully resolved entitlement details
+Library Redirect Path: Library/
+Launching Unity Data Store - C:/Program Files/Unity/Hub/Editor/6000.6.2f1/Editor/Data/Tools/Unity.DataStore.exe 
+Unity Data Store artifact dir = Library/DataStore, working dir = D:/projekty/Football-RL/unity/FootballRL[Physics::Module] Selected backend.
+[Physics::Module] Name: PhysX
+[Physics::Module] Id: 0xf2b8ea05
+[Physics::Module] SDK Version: 4.1.2
+[Physics::Module] Integration Version: 1.0.0
+[Physics::Module] Threading Mode: Multi-Threaded
+Unity Data Store running and initialised
+Initialize engine version: 6000.6.2f1 (770e33f6875c)
+[EntityIdStore] init: VM path (explicit commit), pageSize=4096, blockCount=1048576, entitiesPerBlock=256, slots reserved=4294967296 bytes
+[Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/6000.6.2f1/Editor/Data/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path D:/projekty/Football-RL/unity/FootballRL/Assets
+Forcing GfxDevice: Null
+GfxDevice: creating device client; kGfxThreadingModeNonThreaded
+NullGfxDevice:
+    Version:  NULL 1.0 [1.0]
+    Renderer: Null Device
+    Vendor:   Unity Technologies
+Initialize mono
+Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/6000.6.2f1/Editor/Data/Managed'
+Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/6000.6.2f1/Editor/Data/BCLExtensions/runtime/netstandard2.1'
+Mono path[2] = 'C:/Program Files/Unity/Hub/Editor/6000.6.2f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
+Mono config path = 'C:/Program Files/Unity/Hub/Editor/6000.6.2f1/Editor/Data/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56536
+CodeReloadManager initialized
+ImportWorker Server TCP listen port: 0
+AcceleratorClientConnectionCallback - disconnected - :0
+Begin MonoManager ReloadAssembly
+Registering precompiled unity dll's ...
+Register platform support module: C:/Program Files/Unity/Hub/Editor/6000.6.2f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+Registered in 0.004754 seconds.
+Native extension for WindowsStandalone target not found
+Package Manager log level set to [2]
+ScheduleIndexationOnStartup MainProcess:False IndexOnStartup:True
+Scripting: successfully reloaded assembly
+- Finished resetting the current domain, in  1.424 seconds
+Domain Reload Profiling: 2559ms
+	BeginReloadAssembly (290ms)
+		CreateAndSetChildDomain (19ms)
+	RebuildCommonClasses (9ms)
+	RebuildNativeTypeToScriptingClass (39ms)
+	initialDomainReloadingComplete (156ms)
+	LoadAllAssembliesAndSetupDomain (638ms)
+		LoadAssemblies (259ms)
+		TypeCache.Refresh (422ms)
+			TypeCache.ScanAssembly (396ms)
+		AnalyzeDomain (1ms)
+	FinalizeReload (1427ms)
+		SetupLoadedEditorAssemblies (0ms)
+			LogAssemblyErrors (3ms)
+			InitializePlatformSupportModulesInManaged (6ms)
+			BeforeProcessingInitializeOnLoad (227ms)
+			ProcessInitializeOnLoadAttributes (253ms)
+			ProcessInitializeOnLoadMethodAttributes (484ms)
+[Licensing::Client] Successfully resolved entitlement details
+Application.AssetDatabase Initial Refresh Start
+[Package Manager] Restoring resolved packages state from cache
+[Licensing::Client] Successfully resolved entitlement details
+[Package Manager] Registered 43 packages:
+  Packages from [https://packages.unity.com]:
+    com.unity.inputsystem@1.20.1 (location: D:\projekty\Football-RL\unity\FootballRL\Library\PackageCache\com.unity.inputsystem@2436e68c60c4)
+    com.unity.ide.rider@3.0.38 (location: D:\projekty\Football-RL\unity\FootballRL\Library\PackageCache\com.unity.ide.rider@1f60b3138684)
+    com.unity.ide.visualstudio@2.0.26 (location: D:\projekty\Football-RL\unity\FootballRL\Library\PackageCache\com.unity.ide.visualstudio@a99d56dec63f)
+  Built-in packages:
+    com.unity.modules.accessibility@1.0.0 (location: D:\projekty\Football-RL\unity\FootballRL\Library\PackageCache\com.unity.modules.accessibility)
+    com.unity.modules.adaptiveperformance@1.0.0 (location: D:\projekty\Football-RL\unity\FootballRL\Library\PackageCache\com.unity.modules.adaptiveperformance)
+    com.unity.modules.ai@1.0.0 (location: D:\projekty\Football-RL\unity\FootballRL\Library\PackageCache\com.unity.modules.ai)
+    com.unity.modules.androidjni@1.0.0 (location: D:\projekty\Football-RL\unity\FootballRL\Library\PackageCache\com.unity.modules.androidjni)
+    com.unity.modules.animation@1.0.0 (location: D:\projekty\Football-RL\unity\FootballRL\Library\PackageCache\com.unity.modules.animation)
+    com.unity.modules.assetbundle@1.0.0 (location: D:\projekty\Football-RL\unity\FootballRL\Library\PackageCache\com.unity.modules.assetbundle)
+    com.unity.modules.audio@1.0.0 (location: D:\projekty\Football-RL\unity\FootballRL\Library\PackageCache\com.unity.modules.audio)
+    com.unity.modules.cloth@1.0.0 (location: D:\projekty\Football-RL\unity\FootballRL\Library\PackageCache\com.unity.modules.cloth)
+    com.unity.modules.director@1.0.0 (location: D:\projekty\Football-RL\unity\FootballRL\Library\PackageCache\com.unity.modules.director)
+    com.unity.modules.imageconversion@1.0.0 (location: D:\projekty\Football-RL\unity\FootballRL\Library\PackageCache\com.unity.modules.imageconversion)
+    com.unity.modules.imgui@1.0.0 (location: D:\projekty\Football-RL\unity\FootballRL\Library\PackageCache\com.unity.modules.imgui)
+    com.unity.modules.jsonserialize@1.0.0 (location: D:\projekty\Football-RL\unity\FootballRL\Library\PackageCache\com.unity.modules.jsonserialize)
+    com.unity.modules.particlesystem@1.0.0 (location: D:\projekty\Football-RL\unity\FootballRL\Library\PackageCache\com.unity.modules.particlesystem)
+    com.unity.modules.physics@1.0.0 (location: D:\projekty\Football-RL\unity\FootballRL\Library\PackageCache\com.unity.modules.physics)
+    com.unity.modules.physics2d@1.0.0 (location: D:\projekty\Football-RL\unity\FootballRL\Library\PackageCache\com.unity.modules.physics2d)
+    com.unity.modules.physicscore2d@1.0.0 (location: D:\projekty\Football-RL\unity\FootballRL\Library\PackageCache\com.unity.modules.physicscore2d)
+    com.unity.modules.screencapture@1.0.0 (location: D:\projekty\Football-RL\unity\FootballRL\Library\PackageCache\com.unity.modules.screencapture)
+    com.unity.modules.terrain@1.0.0 (location: D:\projekty\Football-RL\unity\FootballRL\Library\PackageCache\com.unity.modules.terrain)
+    com.unity.modules.terrainphysics@1.0.0 (location: D:\projekty\Football-RL\unity\FootballRL\Library\PackageCache\com.unity.modules.terrainphysics)
+    com.unity.modules.tetgen@1.0.0 (location: D:\projekty\Football-RL\unity\FootballRL\Library\PackageCache\com.unity.modules.tetgen)
+    com.unity.modules.tilemap@1.0.0 (location: D:\projekty\Football-RL\unity\FootballRL\Library\PackageCache\com.unity.modules.tilemap)
+    com.unity.modules.timelinefoundation@1.0.0 (location: D:\projekty\Football-RL\unity\FootballRL\Library\PackageCache\com.unity.modules.timelinefoundation)
+    com.unity.modules.ui@1.0.0 (location: D:\projekty\Football-RL\unity\FootballRL\Library\PackageCache\com.unity.modules.ui)
+    com.unity.modules.uielements@1.0.0 (location: D:\projekty\Football-RL\unity\FootballRL\Library\PackageCache\com.unity.modules.uielements)
+    com.unity.modules.umbra@1.0.0 (location: D:\projekty\Football-RL\unity\FootballRL\Library\PackageCache\com.unity.modules.umbra)
+    com.unity.modules.unityanalytics@1.0.0 (location: D:\projekty\Football-RL\unity\FootballRL\Library\PackageCache\com.unity.modules.unityanalytics)
+    com.unity.modules.unitywebrequest@1.0.0 (location: D:\projekty\Football-RL\unity\FootballRL\Library\PackageCache\com.unity.modules.unitywebrequest)
+    com.unity.modules.unitywebrequestassetbundle@1.0.0 (location: D:\projekty\Football-RL\unity\FootballRL\Library\PackageCache\com.unity.modules.unitywebrequestassetbundle)
+    com.unity.modules.unitywebrequestaudio@1.0.0 (location: D:\projekty\Football-RL\unity\FootballRL\Library\PackageCache\com.unity.modules.unitywebrequestaudio)
+    com.unity.modules.unitywebrequesttexture@1.0.0 (location: D:\projekty\Football-RL\unity\FootballRL\Library\PackageCache\com.unity.modules.unitywebrequesttexture)
+    com.unity.modules.unitywebrequestwww@1.0.0 (location: D:\projekty\Football-RL\unity\FootballRL\Library\PackageCache\com.unity.modules.unitywebrequestwww)
+    com.unity.modules.vectorgraphics@1.0.0 (location: D:\projekty\Football-RL\unity\FootballRL\Library\PackageCache\com.unity.modules.vectorgraphics)
+    com.unity.modules.vehicles@1.0.0 (location: D:\projekty\Football-RL\unity\FootballRL\Library\PackageCache\com.unity.modules.vehicles)
+    com.unity.modules.video@1.0.0 (location: D:\projekty\Football-RL\unity\FootballRL\Library\PackageCache\com.unity.modules.video)
+    com.unity.modules.wind@1.0.0 (location: D:\projekty\Football-RL\unity\FootballRL\Library\PackageCache\com.unity.modules.wind)
+    com.unity.modules.xr@1.0.0 (location: D:\projekty\Football-RL\unity\FootballRL\Library\PackageCache\com.unity.modules.xr)
+    com.unity.modules.subsystems@1.0.0 (location: D:\projekty\Football-RL\unity\FootballRL\Library\PackageCache\com.unity.modules.subsystems)
+    com.unity.modules.hierarchycore@1.0.0 (location: D:\projekty\Football-RL\unity\FootballRL\Library\PackageCache\com.unity.modules.hierarchycore)
+    com.unity.test-framework@1.8.0 (location: D:\projekty\Football-RL\unity\FootballRL\Library\PackageCache\com.unity.test-framework@7a3849e09bd0)
+    com.unity.ext.nunit@2.1.0 (location: D:\projekty\Football-RL\unity\FootballRL\Library\PackageCache\com.unity.ext.nunit@0198eae3b53e)
+[Subsystems] No new subsystems found in resolved package list.
+[Package Manager] Done registering packages in 0.03 seconds
+Starting: C:\Program Files\Unity\Hub\Editor\6000.6.2f1\Editor\Data\Tools\BuildPipeline\bee_backend.exe --ipc --defer-dag-verification --dagfile="Library/Bee/1900b0aE.dag" --continue-on-failure --profile="Library/Bee/backend1.traceevents" ScriptAssemblies
+WorkingDir: D:/projekty/Football-RL/unity/FootballRL
+DisplayProgressbar: Compiling Scripts
+ExitCode: 0 Duration: 0s355ms
+[246/274    0s] ILPP-Configuration Library/ilpp-configuration.nevergeneratedoutput
+*** Tundra build success (0.28 seconds), 1 items updated, 274 evaluated
+Total cache size 11304544
+AssetDatabase: script compilation time: 1.095223s
+Total cache size after purge 11304544, took 00:00:00.0575883
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+ScheduleIndexationOnStartup MainProcess:True IndexOnStartup:True
+Scripting: successfully reloaded assembly
+- Finished resetting the current domain, in  1.161 seconds
+Domain Reload Profiling: 2311ms
+	BeginReloadAssembly (471ms)
+		DisableScriptedObjects (45ms)
+		CreateAndSetChildDomain (79ms)
+	RebuildCommonClasses (20ms)
+	RebuildNativeTypeToScriptingClass (36ms)
+	initialDomainReloadingComplete (119ms)
+	LoadAllAssembliesAndSetupDomain (502ms)
+		LoadAssemblies (427ms)
+		TypeCache.Refresh (47ms)
+			TypeCache.ScanAssembly (36ms)
+		AnalyzeDomain (24ms)
+			BuildScriptInfoCaches (20ms)
+	FinalizeReload (1164ms)
+		SetupLoadedEditorAssemblies (0ms)
+			LogAssemblyErrors (3ms)
+			InitializePlatformSupportModulesInManaged (3ms)
+			BeforeProcessingInitializeOnLoad (234ms)
+			ProcessInitializeOnLoadAttributes (312ms)
+			ProcessInitializeOnLoadMethodAttributes (95ms)
+			AfterProcessingInitializeOnLoad (20ms)
+		AwakeInstancesAfterBackupRestoration (67ms)
+Starting new worker id: 0 with log in D:/projekty/Football-RL/unity/FootballRL/Logs/AssetImportWorkerHW0.log
+
+Asset Pipeline Refresh (id=352a9dd47a1f78043801caf094ee93fe): Total: 3.923 seconds - Initiated by InitialRefreshV2(ForceSynchronousImport)
+	(Values over 0.05ms)
+	Summary:
+		Imports: total=0 (actual=0, local cache=0, cache server=0)
+		Asset DB Process Time: managed=0 ms, native=1468 ms
+		Asset DB Callback time: managed=49 ms, native=36 ms
+		Scripting: domain reloads=1, domain reload time=1233 ms, compile time=1101 ms, other=33 ms
+		Project Asset Count: scripts=274, non-scripts=261
+		Asset File Changes: new=0, changed=0, moved=0, deleted=0
+		Scan Filter Count: 0
+	InvokePackagesCallback: 43.521ms
+	ApplyChangesToAssetFolders: 0.913ms
+	Scan: 64.624ms
+	Collect global state as custom dependencies: 13.830ms
+	CategorizeScriptCompilationAssets: 12.689ms
+	ProcessAssetsWithTransientArtifactChanges: 20.480ms
+	CategorizeAssets: 10.333ms
+	CompileScripts: 1101.179ms
+	ImportOutOfDateAssets: 1204.356ms (1165.505ms without children)
+		UnloadImportedAssets: 0.126ms
+		EnsureUptoDateAssetsAreRegisteredWithGuidPM: 0.142ms
+		ImportSchedulerStart: 38.580ms
+	PostProcessAllAssets: 49.160ms
+		MonoPostProcessAllAssets: 49.055ms
+			WindowAssetPostprocessingWatcher.OnPostprocessAllAssets 16.877ms
+			SyncVS.PostprocessSyncProject 6.946ms
+			EditModeScopePostprocessor.OnPostprocessAllAssets 1.766ms
+			SpeedTree9Postprocessor.OnPostprocessAllAssets 1.476ms
+			ReferencedClipsPostProcessor.OnPostprocessAllAssets 0.519ms
+			InputActionAssetPostprocessor.OnPostprocessAllAssets 0.511ms
+			TerrainToolbarOverlayPostProcessor.OnPostprocessAllAssets 0.417ms
+			AssetDatabaseCallbacks.OnPostprocessAllAssets 0.345ms
+			ProjectSettingsPostprocessor.OnPostprocessAllAssets 0.294ms
+			RenderPipelineGlobalSettingsPostprocessor.OnPostprocessAllAssets 0.156ms
+	UnloadStreamsBegin: 2.272ms
+	GenerateScriptTypeHashes: 2.788ms
+	GenerateScriptTypeSerializationHashes: 5.513ms
+	Untracked: 1354.288ms
+
+Application.AssetDatabase Initial Refresh End
+Scanning for USB devices : 5.339ms
+Initializing Unity extensions:
+[MODES] ModeService[none].Initialize
+[MODES] ModeService[none].LoadModes
+[MODES] Loading mode Default (0) for mode-current-id-FootballRL
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 1000 unused Assets / (0.9 MB). Loaded Objects now: 1728.
+Memory consumption went from 236.1 MB to 235.2 MB.
+Total: 12.722000 ms (FindLiveObjects: 0.286100 ms CreateObjectMapping: 0.043600 ms MarkObjects: 11.536000 ms  DeleteObjects: 0.647700 ms)
+
+Loaded scene 'Library/Unused/58d7f09e7b08dd546a48c7bccebb4f74'
+	Deserialize:            10.868 ms
+	Integration:            3.278 ms
+	Integration of assets:  0.484 ms
+	Thread Wait Time:       0.027 ms
+	Total Operation Time:   14.657 ms
+Asset Pipeline Refresh (id=71c0e8d40d9157b499b639780dfd331f): Total: 0.037 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Opening scene 'Assets/_Project/Scenes/ManualPlayground.unity'
+Unloading 0 Unused Serialized files (Serialized files now loaded: 0)
+Loaded scene 'Assets/_Project/Scenes/ManualPlayground.unity'
+	Deserialize:            1.625 ms
+	Integration:            11.602 ms
+	Integration of assets:  0.003 ms
+	Thread Wait Time:       0.019 ms
+	Total Operation Time:   13.250 ms
+Unloading 2 unused Assets / (11.6 KB). Loaded Objects now: 2158.
+Memory consumption went from 237.2 MB to 237.2 MB.
+Total: 10.442900 ms (FindLiveObjects: 0.285100 ms CreateObjectMapping: 0.032900 ms MarkObjects: 9.890500 ms  DeleteObjects: 0.039800 ms)
+
+Importing 'GUID: 80ccbecd8c55fe4449897427d9ee9bd4 - Path: Assets/_Project/Scenes/ManualPlayground.unity' with importer (DefaultImporter)
+Imported 'GUID: 80ccbecd8c55fe4449897427d9ee9bd4' -> (Import Result ID: '8944375424dc399925d955140780d31d') in 0.006 seconds [static dependencies only]. Details - ImportResultOutputID=9b8187918fc49a1dd780d186a0d67d17 DependenciesID=f9a4992baa9414034842cfb206a0c3ce StaticDependenciesID=2d41c60145d0fefc8f063938d0f261d2 
+Asset Pipeline Refresh (id=9f3651f239d492641bb6285b7df5180a): Total: 0.072 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Loaded scene 'Library/Unused/ea8ca69a3f0b8db4abb9dfc9960b17e3'
+	Deserialize:            4.462 ms
+	Integration:            0.839 ms
+	Integration of assets:  0.003 ms
+	Thread Wait Time:       0.084 ms
+	Total Operation Time:   5.387 ms
+Asset Pipeline Refresh (id=0997d734ffe5e0142bb9a6340f9ed535): Total: 0.011 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Opening scene 'Assets/_Project/Scenes/ManualPlayground.unity'
+Unloading 0 Unused Serialized files (Serialized files now loaded: 0)
+Loaded scene 'Assets/_Project/Scenes/ManualPlayground.unity'
+	Deserialize:            0.961 ms
+	Integration:            12.943 ms
+	Integration of assets:  0.002 ms
+	Thread Wait Time:       0.023 ms
+	Total Operation Time:   13.929 ms
+Unloading 3 unused Assets / (21.1 KB). Loaded Objects now: 2158.
+Memory consumption went from 240.1 MB to 240.1 MB.
+Total: 12.875300 ms (FindLiveObjects: 0.423900 ms CreateObjectMapping: 0.043600 ms MarkObjects: 12.128600 ms  DeleteObjects: 0.040200 ms)
+
+Importing 'GUID: 80ccbecd8c55fe4449897427d9ee9bd4 - Path: Assets/_Project/Scenes/ManualPlayground.unity' with importer (DefaultImporter)
+Imported 'GUID: 80ccbecd8c55fe4449897427d9ee9bd4' -> (Import Result ID: '8944375424dc399925d955140780d31d') in 0.001 seconds [static dependencies only]. Details - ImportResultOutputID=9b8187918fc49a1dd780d186a0d67d17 DependenciesID=f9a4992baa9414034842cfb206a0c3ce StaticDependenciesID=2d41c60145d0fefc8f063938d0f261d2 
+Asset Pipeline Refresh (id=b527272c63b4ca34781fe5ff6242d132): Total: 0.029 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Loaded scene 'Library/Unused/febde2e2cde94f5439edc2e3b9df5ed5'
+	Deserialize:            4.342 ms
+	Integration:            0.473 ms
+	Integration of assets:  0.002 ms
+	Thread Wait Time:       0.030 ms
+	Total Operation Time:   4.847 ms
+Asset Pipeline Refresh (id=a785901da2cece14ba7cb45890f62f66): Total: 0.011 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Opening scene 'Assets/_Project/Scenes/ManualPlayground.unity'
+Unloading 0 Unused Serialized files (Serialized files now loaded: 0)
+Loaded scene 'Assets/_Project/Scenes/ManualPlayground.unity'
+	Deserialize:            0.886 ms
+	Integration:            8.742 ms
+	Integration of assets:  0.002 ms
+	Thread Wait Time:       0.022 ms
+	Total Operation Time:   9.652 ms
+Unloading 3 unused Assets / (39.5 KB). Loaded Objects now: 2158.
+Memory consumption went from 240.2 MB to 240.1 MB.
+Total: 9.528500 ms (FindLiveObjects: 0.296700 ms CreateObjectMapping: 0.035300 ms MarkObjects: 8.969600 ms  DeleteObjects: 0.031100 ms)
+
+Importing 'GUID: 80ccbecd8c55fe4449897427d9ee9bd4 - Path: Assets/_Project/Scenes/ManualPlayground.unity' with importer (DefaultImporter)
+Imported 'GUID: 80ccbecd8c55fe4449897427d9ee9bd4' -> (Import Result ID: '8944375424dc399925d955140780d31d') in 0.001 seconds [static dependencies only]. Details - ImportResultOutputID=9b8187918fc49a1dd780d186a0d67d17 DependenciesID=f9a4992baa9414034842cfb206a0c3ce StaticDependenciesID=2d41c60145d0fefc8f063938d0f261d2 
+Asset Pipeline Refresh (id=4c69d63cefbf66d4aa1e2fb6d54f0b7c): Total: 0.015 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Loaded scene 'Library/Unused/081d48ae4e6c61f4eb3aa7070e9320c0'
+	Deserialize:            2.938 ms
+	Integration:            0.446 ms
+	Integration of assets:  0.003 ms
+	Thread Wait Time:       0.025 ms
+	Total Operation Time:   3.413 ms
+Asset Pipeline Refresh (id=f4c23d6c081c5ba46a2ae775b3c77210): Total: 0.013 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Opening scene 'Assets/_Project/Scenes/ManualPlayground.unity'
+Unloading 0 Unused Serialized files (Serialized files now loaded: 0)
+Loaded scene 'Assets/_Project/Scenes/ManualPlayground.unity'
+	Deserialize:            1.075 ms
+	Integration:            9.168 ms
+	Integration of assets:  0.003 ms
+	Thread Wait Time:       0.404 ms
+	Total Operation Time:   10.650 ms
+Unloading 3 unused Assets / (20.7 KB). Loaded Objects now: 2161.
+Memory consumption went from 240.2 MB to 240.1 MB.
+Total: 11.086800 ms (FindLiveObjects: 0.437300 ms CreateObjectMapping: 0.051400 ms MarkObjects: 10.299600 ms  DeleteObjects: 0.042200 ms)
+
+Importing 'GUID: 5044af23ca9260147a17f2da5120c927 - Path: Assets/_Project/Configs/Scenarios/MoveToTarget.asset' with importer (NativeFormatImporter)
+Imported 'GUID: 5044af23ca9260147a17f2da5120c927' -> (Import Result ID: '29688ac0511ea60148b6e0d7be37816f') in 0.021 seconds [static dependencies only]. Details - ImportResultOutputID=ceb626b2c6613b71623c14bb03b808a0 DependenciesID=66dfe0673c2e8354a5ab8c754d1e973a StaticDependenciesID=6d87dc062299d79d90db043d81365585 
+Importing 'GUID: 335e93655ded59d4b9f4f23b203fab45 - Path: Assets/_Project/Configs/Scenarios/ShootAtEmptyGoal_RandomSpawn.asset' with importer (NativeFormatImporter)
+Imported 'GUID: 335e93655ded59d4b9f4f23b203fab45' -> (Import Result ID: '88ccbcd52df391a877fc5b1ca51be54e') in 0.001 seconds [static dependencies only]. Details - ImportResultOutputID=87a6b843b03225cdc581ad660a6acea8 DependenciesID=8c959bf7b8dcf6aab4ebdd9917e2ea1f StaticDependenciesID=34ef2912426b22a12f05dc5328ec842b 
+Importing 'GUID: 7cf8f3bf9edea954e9f0a114bd7fe0ed - Path: Assets/_Project/Configs/Scenarios/ShootAtEmptyGoal.asset' with importer (NativeFormatImporter)
+Imported 'GUID: 7cf8f3bf9edea954e9f0a114bd7fe0ed' -> (Import Result ID: '4913f059de6336b06edc895282914bfe') in 0.001 seconds [static dependencies only]. Details - ImportResultOutputID=3385c72987951c02b977390c8b580d03 DependenciesID=a0bd50f1781c888e7b9332b1af43bf2e StaticDependenciesID=f245c3110c0327ba0840a1fc3c740eb5 
+Importing 'GUID: 8fe02d919d2abd84e86f196c9511f19e - Path: Assets/_Project/Configs/Scenarios/ManualSandbox.asset' with importer (NativeFormatImporter)
+Imported 'GUID: 8fe02d919d2abd84e86f196c9511f19e' -> (Import Result ID: 'e3c28faa9301575500f6b43416e6bce6') in 0.001 seconds [static dependencies only]. Details - ImportResultOutputID=1066693960d933d884b08618dfcc2fd7 DependenciesID=949c52fe97368527e5cdf637cf3f3f08 StaticDependenciesID=fc067bae9b81aaada2d9ce303f271c6e 
+Asset Pipeline Refresh (id=a6cc7399f60e89e4d8291358ba84ed02): Total: 0.045 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Importing 'GUID: 80ccbecd8c55fe4449897427d9ee9bd4 - Path: Assets/_Project/Scenes/ManualPlayground.unity' with importer (DefaultImporter)
+Imported 'GUID: 80ccbecd8c55fe4449897427d9ee9bd4' -> (Import Result ID: '8944375424dc399925d955140780d31d') in 0.001 seconds [static dependencies only]. Details - ImportResultOutputID=9b8187918fc49a1dd780d186a0d67d17 DependenciesID=f9a4992baa9414034842cfb206a0c3ce StaticDependenciesID=2d41c60145d0fefc8f063938d0f261d2 
+Asset Pipeline Refresh (id=a97c5ae9b7ab7fa47aa6d8b55678878d): Total: 0.015 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Opening scene 'Assets/_Project/Scenes/ManualPlayground.unity'
+Unloading 0 Unused Serialized files (Serialized files now loaded: 0)
+Loaded scene 'Assets/_Project/Scenes/ManualPlayground.unity'
+	Deserialize:            0.965 ms
+	Integration:            8.476 ms
+	Integration of assets:  0.003 ms
+	Thread Wait Time:       0.020 ms
+	Total Operation Time:   9.464 ms
+Unloading 6 unused Assets / (8.1 KB). Loaded Objects now: 2158.
+Memory consumption went from 240.1 MB to 240.1 MB.
+Total: 11.210100 ms (FindLiveObjects: 0.365200 ms CreateObjectMapping: 0.033400 ms MarkObjects: 10.419700 ms  DeleteObjects: 0.047400 ms)
+
+G6 T22 OK: brak ML-Agents w Packages/manifest.json.
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+FootballRL.Editor.G6Verification:TestT22_NoMlAgentsPackage () (at Assets/_Project/Editor/G6Verification.cs:88)
+FootballRL.Editor.G6Verification:RunAllTests () (at Assets/_Project/Editor/G6Verification.cs:49)
+FootballRL.Editor.G6Verification:RunBatch () (at Assets/_Project/Editor/G6Verification.cs:36)
+
+(Filename: Assets/_Project/Editor/G6Verification.cs Line: 88)
+
+G2 map OK.
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+FootballRL.Editor.G2Verification:RunKeyboardMappingTests () (at Assets/_Project/Editor/G2Verification.cs:78)
+FootballRL.Editor.G2Verification:RunAllTests () (at Assets/_Project/Editor/G2Verification.cs:41)
+FootballRL.Editor.G6Verification:RunAllTests () (at Assets/_Project/Editor/G6Verification.cs:52)
+FootballRL.Editor.G6Verification:RunBatch () (at Assets/_Project/Editor/G6Verification.cs:36)
+
+(Filename: Assets/_Project/Editor/G2Verification.cs Line: 78)
+
+Opening scene 'Assets/_Project/Scenes/ManualPlayground.unity'
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0)
+Loaded scene 'Assets/_Project/Scenes/ManualPlayground.unity'
+	Deserialize:            0.969 ms
+	Integration:            8.513 ms
+	Integration of assets:  0.003 ms
+	Thread Wait Time:       0.046 ms
+	Total Operation Time:   9.530 ms
+Unloading 2 unused Assets / (11.6 KB). Loaded Objects now: 2158.
+Memory consumption went from 240.2 MB to 240.1 MB.
+Total: 10.323200 ms (FindLiveObjects: 0.282900 ms CreateObjectMapping: 0.034800 ms MarkObjects: 9.611900 ms  DeleteObjects: 0.052100 ms)
+
+Opening scene 'Assets/_Project/Scenes/ManualPlayground.unity'
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0)
+Loaded scene 'Assets/_Project/Scenes/ManualPlayground.unity'
+	Deserialize:            1.062 ms
+	Integration:            10.243 ms
+	Integration of assets:  0.003 ms
+	Thread Wait Time:       0.091 ms
+	Total Operation Time:   11.399 ms
+Unloading 2 unused Assets / (11.6 KB). Loaded Objects now: 2158.
+Memory consumption went from 240.2 MB to 240.1 MB.
+Total: 10.781200 ms (FindLiveObjects: 0.289200 ms CreateObjectMapping: 0.032200 ms MarkObjects: 10.228400 ms  DeleteObjects: 0.029300 ms)
+
+G2 speed straight OK: 3.79 m/s (tolerancja ±0.35).
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+FootballRL.Editor.G2Verification:TestStraightSpeed (FootballRL.Gameplay.ArenaController&,FootballRL.Gameplay.PlayerMotor&,UnityEngine.Rigidbody&) (at Assets/_Project/Editor/G2Verification.cs:243)
+FootballRL.Editor.G2Verification:RunMovementPhysicsTests () (at Assets/_Project/Editor/G2Verification.cs:121)
+FootballRL.Editor.G2Verification:RunAllTests () (at Assets/_Project/Editor/G2Verification.cs:44)
+FootballRL.Editor.G6Verification:RunAllTests () (at Assets/_Project/Editor/G6Verification.cs:52)
+FootballRL.Editor.G6Verification:RunBatch () (at Assets/_Project/Editor/G6Verification.cs:36)
+
+(Filename: Assets/_Project/Editor/G2Verification.cs Line: 243)
+
+Opening scene 'Assets/_Project/Scenes/ManualPlayground.unity'
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0)
+Loaded scene 'Assets/_Project/Scenes/ManualPlayground.unity'
+	Deserialize:            0.966 ms
+	Integration:            8.512 ms
+	Integration of assets:  0.002 ms
+	Thread Wait Time:       0.022 ms
+	Total Operation Time:   9.503 ms
+Unloading 2 unused Assets / (11.6 KB). Loaded Objects now: 2158.
+Memory consumption went from 240.8 MB to 240.7 MB.
+Total: 10.079100 ms (FindLiveObjects: 0.298700 ms CreateObjectMapping: 0.038100 ms MarkObjects: 9.493800 ms  DeleteObjects: 0.035100 ms)
+
+G2 speed diagonal OK: 3.79 m/s.
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+FootballRL.Editor.G2Verification:TestDiagonalSpeed (FootballRL.Gameplay.ArenaController&,FootballRL.Gameplay.PlayerMotor&,UnityEngine.Rigidbody&) (at Assets/_Project/Editor/G2Verification.cs:267)
+FootballRL.Editor.G2Verification:RunMovementPhysicsTests () (at Assets/_Project/Editor/G2Verification.cs:123)
+FootballRL.Editor.G2Verification:RunAllTests () (at Assets/_Project/Editor/G2Verification.cs:44)
+FootballRL.Editor.G6Verification:RunAllTests () (at Assets/_Project/Editor/G6Verification.cs:52)
+FootballRL.Editor.G6Verification:RunBatch () (at Assets/_Project/Editor/G6Verification.cs:36)
+
+(Filename: Assets/_Project/Editor/G2Verification.cs Line: 267)
+
+Opening scene 'Assets/_Project/Scenes/ManualPlayground.unity'
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0)
+Loaded scene 'Assets/_Project/Scenes/ManualPlayground.unity'
+	Deserialize:            0.910 ms
+	Integration:            8.030 ms
+	Integration of assets:  0.002 ms
+	Thread Wait Time:       0.051 ms
+	Total Operation Time:   8.993 ms
+Unloading 2 unused Assets / (10.4 KB). Loaded Objects now: 2158.
+Memory consumption went from 240.8 MB to 240.8 MB.
+Total: 9.230100 ms (FindLiveObjects: 0.291900 ms CreateObjectMapping: 0.035200 ms MarkObjects: 8.652200 ms  DeleteObjects: 0.029400 ms)
+
+G2 turn OK: dot(local forward)=1.00, dot(world Z)=0.01.
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+FootballRL.Editor.G2Verification:TestForwardAfterTurn (FootballRL.Gameplay.ArenaController&,FootballRL.Gameplay.PlayerMotor&,UnityEngine.Rigidbody&) (at Assets/_Project/Editor/G2Verification.cs:315)
+FootballRL.Editor.G2Verification:RunMovementPhysicsTests () (at Assets/_Project/Editor/G2Verification.cs:125)
+FootballRL.Editor.G2Verification:RunAllTests () (at Assets/_Project/Editor/G2Verification.cs:44)
+FootballRL.Editor.G6Verification:RunAllTests () (at Assets/_Project/Editor/G6Verification.cs:52)
+FootballRL.Editor.G6Verification:RunBatch () (at Assets/_Project/Editor/G6Verification.cs:36)
+
+(Filename: Assets/_Project/Editor/G2Verification.cs Line: 315)
+
+Opening scene 'Assets/_Project/Scenes/ManualPlayground.unity'
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0)
+Loaded scene 'Assets/_Project/Scenes/ManualPlayground.unity'
+	Deserialize:            0.954 ms
+	Integration:            7.798 ms
+	Integration of assets:  0.002 ms
+	Thread Wait Time:       0.029 ms
+	Total Operation Time:   8.783 ms
+Unloading 2 unused Assets / (11.8 KB). Loaded Objects now: 2158.
+Memory consumption went from 240.8 MB to 240.8 MB.
+Total: 9.484300 ms (FindLiveObjects: 0.368600 ms CreateObjectMapping: 0.035500 ms MarkObjects: 8.843800 ms  DeleteObjects: 0.032200 ms)
+
+G2 zero idle OK.
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+FootballRL.Editor.G2Verification:TestZeroDoesNotAccelerate (FootballRL.Gameplay.ArenaController&,FootballRL.Gameplay.PlayerMotor&,UnityEngine.Rigidbody&) (at Assets/_Project/Editor/G2Verification.cs:336)
+FootballRL.Editor.G2Verification:RunMovementPhysicsTests () (at Assets/_Project/Editor/G2Verification.cs:127)
+FootballRL.Editor.G2Verification:RunAllTests () (at Assets/_Project/Editor/G2Verification.cs:44)
+FootballRL.Editor.G6Verification:RunAllTests () (at Assets/_Project/Editor/G6Verification.cs:52)
+FootballRL.Editor.G6Verification:RunBatch () (at Assets/_Project/Editor/G6Verification.cs:36)
+
+(Filename: Assets/_Project/Editor/G2Verification.cs Line: 336)
+
+Opening scene 'Assets/_Project/Scenes/ManualPlayground.unity'
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0)
+Loaded scene 'Assets/_Project/Scenes/ManualPlayground.unity'
+	Deserialize:            0.967 ms
+	Integration:            8.278 ms
+	Integration of assets:  0.003 ms
+	Thread Wait Time:       0.023 ms
+	Total Operation Time:   9.271 ms
+Unloading 2 unused Assets / (11.6 KB). Loaded Objects now: 2158.
+Memory consumption went from 240.8 MB to 240.8 MB.
+Total: 10.168000 ms (FindLiveObjects: 0.317000 ms CreateObjectMapping: 0.038200 ms MarkObjects: 9.554500 ms  DeleteObjects: 0.044900 ms)
+
+G2 decel OK: 3.79 → 3.19 m/s po 1 kroku.
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+FootballRL.Editor.G2Verification:TestDecelerationAfterRelease (FootballRL.Gameplay.ArenaController&,FootballRL.Gameplay.PlayerMotor&,UnityEngine.Rigidbody&) (at Assets/_Project/Editor/G2Verification.cs:374)
+FootballRL.Editor.G2Verification:RunMovementPhysicsTests () (at Assets/_Project/Editor/G2Verification.cs:129)
+FootballRL.Editor.G2Verification:RunAllTests () (at Assets/_Project/Editor/G2Verification.cs:44)
+FootballRL.Editor.G6Verification:RunAllTests () (at Assets/_Project/Editor/G6Verification.cs:52)
+FootballRL.Editor.G6Verification:RunBatch () (at Assets/_Project/Editor/G6Verification.cs:36)
+
+(Filename: Assets/_Project/Editor/G2Verification.cs Line: 374)
+
+Opening scene 'Assets/_Project/Scenes/ManualPlayground.unity'
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0)
+Loaded scene 'Assets/_Project/Scenes/ManualPlayground.unity'
+	Deserialize:            0.911 ms
+	Integration:            7.984 ms
+	Integration of assets:  0.002 ms
+	Thread Wait Time:       0.021 ms
+	Total Operation Time:   8.918 ms
+Unloading 2 unused Assets / (11.5 KB). Loaded Objects now: 2158.
+Memory consumption went from 240.8 MB to 240.8 MB.
+Total: 9.219100 ms (FindLiveObjects: 0.321300 ms CreateObjectMapping: 0.046300 ms MarkObjects: 8.622600 ms  DeleteObjects: 0.032500 ms)
+
+G2 push OK: piłka Δz=5.803 m.
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+FootballRL.Editor.G2Verification:TestBallPush (FootballRL.Gameplay.ArenaController&,FootballRL.Gameplay.PlayerMotor&,UnityEngine.Rigidbody&) (at Assets/_Project/Editor/G2Verification.cs:403)
+FootballRL.Editor.G2Verification:RunMovementPhysicsTests () (at Assets/_Project/Editor/G2Verification.cs:131)
+FootballRL.Editor.G2Verification:RunAllTests () (at Assets/_Project/Editor/G2Verification.cs:44)
+FootballRL.Editor.G6Verification:RunAllTests () (at Assets/_Project/Editor/G6Verification.cs:52)
+FootballRL.Editor.G6Verification:RunBatch () (at Assets/_Project/Editor/G6Verification.cs:36)
+
+(Filename: Assets/_Project/Editor/G2Verification.cs Line: 403)
+
+G2 physics OK.
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+FootballRL.Editor.G2Verification:RunMovementPhysicsTests () (at Assets/_Project/Editor/G2Verification.cs:134)
+FootballRL.Editor.G2Verification:RunAllTests () (at Assets/_Project/Editor/G2Verification.cs:44)
+FootballRL.Editor.G6Verification:RunAllTests () (at Assets/_Project/Editor/G6Verification.cs:52)
+FootballRL.Editor.G6Verification:RunBatch () (at Assets/_Project/Editor/G6Verification.cs:36)
+
+(Filename: Assets/_Project/Editor/G2Verification.cs Line: 134)
+
+Opening scene 'Assets/_Project/Scenes/ManualPlayground.unity'
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0)
+Loaded scene 'Assets/_Project/Scenes/ManualPlayground.unity'
+	Deserialize:            0.949 ms
+	Integration:            9.375 ms
+	Integration of assets:  0.002 ms
+	Thread Wait Time:       0.023 ms
+	Total Operation Time:   10.349 ms
+Unloading 2 unused Assets / (11.8 KB). Loaded Objects now: 2158.
+Memory consumption went from 240.8 MB to 240.8 MB.
+Total: 10.483400 ms (FindLiveObjects: 0.288800 ms CreateObjectMapping: 0.036300 ms MarkObjects: 9.916800 ms  DeleteObjects: 0.030000 ms)
+
+G3 map OK.
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+FootballRL.Editor.G3Verification:RunKeyboardKickMappingTests () (at Assets/_Project/Editor/G3Verification.cs:85)
+FootballRL.Editor.G3Verification:RunAllTests () (at Assets/_Project/Editor/G3Verification.cs:41)
+FootballRL.Editor.G6Verification:RunAllTests () (at Assets/_Project/Editor/G6Verification.cs:54)
+FootballRL.Editor.G6Verification:RunBatch () (at Assets/_Project/Editor/G6Verification.cs:36)
+
+(Filename: Assets/_Project/Editor/G3Verification.cs Line: 85)
+
+Opening scene 'Assets/_Project/Scenes/ManualPlayground.unity'
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0)
+Loaded scene 'Assets/_Project/Scenes/ManualPlayground.unity'
+	Deserialize:            0.929 ms
+	Integration:            8.054 ms
+	Integration of assets:  0.001 ms
+	Thread Wait Time:       0.023 ms
+	Total Operation Time:   9.008 ms
+Unloading 2 unused Assets / (11.5 KB). Loaded Objects now: 2158.
+Memory consumption went from 240.8 MB to 240.8 MB.
+Total: 9.079700 ms (FindLiveObjects: 0.323200 ms CreateObjectMapping: 0.037600 ms MarkObjects: 8.493100 ms  DeleteObjects: 0.029700 ms)
+
+G3 focus cancel OK.
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+FootballRL.Editor.G3Verification:TestFocusCancelClearsPendingKick () (at Assets/_Project/Editor/G3Verification.cs:161)
+FootballRL.Editor.G3Verification:RunAllTests () (at Assets/_Project/Editor/G3Verification.cs:44)
+FootballRL.Editor.G6Verification:RunAllTests () (at Assets/_Project/Editor/G6Verification.cs:54)
+FootballRL.Editor.G6Verification:RunBatch () (at Assets/_Project/Editor/G6Verification.cs:36)
+
+(Filename: Assets/_Project/Editor/G3Verification.cs Line: 161)
+
+Opening scene 'Assets/_Project/Scenes/ManualPlayground.unity'
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0)
+Loaded scene 'Assets/_Project/Scenes/ManualPlayground.unity'
+	Deserialize:            1.082 ms
+	Integration:            7.723 ms
+	Integration of assets:  0.002 ms
+	Thread Wait Time:       0.044 ms
+	Total Operation Time:   8.851 ms
+Unloading 2 unused Assets / (11.5 KB). Loaded Objects now: 2158.
+Memory consumption went from 240.9 MB to 240.9 MB.
+Total: 9.176000 ms (FindLiveObjects: 0.307100 ms CreateObjectMapping: 0.037200 ms MarkObjects: 8.605700 ms  DeleteObjects: 0.029700 ms)
+
+Opening scene 'Assets/_Project/Scenes/ManualPlayground.unity'
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0)
+Loaded scene 'Assets/_Project/Scenes/ManualPlayground.unity'
+	Deserialize:            1.084 ms
+	Integration:            7.927 ms
+	Integration of assets:  0.002 ms
+	Thread Wait Time:       0.022 ms
+	Total Operation Time:   9.036 ms
+Unloading 2 unused Assets / (11.2 KB). Loaded Objects now: 2158.
+Memory consumption went from 240.9 MB to 240.9 MB.
+Total: 9.526300 ms (FindLiveObjects: 0.287000 ms CreateObjectMapping: 0.035200 ms MarkObjects: 8.977700 ms  DeleteObjects: 0.030600 ms)
+
+G3 T05 OK: jeden impuls przy powtarzanym commandId.
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+FootballRL.Editor.G3Verification:TestT05_SingleImpulsePerCommandId (FootballRL.Gameplay.ArenaController) (at Assets/_Project/Editor/G3Verification.cs:287)
+FootballRL.Editor.G3Verification:RunKickPhysicsTests () (at Assets/_Project/Editor/G3Verification.cs:190)
+FootballRL.Editor.G3Verification:RunAllTests () (at Assets/_Project/Editor/G3Verification.cs:47)
+FootballRL.Editor.G6Verification:RunAllTests () (at Assets/_Project/Editor/G6Verification.cs:54)
+FootballRL.Editor.G6Verification:RunBatch () (at Assets/_Project/Editor/G6Verification.cs:36)
+
+(Filename: Assets/_Project/Editor/G3Verification.cs Line: 287)
+
+Opening scene 'Assets/_Project/Scenes/ManualPlayground.unity'
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0)
+Loaded scene 'Assets/_Project/Scenes/ManualPlayground.unity'
+	Deserialize:            1.285 ms
+	Integration:            11.065 ms
+	Integration of assets:  0.003 ms
+	Thread Wait Time:       0.030 ms
+	Total Operation Time:   12.383 ms
+Unloading 2 unused Assets / (11.6 KB). Loaded Objects now: 2158.
+Memory consumption went from 241.1 MB to 241.0 MB.
+Total: 12.533100 ms (FindLiveObjects: 0.394900 ms CreateObjectMapping: 0.047000 ms MarkObjects: 11.833300 ms  DeleteObjects: 0.031800 ms)
+
+G3 T06 OK.
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+FootballRL.Editor.G3Verification:TestT06_CooldownNoPending (FootballRL.Gameplay.ArenaController) (at Assets/_Project/Editor/G3Verification.cs:345)
+FootballRL.Editor.G3Verification:RunKickPhysicsTests () (at Assets/_Project/Editor/G3Verification.cs:192)
+FootballRL.Editor.G3Verification:RunAllTests () (at Assets/_Project/Editor/G3Verification.cs:47)
+FootballRL.Editor.G6Verification:RunAllTests () (at Assets/_Project/Editor/G6Verification.cs:54)
+FootballRL.Editor.G6Verification:RunBatch () (at Assets/_Project/Editor/G6Verification.cs:36)
+
+(Filename: Assets/_Project/Editor/G3Verification.cs Line: 345)
+
+Opening scene 'Assets/_Project/Scenes/ManualPlayground.unity'
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0)
+Loaded scene 'Assets/_Project/Scenes/ManualPlayground.unity'
+	Deserialize:            1.078 ms
+	Integration:            9.410 ms
+	Integration of assets:  0.002 ms
+	Thread Wait Time:       0.016 ms
+	Total Operation Time:   10.507 ms
+Unloading 2 unused Assets / (11.8 KB). Loaded Objects now: 2158.
+Memory consumption went from 241.1 MB to 241.0 MB.
+Total: 10.409700 ms (FindLiveObjects: 0.291700 ms CreateObjectMapping: 0.035800 ms MarkObjects: 9.841900 ms  DeleteObjects: 0.029300 ms)
+
+G3 T07 OK.
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+FootballRL.Editor.G3Verification:TestT07_RejectionCases (FootballRL.Gameplay.ArenaController) (at Assets/_Project/Editor/G3Verification.cs:394)
+FootballRL.Editor.G3Verification:RunKickPhysicsTests () (at Assets/_Project/Editor/G3Verification.cs:194)
+FootballRL.Editor.G3Verification:RunAllTests () (at Assets/_Project/Editor/G3Verification.cs:47)
+FootballRL.Editor.G6Verification:RunAllTests () (at Assets/_Project/Editor/G6Verification.cs:54)
+FootballRL.Editor.G6Verification:RunBatch () (at Assets/_Project/Editor/G6Verification.cs:36)
+
+(Filename: Assets/_Project/Editor/G3Verification.cs Line: 394)
+
+Opening scene 'Assets/_Project/Scenes/ManualPlayground.unity'
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0)
+Loaded scene 'Assets/_Project/Scenes/ManualPlayground.unity'
+	Deserialize:            1.030 ms
+	Integration:            10.320 ms
+	Integration of assets:  0.002 ms
+	Thread Wait Time:       0.029 ms
+	Total Operation Time:   11.381 ms
+Unloading 2 unused Assets / (11.6 KB). Loaded Objects now: 2158.
+Memory consumption went from 241.1 MB to 241.1 MB.
+Total: 11.843300 ms (FindLiveObjects: 0.375900 ms CreateObjectMapping: 0.045100 ms MarkObjects: 11.133200 ms  DeleteObjects: 0.038300 ms)
+
+Opening scene 'Assets/_Project/Scenes/ManualPlayground.unity'
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0)
+Loaded scene 'Assets/_Project/Scenes/ManualPlayground.unity'
+	Deserialize:            1.101 ms
+	Integration:            15.253 ms
+	Integration of assets:  0.003 ms
+	Thread Wait Time:       0.027 ms
+	Total Operation Time:   16.385 ms
+Unloading 2 unused Assets / (0.8 KB). Loaded Objects now: 2158.
+Memory consumption went from 241.1 MB to 241.1 MB.
+Total: 13.986200 ms (FindLiveObjects: 0.371500 ms CreateObjectMapping: 0.044600 ms MarkObjects: 13.274800 ms  DeleteObjects: 0.038600 ms)
+
+Opening scene 'Assets/_Project/Scenes/ManualPlayground.unity'
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0)
+Loaded scene 'Assets/_Project/Scenes/ManualPlayground.unity'
+	Deserialize:            1.256 ms
+	Integration:            12.256 ms
+	Integration of assets:  0.003 ms
+	Thread Wait Time:       0.021 ms
+	Total Operation Time:   13.536 ms
+Unloading 2 unused Assets / (0.8 KB). Loaded Objects now: 2158.
+Memory consumption went from 241.1 MB to 241.1 MB.
+Total: 14.197100 ms (FindLiveObjects: 0.382700 ms CreateObjectMapping: 0.044500 ms MarkObjects: 13.487800 ms  DeleteObjects: 0.036300 ms)
+
+G3 T08 OK: Δv weak=6.659 m/s, strong=17.750 m/s.
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+FootballRL.Editor.G3Verification:TestT08_StrengthScaling (FootballRL.Gameplay.ArenaController) (at Assets/_Project/Editor/G3Verification.cs:439)
+FootballRL.Editor.G3Verification:RunKickPhysicsTests () (at Assets/_Project/Editor/G3Verification.cs:196)
+FootballRL.Editor.G3Verification:RunAllTests () (at Assets/_Project/Editor/G3Verification.cs:47)
+FootballRL.Editor.G6Verification:RunAllTests () (at Assets/_Project/Editor/G6Verification.cs:54)
+FootballRL.Editor.G6Verification:RunBatch () (at Assets/_Project/Editor/G6Verification.cs:36)
+
+(Filename: Assets/_Project/Editor/G3Verification.cs Line: 439)
+
+Opening scene 'Assets/_Project/Scenes/ManualPlayground.unity'
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0)
+Loaded scene 'Assets/_Project/Scenes/ManualPlayground.unity'
+	Deserialize:            1.265 ms
+	Integration:            11.831 ms
+	Integration of assets:  0.003 ms
+	Thread Wait Time:       0.026 ms
+	Total Operation Time:   13.125 ms
+Unloading 2 unused Assets / (11.6 KB). Loaded Objects now: 2158.
+Memory consumption went from 241.2 MB to 241.2 MB.
+Total: 13.861800 ms (FindLiveObjects: 0.406600 ms CreateObjectMapping: 0.042700 ms MarkObjects: 13.108900 ms  DeleteObjects: 0.043900 ms)
+
+Opening scene 'Assets/_Project/Scenes/ManualPlayground.unity'
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0)
+Loaded scene 'Assets/_Project/Scenes/ManualPlayground.unity'
+	Deserialize:            1.600 ms
+	Integration:            11.748 ms
+	Integration of assets:  0.003 ms
+	Thread Wait Time:       0.027 ms
+	Total Operation Time:   13.377 ms
+Unloading 2 unused Assets / (11.6 KB). Loaded Objects now: 2158.
+Memory consumption went from 241.2 MB to 241.2 MB.
+Total: 14.260000 ms (FindLiveObjects: 0.395600 ms CreateObjectMapping: 0.044900 ms MarkObjects: 13.531200 ms  DeleteObjects: 0.043500 ms)
+
+Opening scene 'Assets/_Project/Scenes/ManualPlayground.unity'
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0)
+Loaded scene 'Assets/_Project/Scenes/ManualPlayground.unity'
+	Deserialize:            1.313 ms
+	Integration:            12.987 ms
+	Integration of assets:  0.003 ms
+	Thread Wait Time:       0.026 ms
+	Total Operation Time:   14.329 ms
+Unloading 2 unused Assets / (11.6 KB). Loaded Objects now: 2158.
+Memory consumption went from 241.2 MB to 241.2 MB.
+Total: 14.725200 ms (FindLiveObjects: 0.395400 ms CreateObjectMapping: 0.066100 ms MarkObjects: 13.948700 ms  DeleteObjects: 0.046200 ms)
+
+G3 T09 OK: impuls 0° dirY=0.000, 45° dirY=0.707, lobAngle=45.0°.
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+FootballRL.Editor.G3Verification:TestT09_LoftAngles (FootballRL.Gameplay.ArenaController) (at Assets/_Project/Editor/G3Verification.cs:512)
+FootballRL.Editor.G3Verification:RunKickPhysicsTests () (at Assets/_Project/Editor/G3Verification.cs:198)
+FootballRL.Editor.G3Verification:RunAllTests () (at Assets/_Project/Editor/G3Verification.cs:47)
+FootballRL.Editor.G6Verification:RunAllTests () (at Assets/_Project/Editor/G6Verification.cs:54)
+FootballRL.Editor.G6Verification:RunBatch () (at Assets/_Project/Editor/G6Verification.cs:36)
+
+(Filename: Assets/_Project/Editor/G3Verification.cs Line: 512)
+
+G3 physics OK.
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+FootballRL.Editor.G3Verification:RunKickPhysicsTests () (at Assets/_Project/Editor/G3Verification.cs:201)
+FootballRL.Editor.G3Verification:RunAllTests () (at Assets/_Project/Editor/G3Verification.cs:47)
+FootballRL.Editor.G6Verification:RunAllTests () (at Assets/_Project/Editor/G6Verification.cs:54)
+FootballRL.Editor.G6Verification:RunBatch () (at Assets/_Project/Editor/G6Verification.cs:36)
+
+(Filename: Assets/_Project/Editor/G3Verification.cs Line: 201)
+
+Opening scene 'Assets/_Project/Scenes/ManualPlayground.unity'
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0)
+Loaded scene 'Assets/_Project/Scenes/ManualPlayground.unity'
+	Deserialize:            1.322 ms
+	Integration:            11.619 ms
+	Integration of assets:  0.004 ms
+	Thread Wait Time:       0.026 ms
+	Total Operation Time:   12.971 ms
+Unloading 2 unused Assets / (11.8 KB). Loaded Objects now: 2158.
+Memory consumption went from 241.2 MB to 241.2 MB.
+Total: 10.450800 ms (FindLiveObjects: 0.349900 ms CreateObjectMapping: 0.060900 ms MarkObjects: 9.802300 ms  DeleteObjects: 0.040700 ms)
+
+G4 bounds unit OK.
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+FootballRL.Editor.G4Verification:RunBallBoundsUnitTests (FootballRL.Gameplay.ArenaConfig) (at Assets/_Project/Editor/G4Verification.cs:123)
+FootballRL.Editor.G4Verification:RunAllTests () (at Assets/_Project/Editor/G4Verification.cs:40)
+FootballRL.Editor.G6Verification:RunAllTests () (at Assets/_Project/Editor/G6Verification.cs:56)
+FootballRL.Editor.G6Verification:RunBatch () (at Assets/_Project/Editor/G6Verification.cs:36)
+
+(Filename: Assets/_Project/Editor/G4Verification.cs Line: 123)
+
+G4 goal detector unit OK.
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+FootballRL.Editor.G4Verification:RunGoalDetectorUnitTests (FootballRL.Gameplay.ArenaConfig) (at Assets/_Project/Editor/G4Verification.cs:179)
+FootballRL.Editor.G4Verification:RunAllTests () (at Assets/_Project/Editor/G4Verification.cs:43)
+FootballRL.Editor.G6Verification:RunAllTests () (at Assets/_Project/Editor/G6Verification.cs:56)
+FootballRL.Editor.G6Verification:RunBatch () (at Assets/_Project/Editor/G6Verification.cs:36)
+
+(Filename: Assets/_Project/Editor/G4Verification.cs Line: 179)
+
+Opening scene 'Assets/_Project/Scenes/ManualPlayground.unity'
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0)
+Loaded scene 'Assets/_Project/Scenes/ManualPlayground.unity'
+	Deserialize:            1.054 ms
+	Integration:            8.368 ms
+	Integration of assets:  0.002 ms
+	Thread Wait Time:       0.027 ms
+	Total Operation Time:   9.451 ms
+Unloading 2 unused Assets / (9.7 KB). Loaded Objects now: 2158.
+Memory consumption went from 241.2 MB to 241.2 MB.
+Total: 11.427100 ms (FindLiveObjects: 0.298100 ms CreateObjectMapping: 0.061500 ms MarkObjects: 10.765300 ms  DeleteObjects: 0.045900 ms)
+
+G4 T10 OK.
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+FootballRL.Editor.G4Verification:TestT10_GoalTeam (FootballRL.Gameplay.ArenaController,FootballRL.Gameplay.ArenaConfig) (at Assets/_Project/Editor/G4Verification.cs:270)
+FootballRL.Editor.G4Verification:RunArenaRoundTests () (at Assets/_Project/Editor/G4Verification.cs:207)
+FootballRL.Editor.G4Verification:RunAllTests () (at Assets/_Project/Editor/G4Verification.cs:46)
+FootballRL.Editor.G6Verification:RunAllTests () (at Assets/_Project/Editor/G6Verification.cs:56)
+FootballRL.Editor.G6Verification:RunBatch () (at Assets/_Project/Editor/G6Verification.cs:36)
+
+(Filename: Assets/_Project/Editor/G4Verification.cs Line: 270)
+
+G4 T13 OK.
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+FootballRL.Editor.G4Verification:TestT13_TimeoutAndManualReset (FootballRL.Gameplay.ArenaController,FootballRL.Gameplay.ArenaConfig) (at Assets/_Project/Editor/G4Verification.cs:299)
+FootballRL.Editor.G4Verification:RunArenaRoundTests () (at Assets/_Project/Editor/G4Verification.cs:209)
+FootballRL.Editor.G4Verification:RunAllTests () (at Assets/_Project/Editor/G4Verification.cs:46)
+FootballRL.Editor.G6Verification:RunAllTests () (at Assets/_Project/Editor/G6Verification.cs:56)
+FootballRL.Editor.G6Verification:RunBatch () (at Assets/_Project/Editor/G6Verification.cs:36)
+
+(Filename: Assets/_Project/Editor/G4Verification.cs Line: 299)
+
+G4 T14 OK.
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+FootballRL.Editor.G4Verification:TestT14_ResetClearsState (FootballRL.Gameplay.ArenaController) (at Assets/_Project/Editor/G4Verification.cs:366)
+FootballRL.Editor.G4Verification:RunArenaRoundTests () (at Assets/_Project/Editor/G4Verification.cs:211)
+FootballRL.Editor.G4Verification:RunAllTests () (at Assets/_Project/Editor/G4Verification.cs:46)
+FootballRL.Editor.G6Verification:RunAllTests () (at Assets/_Project/Editor/G6Verification.cs:56)
+FootballRL.Editor.G6Verification:RunBatch () (at Assets/_Project/Editor/G6Verification.cs:36)
+
+(Filename: Assets/_Project/Editor/G4Verification.cs Line: 366)
+
+G4 T15 OK.
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+FootballRL.Editor.G4Verification:TestT15_EndStateBeforeReset (FootballRL.Gameplay.ArenaController,FootballRL.Gameplay.ArenaConfig) (at Assets/_Project/Editor/G4Verification.cs:407)
+FootballRL.Editor.G4Verification:RunArenaRoundTests () (at Assets/_Project/Editor/G4Verification.cs:213)
+FootballRL.Editor.G4Verification:RunAllTests () (at Assets/_Project/Editor/G4Verification.cs:46)
+FootballRL.Editor.G6Verification:RunAllTests () (at Assets/_Project/Editor/G6Verification.cs:56)
+FootballRL.Editor.G6Verification:RunBatch () (at Assets/_Project/Editor/G6Verification.cs:36)
+
+(Filename: Assets/_Project/Editor/G4Verification.cs Line: 407)
+
+G4 BallOut OK.
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+FootballRL.Editor.G4Verification:TestBallOutVsGoalInterior (FootballRL.Gameplay.ArenaController,FootballRL.Gameplay.ArenaConfig) (at Assets/_Project/Editor/G4Verification.cs:439)
+FootballRL.Editor.G4Verification:RunArenaRoundTests () (at Assets/_Project/Editor/G4Verification.cs:215)
+FootballRL.Editor.G4Verification:RunAllTests () (at Assets/_Project/Editor/G4Verification.cs:46)
+FootballRL.Editor.G6Verification:RunAllTests () (at Assets/_Project/Editor/G6Verification.cs:56)
+FootballRL.Editor.G6Verification:RunBatch () (at Assets/_Project/Editor/G6Verification.cs:36)
+
+(Filename: Assets/_Project/Editor/G4Verification.cs Line: 439)
+
+G4 over bar BallOut OK.
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+FootballRL.Editor.G4Verification:TestOverBarSegmentBallOut (FootballRL.Gameplay.ArenaController,FootballRL.Gameplay.ArenaConfig) (at Assets/_Project/Editor/G4Verification.cs:459)
+FootballRL.Editor.G4Verification:RunArenaRoundTests () (at Assets/_Project/Editor/G4Verification.cs:217)
+FootballRL.Editor.G4Verification:RunAllTests () (at Assets/_Project/Editor/G4Verification.cs:46)
+FootballRL.Editor.G6Verification:RunAllTests () (at Assets/_Project/Editor/G6Verification.cs:56)
+FootballRL.Editor.G6Verification:RunBatch () (at Assets/_Project/Editor/G6Verification.cs:36)
+
+(Filename: Assets/_Project/Editor/G4Verification.cs Line: 459)
+
+G4 ended pause freeze OK.
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+FootballRL.Editor.G4Verification:TestEndedPauseFreezesBodies (FootballRL.Gameplay.ArenaController,FootballRL.Gameplay.ArenaConfig) (at Assets/_Project/Editor/G4Verification.cs:502)
+FootballRL.Editor.G4Verification:RunArenaRoundTests () (at Assets/_Project/Editor/G4Verification.cs:219)
+FootballRL.Editor.G4Verification:RunAllTests () (at Assets/_Project/Editor/G4Verification.cs:46)
+FootballRL.Editor.G6Verification:RunAllTests () (at Assets/_Project/Editor/G6Verification.cs:56)
+FootballRL.Editor.G6Verification:RunBatch () (at Assets/_Project/Editor/G6Verification.cs:36)
+
+(Filename: Assets/_Project/Editor/G4Verification.cs Line: 502)
+
+G4 first step goal via arena simulation step OK.
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+FootballRL.Editor.G4Verification:TestFirstStepGoalViaArenaStep (FootballRL.Gameplay.ArenaController,FootballRL.Gameplay.ArenaConfig) (at Assets/_Project/Editor/G4Verification.cs:537)
+FootballRL.Editor.G4Verification:RunArenaRoundTests () (at Assets/_Project/Editor/G4Verification.cs:225)
+FootballRL.Editor.G4Verification:RunAllTests () (at Assets/_Project/Editor/G4Verification.cs:46)
+FootballRL.Editor.G6Verification:RunAllTests () (at Assets/_Project/Editor/G6Verification.cs:56)
+FootballRL.Editor.G6Verification:RunBatch () (at Assets/_Project/Editor/G6Verification.cs:36)
+
+(Filename: Assets/_Project/Editor/G4Verification.cs Line: 537)
+
+G4 first step BallOut via arena simulation step OK.
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+FootballRL.Editor.G4Verification:TestFirstStepBallOutViaArenaStep (FootballRL.Gameplay.ArenaController,FootballRL.Gameplay.ArenaConfig) (at Assets/_Project/Editor/G4Verification.cs:572)
+FootballRL.Editor.G4Verification:RunArenaRoundTests () (at Assets/_Project/Editor/G4Verification.cs:227)
+FootballRL.Editor.G4Verification:RunAllTests () (at Assets/_Project/Editor/G4Verification.cs:46)
+FootballRL.Editor.G6Verification:RunAllTests () (at Assets/_Project/Editor/G6Verification.cs:56)
+FootballRL.Editor.G6Verification:RunBatch () (at Assets/_Project/Editor/G6Verification.cs:36)
+
+(Filename: Assets/_Project/Editor/G4Verification.cs Line: 572)
+
+G4 first step brak fałszywego gola OK.
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+FootballRL.Editor.G4Verification:TestFirstStepNoFalseGoalOnPitch (FootballRL.Gameplay.ArenaController,FootballRL.Gameplay.ArenaConfig) (at Assets/_Project/Editor/G4Verification.cs:611)
+FootballRL.Editor.G4Verification:RunArenaRoundTests () (at Assets/_Project/Editor/G4Verification.cs:229)
+FootballRL.Editor.G4Verification:RunAllTests () (at Assets/_Project/Editor/G4Verification.cs:46)
+FootballRL.Editor.G6Verification:RunAllTests () (at Assets/_Project/Editor/G6Verification.cs:56)
+FootballRL.Editor.G6Verification:RunBatch () (at Assets/_Project/Editor/G6Verification.cs:36)
+
+(Filename: Assets/_Project/Editor/G4Verification.cs Line: 611)
+
+G4 arena round OK.
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+FootballRL.Editor.G4Verification:RunArenaRoundTests () (at Assets/_Project/Editor/G4Verification.cs:232)
+FootballRL.Editor.G4Verification:RunAllTests () (at Assets/_Project/Editor/G4Verification.cs:46)
+FootballRL.Editor.G6Verification:RunAllTests () (at Assets/_Project/Editor/G6Verification.cs:56)
+FootballRL.Editor.G6Verification:RunBatch () (at Assets/_Project/Editor/G6Verification.cs:36)
+
+(Filename: Assets/_Project/Editor/G4Verification.cs Line: 232)
+
+Opening scene 'Assets/_Project/Scenes/ManualPlayground.unity'
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0)
+Loaded scene 'Assets/_Project/Scenes/ManualPlayground.unity'
+	Deserialize:            1.246 ms
+	Integration:            13.213 ms
+	Integration of assets:  0.004 ms
+	Thread Wait Time:       0.030 ms
+	Total Operation Time:   14.492 ms
+Unloading 2 unused Assets / (11.8 KB). Loaded Objects now: 2158.
+Memory consumption went from 241.2 MB to 241.2 MB.
+Total: 12.519900 ms (FindLiveObjects: 0.399500 ms CreateObjectMapping: 0.088200 ms MarkObjects: 11.778000 ms  DeleteObjects: 0.035000 ms)
+
+Opening scene 'Assets/_Project/Scenes/ManualPlayground.unity'
+Unloading 4 Unused Serialized files (Serialized files now loaded: 0)
+Loaded scene 'Assets/_Project/Scenes/ManualPlayground.unity'
+	Deserialize:            0.967 ms
+	Integration:            11.275 ms
+	Integration of assets:  0.003 ms
+	Thread Wait Time:       0.022 ms
+	Total Operation Time:   12.267 ms
+Unloading 4 unused Assets / (14.5 KB). Loaded Objects now: 2158.
+Memory consumption went from 241.4 MB to 241.4 MB.
+Total: 11.559200 ms (FindLiveObjects: 0.417200 ms CreateObjectMapping: 0.085600 ms MarkObjects: 10.762500 ms  DeleteObjects: 0.058400 ms)
+
+G5 T16 seed777 player=(0.90, 0.50, 4.25) ball=(-0.58, 0.22, -6.85) seed888 player=(0.84, 0.50, -1.78) ball=(-2.43, 0.22, -5.24) (Δplayer=6.03m Δball=2.45m)
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+FootballRL.Editor.G5Verification:TestT16_SeedRepeatability () (at Assets/_Project/Editor/G5Verification.cs:106)
+FootballRL.Editor.G5Verification:RunAllTests () (at Assets/_Project/Editor/G5Verification.cs:47)
+FootballRL.Editor.G6Verification:RunAllTests () (at Assets/_Project/Editor/G6Verification.cs:58)
+FootballRL.Editor.G6Verification:RunBatch () (at Assets/_Project/Editor/G6Verification.cs:36)
+
+(Filename: Assets/_Project/Editor/G5Verification.cs Line: 106)
+
+G5 T16 OK.
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+FootballRL.Editor.G5Verification:TestT16_SeedRepeatability () (at Assets/_Project/Editor/G5Verification.cs:117)
+FootballRL.Editor.G5Verification:RunAllTests () (at Assets/_Project/Editor/G5Verification.cs:47)
+FootballRL.Editor.G6Verification:RunAllTests () (at Assets/_Project/Editor/G6Verification.cs:58)
+FootballRL.Editor.G6Verification:RunBatch () (at Assets/_Project/Editor/G6Verification.cs:36)
+
+(Filename: Assets/_Project/Editor/G5Verification.cs Line: 117)
+
+Opening scene 'Assets/_Project/Scenes/ManualPlayground.unity'
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
+Loaded scene 'Assets/_Project/Scenes/ManualPlayground.unity'
+	Deserialize:            1.009 ms
+	Integration:            10.232 ms
+	Integration of assets:  0.003 ms
+	Thread Wait Time:       0.028 ms
+	Total Operation Time:   11.273 ms
+Unloading 3 unused Assets / (13.0 KB). Loaded Objects now: 2158.
+Memory consumption went from 241.4 MB to 241.4 MB.
+Total: 12.376700 ms (FindLiveObjects: 0.323600 ms CreateObjectMapping: 0.039600 ms MarkObjects: 11.760400 ms  DeleteObjects: 0.051800 ms)
+
+G5 T17 OK.
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+FootballRL.Editor.G5Verification:TestT17_SpawnValidation () (at Assets/_Project/Editor/G5Verification.cs:293)
+FootballRL.Editor.G5Verification:RunAllTests () (at Assets/_Project/Editor/G5Verification.cs:49)
+FootballRL.Editor.G6Verification:RunAllTests () (at Assets/_Project/Editor/G6Verification.cs:58)
+FootballRL.Editor.G6Verification:RunBatch () (at Assets/_Project/Editor/G6Verification.cs:36)
+
+(Filename: Assets/_Project/Editor/G5Verification.cs Line: 293)
+
+Opening scene 'Assets/_Project/Scenes/ManualPlayground.unity'
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
+Loaded scene 'Assets/_Project/Scenes/ManualPlayground.unity'
+	Deserialize:            1.053 ms
+	Integration:            12.289 ms
+	Integration of assets:  0.003 ms
+	Thread Wait Time:       0.035 ms
+	Total Operation Time:   13.379 ms
+Unloading 3 unused Assets / (13.1 KB). Loaded Objects now: 2158.
+Memory consumption went from 241.4 MB to 241.4 MB.
+Total: 12.805900 ms (FindLiveObjects: 0.385500 ms CreateObjectMapping: 0.060400 ms MarkObjects: 12.068100 ms  DeleteObjects: 0.054800 ms)
+
+G5 snapshot OK.
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+FootballRL.Editor.G5Verification:TestSnapshotGoalAndReset () (at Assets/_Project/Editor/G5Verification.cs:338)
+FootballRL.Editor.G5Verification:RunAllTests () (at Assets/_Project/Editor/G5Verification.cs:51)
+FootballRL.Editor.G6Verification:RunAllTests () (at Assets/_Project/Editor/G6Verification.cs:58)
+FootballRL.Editor.G6Verification:RunBatch () (at Assets/_Project/Editor/G6Verification.cs:36)
+
+(Filename: Assets/_Project/Editor/G5Verification.cs Line: 338)
+
+Opening scene 'Assets/_Project/Scenes/ManualPlayground.unity'
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0)
+Loaded scene 'Assets/_Project/Scenes/ManualPlayground.unity'
+	Deserialize:            1.397 ms
+	Integration:            9.526 ms
+	Integration of assets:  0.002 ms
+	Thread Wait Time:       0.028 ms
+	Total Operation Time:   10.952 ms
+Unloading 2 unused Assets / (11.6 KB). Loaded Objects now: 2158.
+Memory consumption went from 241.4 MB to 241.4 MB.
+Total: 10.813300 ms (FindLiveObjects: 0.326600 ms CreateObjectMapping: 0.038700 ms MarkObjects: 10.176100 ms  DeleteObjects: 0.039700 ms)
+
+G5 spin Ended OK: ball ω=(0.50, 4.00, -1.20) (world ref magnitude OK).
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+FootballRL.Editor.G5Verification:TestEndedAngularVelocity () (at Assets/_Project/Editor/G5Verification.cs:381)
+FootballRL.Editor.G5Verification:RunAllTests () (at Assets/_Project/Editor/G5Verification.cs:53)
+FootballRL.Editor.G6Verification:RunAllTests () (at Assets/_Project/Editor/G6Verification.cs:58)
+FootballRL.Editor.G6Verification:RunBatch () (at Assets/_Project/Editor/G6Verification.cs:36)
+
+(Filename: Assets/_Project/Editor/G5Verification.cs Line: 381)
+
+G5 spin reset OK.
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+FootballRL.Editor.G5Verification:TestEndedAngularVelocity () (at Assets/_Project/Editor/G5Verification.cs:394)
+FootballRL.Editor.G5Verification:RunAllTests () (at Assets/_Project/Editor/G5Verification.cs:53)
+FootballRL.Editor.G6Verification:RunAllTests () (at Assets/_Project/Editor/G6Verification.cs:58)
+FootballRL.Editor.G6Verification:RunBatch () (at Assets/_Project/Editor/G6Verification.cs:36)
+
+(Filename: Assets/_Project/Editor/G5Verification.cs Line: 394)
+
+Opening scene 'Assets/_Project/Scenes/ManualPlayground.unity'
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0)
+Loaded scene 'Assets/_Project/Scenes/ManualPlayground.unity'
+	Deserialize:            0.898 ms
+	Integration:            8.410 ms
+	Integration of assets:  0.004 ms
+	Thread Wait Time:       0.030 ms
+	Total Operation Time:   9.341 ms
+Unloading 2 unused Assets / (9.4 KB). Loaded Objects now: 2158.
+Memory consumption went from 241.4 MB to 241.4 MB.
+Total: 10.507700 ms (FindLiveObjects: 0.502900 ms CreateObjectMapping: 0.058100 ms MarkObjects: 9.599200 ms  DeleteObjects: 0.043200 ms)
+
+G5 canKickNow OK.
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+FootballRL.Editor.G5Verification:TestCanKickNow () (at Assets/_Project/Editor/G5Verification.cs:440)
+FootballRL.Editor.G5Verification:RunAllTests () (at Assets/_Project/Editor/G5Verification.cs:55)
+FootballRL.Editor.G6Verification:RunAllTests () (at Assets/_Project/Editor/G6Verification.cs:58)
+FootballRL.Editor.G6Verification:RunBatch () (at Assets/_Project/Editor/G6Verification.cs:36)
+
+(Filename: Assets/_Project/Editor/G5Verification.cs Line: 440)
+
+Opening scene 'Assets/_Project/Scenes/ManualPlayground.unity'
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0)
+Loaded scene 'Assets/_Project/Scenes/ManualPlayground.unity'
+	Deserialize:            0.881 ms
+	Integration:            8.857 ms
+	Integration of assets:  0.003 ms
+	Thread Wait Time:       0.021 ms
+	Total Operation Time:   9.762 ms
+Unloading 2 unused Assets / (11.6 KB). Loaded Objects now: 2158.
+Memory consumption went from 241.5 MB to 241.5 MB.
+Total: 11.635000 ms (FindLiveObjects: 0.418700 ms CreateObjectMapping: 0.039100 ms MarkObjects: 10.900600 ms  DeleteObjects: 0.031200 ms)
+
+G5 kick angle regulation OK.
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+FootballRL.Editor.G5Verification:TestKickAngleRegulation () (at Assets/_Project/Editor/G5Verification.cs:521)
+FootballRL.Editor.G5Verification:RunAllTests () (at Assets/_Project/Editor/G5Verification.cs:57)
+FootballRL.Editor.G6Verification:RunAllTests () (at Assets/_Project/Editor/G6Verification.cs:58)
+FootballRL.Editor.G6Verification:RunBatch () (at Assets/_Project/Editor/G6Verification.cs:36)
+
+(Filename: Assets/_Project/Editor/G5Verification.cs Line: 521)
+
+Opening scene 'Assets/_Project/Scenes/ManualPlayground.unity'
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
+Loaded scene 'Assets/_Project/Scenes/ManualPlayground.unity'
+	Deserialize:            0.956 ms
+	Integration:            9.699 ms
+	Integration of assets:  0.003 ms
+	Thread Wait Time:       0.049 ms
+	Total Operation Time:   10.707 ms
+Unloading 3 unused Assets / (13.4 KB). Loaded Objects now: 2158.
+Memory consumption went from 241.5 MB to 241.5 MB.
+Total: 9.832900 ms (FindLiveObjects: 0.308000 ms CreateObjectMapping: 0.038600 ms MarkObjects: 9.192800 ms  DeleteObjects: 0.054500 ms)
+
+G5 shoot easy layout OK.
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+FootballRL.Editor.G5Verification:TestShootScenarioEasyLayout () (at Assets/_Project/Editor/G5Verification.cs:572)
+FootballRL.Editor.G5Verification:RunAllTests () (at Assets/_Project/Editor/G5Verification.cs:59)
+FootballRL.Editor.G6Verification:RunAllTests () (at Assets/_Project/Editor/G6Verification.cs:58)
+FootballRL.Editor.G6Verification:RunBatch () (at Assets/_Project/Editor/G6Verification.cs:36)
+
+(Filename: Assets/_Project/Editor/G5Verification.cs Line: 572)
+
+Opening scene 'Assets/_Project/Scenes/ManualPlayground.unity'
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
+Loaded scene 'Assets/_Project/Scenes/ManualPlayground.unity'
+	Deserialize:            1.236 ms
+	Integration:            12.603 ms
+	Integration of assets:  0.004 ms
+	Thread Wait Time:       0.029 ms
+	Total Operation Time:   13.871 ms
+Unloading 3 unused Assets / (13.1 KB). Loaded Objects now: 2158.
+Memory consumption went from 241.5 MB to 241.5 MB.
+Total: 14.365900 ms (FindLiveObjects: 0.314500 ms CreateObjectMapping: 0.063600 ms MarkObjects: 13.702500 ms  DeleteObjects: 0.052200 ms)
+
+G5 local space OK.
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+FootballRL.Editor.G5Verification:TestSnapshotLocalSpace () (at Assets/_Project/Editor/G5Verification.cs:614)
+FootballRL.Editor.G5Verification:RunAllTests () (at Assets/_Project/Editor/G5Verification.cs:61)
+FootballRL.Editor.G6Verification:RunAllTests () (at Assets/_Project/Editor/G6Verification.cs:58)
+FootballRL.Editor.G6Verification:RunBatch () (at Assets/_Project/Editor/G6Verification.cs:36)
+
+(Filename: Assets/_Project/Editor/G5Verification.cs Line: 614)
+
+G5 all tests OK.
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+FootballRL.Editor.G5Verification:RunAllTests () (at Assets/_Project/Editor/G5Verification.cs:64)
+FootballRL.Editor.G6Verification:RunAllTests () (at Assets/_Project/Editor/G6Verification.cs:58)
+FootballRL.Editor.G6Verification:RunBatch () (at Assets/_Project/Editor/G6Verification.cs:36)
+
+(Filename: Assets/_Project/Editor/G5Verification.cs Line: 64)
+
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 211 unused Assets / (123.4 KB). Loaded Objects now: 1735.
+Memory consumption went from 241.2 MB to 241.0 MB.
+Total: 9.981400 ms (FindLiveObjects: 0.316600 ms CreateObjectMapping: 0.055800 ms MarkObjects: 9.196500 ms  DeleteObjects: 0.200800 ms)
+
+RunSimulation stage of the Physics.Simulate(...) call was called with a negative time. This is not supported therefore the simulation was not run.
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.Physics:Simulate_Internal (UnityEngine.PhysicsScene,single,UnityEngine.SimulationStage,UnityEngine.SimulationOption)
+UnityEngine.PhysicsScene:Simulate (single)
+FootballRL.Editor.G6Verification:InstantiateArenaInIsolatedPhysicsScene (UnityEngine.GameObject,string,UnityEngine.Vector3,UnityEngine.Quaternion) (at Assets/_Project/Editor/G6Verification.cs:121)
+FootballRL.Editor.G6Verification:CreateDualArenaScene (single) (at Assets/_Project/Editor/G6Verification.cs:129)
+FootballRL.Editor.G6Verification:TestT18_DualArenaIndependence () (at Assets/_Project/Editor/G6Verification.cs:165)
+FootballRL.Editor.G6Verification:RunAllTests () (at Assets/_Project/Editor/G6Verification.cs:61)
+FootballRL.Editor.G6Verification:RunBatch () (at Assets/_Project/Editor/G6Verification.cs:36)
+
+[Assets/_Project/Editor/G6Verification.cs line 129]
+
+RunSimulation stage of the Physics.Simulate(...) call was called with a negative time. This is not supported therefore the simulation was not run.
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.Physics:Simulate_Internal (UnityEngine.PhysicsScene,single,UnityEngine.SimulationStage,UnityEngine.SimulationOption)
+UnityEngine.PhysicsScene:Simulate (single)
+FootballRL.Editor.G6Verification:InstantiateArenaInIsolatedPhysicsScene (UnityEngine.GameObject,string,UnityEngine.Vector3,UnityEngine.Quaternion) (at Assets/_Project/Editor/G6Verification.cs:121)
+FootballRL.Editor.G6Verification:CreateDualArenaScene (single) (at Assets/_Project/Editor/G6Verification.cs:130)
+FootballRL.Editor.G6Verification:TestT18_DualArenaIndependence () (at Assets/_Project/Editor/G6Verification.cs:165)
+FootballRL.Editor.G6Verification:RunAllTests () (at Assets/_Project/Editor/G6Verification.cs:61)
+FootballRL.Editor.G6Verification:RunBatch () (at Assets/_Project/Editor/G6Verification.cs:36)
+
+[Assets/_Project/Editor/G6Verification.cs line 130]
+
+G6 T18 OK: dwie areny niezależne.
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+FootballRL.Editor.G6Verification:TestT18_DualArenaIndependence () (at Assets/_Project/Editor/G6Verification.cs:230)
+FootballRL.Editor.G6Verification:RunAllTests () (at Assets/_Project/Editor/G6Verification.cs:61)
+FootballRL.Editor.G6Verification:RunBatch () (at Assets/_Project/Editor/G6Verification.cs:36)
+
+(Filename: Assets/_Project/Editor/G6Verification.cs Line: 230)
+
+Unloading 11 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 0 unused Assets / (Unknown). Loaded Objects now: 2350.
+Memory consumption went from 243.3 MB to 243.3 MB.
+Total: 9.515100 ms (FindLiveObjects: 0.283700 ms CreateObjectMapping: 0.050700 ms MarkObjects: 8.963300 ms  DeleteObjects: 0.018400 ms)
+
+RunSimulation stage of the Physics.Simulate(...) call was called with a negative time. This is not supported therefore the simulation was not run.
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.Physics:Simulate_Internal (UnityEngine.PhysicsScene,single,UnityEngine.SimulationStage,UnityEngine.SimulationOption)
+UnityEngine.PhysicsScene:Simulate (single)
+FootballRL.Editor.G6Verification:InstantiateArenaInIsolatedPhysicsScene (UnityEngine.GameObject,string,UnityEngine.Vector3,UnityEngine.Quaternion) (at Assets/_Project/Editor/G6Verification.cs:121)
+FootballRL.Editor.G6Verification:CreateDualArenaScene (single) (at Assets/_Project/Editor/G6Verification.cs:129)
+FootballRL.Editor.G6Verification:TestT19_RotatedArenaLocalAndGoal () (at Assets/_Project/Editor/G6Verification.cs:248)
+FootballRL.Editor.G6Verification:RunAllTests () (at Assets/_Project/Editor/G6Verification.cs:63)
+FootballRL.Editor.G6Verification:RunBatch () (at Assets/_Project/Editor/G6Verification.cs:36)
+
+[Assets/_Project/Editor/G6Verification.cs line 129]
+
+RunSimulation stage of the Physics.Simulate(...) call was called with a negative time. This is not supported therefore the simulation was not run.
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.Physics:Simulate_Internal (UnityEngine.PhysicsScene,single,UnityEngine.SimulationStage,UnityEngine.SimulationOption)
+UnityEngine.PhysicsScene:Simulate (single)
+FootballRL.Editor.G6Verification:InstantiateArenaInIsolatedPhysicsScene (UnityEngine.GameObject,string,UnityEngine.Vector3,UnityEngine.Quaternion) (at Assets/_Project/Editor/G6Verification.cs:121)
+FootballRL.Editor.G6Verification:CreateDualArenaScene (single) (at Assets/_Project/Editor/G6Verification.cs:130)
+FootballRL.Editor.G6Verification:TestT19_RotatedArenaLocalAndGoal () (at Assets/_Project/Editor/G6Verification.cs:248)
+FootballRL.Editor.G6Verification:RunAllTests () (at Assets/_Project/Editor/G6Verification.cs:63)
+FootballRL.Editor.G6Verification:RunBatch () (at Assets/_Project/Editor/G6Verification.cs:36)
+
+[Assets/_Project/Editor/G6Verification.cs line 130]
+
+G6 T19 OK: lokalność i bramka po przesunięciu/obrocie.
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+FootballRL.Editor.G6Verification:TestT19_RotatedArenaLocalAndGoal () (at Assets/_Project/Editor/G6Verification.cs:305)
+FootballRL.Editor.G6Verification:RunAllTests () (at Assets/_Project/Editor/G6Verification.cs:63)
+FootballRL.Editor.G6Verification:RunBatch () (at Assets/_Project/Editor/G6Verification.cs:36)
+
+(Filename: Assets/_Project/Editor/G6Verification.cs Line: 305)
+
+Unloading 0 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 0 unused Assets / (0 B). Loaded Objects now: 2756.
+Memory consumption went from 244.7 MB to 244.7 MB.
+Total: 10.399600 ms (FindLiveObjects: 0.312800 ms CreateObjectMapping: 0.070300 ms MarkObjects: 9.767600 ms  DeleteObjects: 0.015800 ms)
+
+RunSimulation stage of the Physics.Simulate(...) call was called with a negative time. This is not supported therefore the simulation was not run.
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.Physics:Simulate_Internal (UnityEngine.PhysicsScene,single,UnityEngine.SimulationStage,UnityEngine.SimulationOption)
+UnityEngine.PhysicsScene:Simulate (single)
+FootballRL.Editor.G6Verification:InstantiateArenaInIsolatedPhysicsScene (UnityEngine.GameObject,string,UnityEngine.Vector3,UnityEngine.Quaternion) (at Assets/_Project/Editor/G6Verification.cs:121)
+FootballRL.Editor.G6Verification:CreateDualArenaScene (single) (at Assets/_Project/Editor/G6Verification.cs:129)
+FootballRL.Editor.G6Verification:TestT20_FastBallTowardNeighbor () (at Assets/_Project/Editor/G6Verification.cs:323)
+FootballRL.Editor.G6Verification:RunAllTests () (at Assets/_Project/Editor/G6Verification.cs:65)
+FootballRL.Editor.G6Verification:RunBatch () (at Assets/_Project/Editor/G6Verification.cs:36)
+
+[Assets/_Project/Editor/G6Verification.cs line 129]
+
+RunSimulation stage of the Physics.Simulate(...) call was called with a negative time. This is not supported therefore the simulation was not run.
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.Physics:Simulate_Internal (UnityEngine.PhysicsScene,single,UnityEngine.SimulationStage,UnityEngine.SimulationOption)
+UnityEngine.PhysicsScene:Simulate (single)
+FootballRL.Editor.G6Verification:InstantiateArenaInIsolatedPhysicsScene (UnityEngine.GameObject,string,UnityEngine.Vector3,UnityEngine.Quaternion) (at Assets/_Project/Editor/G6Verification.cs:121)
+FootballRL.Editor.G6Verification:CreateDualArenaScene (single) (at Assets/_Project/Editor/G6Verification.cs:130)
+FootballRL.Editor.G6Verification:TestT20_FastBallTowardNeighbor () (at Assets/_Project/Editor/G6Verification.cs:323)
+FootballRL.Editor.G6Verification:RunAllTests () (at Assets/_Project/Editor/G6Verification.cs:65)
+FootballRL.Editor.G6Verification:RunBatch () (at Assets/_Project/Editor/G6Verification.cs:36)
+
+[Assets/_Project/Editor/G6Verification.cs line 130]
+
+G6 T20: arena A oczekiwano BallOut/Ended, jest Running None.
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:LogError (object)
+FootballRL.Editor.G6Verification:TestT20_FastBallTowardNeighbor () (at Assets/_Project/Editor/G6Verification.cs:340)
+FootballRL.Editor.G6Verification:RunAllTests () (at Assets/_Project/Editor/G6Verification.cs:65)
+FootballRL.Editor.G6Verification:RunBatch () (at Assets/_Project/Editor/G6Verification.cs:36)
+
+(Filename: Assets/_Project/Editor/G6Verification.cs Line: 340)
+
+G6 verify: tests failed.
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:LogError (object)
+FootballRL.Editor.G6Verification:RunBatch () (at Assets/_Project/Editor/G6Verification.cs:38)
+
+(Filename: Assets/_Project/Editor/G6Verification.cs Line: 38)
+
+MonoPathRemapper: Attempts to remap: 2108; Successful remaps: 0
+Serialized file version minimum: 23, current 23
+Importing 'GUID: 00000000000000008000000000000000 - Path: ProjectSettings/DynamicsManager.asset' with importer (LibraryAssetImporter)
+Imported 'GUID: 00000000000000008000000000000000' -> (Import Result ID: '23ddf6fbe10c2b6b5e8bec0228f7ac7e') in 0.003 seconds [static dependencies only]. Details - ImportResultOutputID=f4e5ea74158efa9a7415a6abc5cfeedf DependenciesID=d4c306ea373454e2dcd748eabdb4077a StaticDependenciesID=426956d523914bf9eb4eac107536faaf 
+Asset Pipeline Refresh (id=61f4cf338bcd2f64395764968cd6e979): Total: 0.021 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+
+Leak detected: 6 preview scene(s) were not closed prior to shutdown. This indicates a leak of preview scenes
+- To track who caused the leak make sure to enable the diagnostics switch: 'Preview Scene Activity'
+Worker ready: AssetImportWorkerHW0 0
+[Physics::Module] Cleanup current backend.
+[Physics::Module] Id: 0xf2b8ea05
+Input System module state changed to: ShutdownInProgress.
+Input Polling Thread exited.
+Input System module state changed to: Shutdown.
+[Licensing::IpcConnector] LicenseClient-huber-notifications channel disconnected successfully.
+[Licensing::IpcConnector] LicenseClient-huber channel disconnected successfully.
+Lingering sessions upon destruction of worker manager
+Unity Data Store service was successfully shut down
+UDS shutting down local client system
+Shut down UDS service system complete
+AcceleratorClientConnectionCallback - disconnected - :0
+Cleanup mono
+CodeReloadManager destroyed
+Checking for leaked weakptr:
+  Found no leaked weakptrs.
+[Package Manager] Server process was shutdown
+##utp:{"type":"MemoryLeaks","version":2,"phase":"Immediate","time":1791989866134,"processId":42536,"allocatedMemory":11341940,"memoryLabels":[{"Default":175489},{"Permanent":15516},{"NewDelete":69287},{"Thread":4197984},{"Manager":33885},{"VertexData":8},{"Geometry":816},{"Texture":24},{"Shader":846872},{"Material":68},{"GfxDevice":55968},{"Animation":952},{"FreeType":8},{"FontEngine":736},{"Physics":1970},{"Physics2D":16},{"Serialization":26912},{"Input":42840},{"JobScheduler":256},{"TextLib":280},{"Mono":48},{"ScriptingNativeRuntime":1210712},{"BaseObject":49104},{"Resource":1252},{"Renderer":2376},{"Transform":4685},{"File":7393},{"WebCam":616},{"Culling":32},{"Terrain":11442},{"Wind":24},{"STL":40},{"String":561826},{"StaticString":3808},{"Utility":2674806},{"Curl":2579},{"PoolAlloc":2168},{"AI":80},{"TypeTree":14869},{"ScriptManager":12656},{"CodeReload":448},{"RuntimeInitializeOnLoadManager":64},{"Sprites":102},{"SpriteAtlas":120},{"GI":7816},{"Director":8296},{"CloudService":7296},{"WebRequest":9023},{"VR":49650},{"SceneManager":608},{"Video":64},{"LazyScriptCache":32},{"Camera":729},{"Secure":2377},{"SerializationCache":9256},{"APIUpdating":10320},{"Subsystems":336},{"VirtualTexturing":57888},{"StaticSafetyDebugInfo":278528},{"Analytics":768},{"Hierarchy":1188},{"UIElements":40},{"CoreStats":14456},{"Identifiers":7152},{"Gui":128},{"EditorUtility":107021},{"VersionControl":8},{"Undo":931},{"AssetDatabase":675900},{"AssetImporter":40},{"EditorGi":328},{"UnityConnect":40441},{"Upm":1912},{"UpmDiagnostics":8},{"AssetCompliance":96},{"DrivenProperties":72},{"LocalIPC":260},{"ProfilerEditor":9746},{"CoreBusinessMetrics":3620},{"Windowing":456},{"Licensing":12757},{"AssetReference":32},{"IPCStream":32}]}
+~StackAllocator(ALLOC_TEMP_MAIN) m_LastAlloc not NULL. Did you forget to call FreeAllStackAllocations()? To get more information, run app with -diag-temp-memory-leak-validation cmd line argument

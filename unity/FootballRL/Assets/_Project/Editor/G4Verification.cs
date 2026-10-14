@@ -56,6 +56,21 @@ namespace FootballRL.Editor
 
         static float BallY(ArenaConfig cfg) => cfg.ballRadius;
 
+        /// <summary>Jeden krok batch: ruch → Physics.Simulate → reguły na segmencie ruchu piłki.</summary>
+        static void StepArenaSimulationFrame(
+            ArenaController controller,
+            Vector3 prevSegmentWorld,
+            Vector3 endSegmentWorld,
+            float deltaTime)
+        {
+            Physics.SyncTransforms();
+            controller.StepBeforeSharedSimulation(deltaTime);
+            Physics.SyncTransforms();
+            Physics.Simulate(deltaTime);
+            Physics.SyncTransforms();
+            controller.EditorEvaluateBallSegment(prevSegmentWorld, endSegmentWorld, deltaTime);
+        }
+
         static GoalDefinition[] BuildStandardGoals(ArenaConfig cfg)
         {
             var half = cfg.HalfPlayLengthZ;
@@ -78,9 +93,10 @@ namespace FootballRL.Editor
             var r = cfg.ballRadius;
             var halfZ = cfg.HalfPlayLengthZ;
             var halfX = cfg.HalfWidthX;
+            var halfGoalX = cfg.HalfGoalWidth;
             var y = BallY(cfg);
 
-            if (ArenaBounds.IsBallOutOfPlay(new Vector3(halfX - 0.2f, y, halfZ + 0.5f), r, cfg))
+            if (ArenaBounds.IsBallOutOfPlay(new Vector3(halfGoalX - 0.2f, y, halfZ + 0.5f), r, cfg))
             {
                 Debug.LogError("G4 bounds: x w otworze bramkowym nie powinno być BallOut.");
                 return false;
@@ -201,6 +217,16 @@ namespace FootballRL.Editor
                 if (!TestOverBarSegmentBallOut(controller, cfg))
                     return false;
                 if (!TestEndedPauseFreezesBodies(controller, cfg))
+                    return false;
+
+                controller.MatchGoalLinesToPitchLength();
+                controller.EditorPrepareForBatchVerification();
+
+                if (!TestFirstStepGoalViaArenaStep(controller, cfg))
+                    return false;
+                if (!TestFirstStepBallOutViaArenaStep(controller, cfg))
+                    return false;
+                if (!TestFirstStepNoFalseGoalOnPitch(controller, cfg))
                     return false;
 
                 Debug.Log("G4 arena round OK.");
@@ -475,6 +501,120 @@ namespace FootballRL.Editor
 
             Debug.Log("G4 ended pause freeze OK.");
             return true;
+        }
+
+        static bool TestFirstStepGoalViaArenaStep(ArenaController controller, ArenaConfig cfg)
+        {
+            var wasEnabled = controller.enabled;
+            controller.enabled = false;
+            try
+            {
+                controller.ResetEpisode();
+                var root = controller.ArenaRootTransform;
+                var cross = PositiveGoalCrossSegment(cfg);
+                var startLocal = root.InverseTransformPoint(cross.prev);
+                var endLocal = root.InverseTransformPoint(cross.curr);
+                var travelZ = endLocal.z - startLocal.z;
+                controller.MatchGoalLinesToPitchLength();
+                controller.EditorSetBallPosition(cross.prev);
+                controller.EditorSetBallLinearVelocity(root.TransformDirection(new Vector3(0f, 0f, travelZ / Dt)));
+
+                StepArenaSimulationFrame(controller, cross.prev, cross.curr, Dt);
+
+                if (controller.Phase != ArenaPhase.Ended || controller.LastEndReason != RoundEndReason.Goal)
+                {
+                    Debug.LogError(
+                        $"G4 first step goal: oczekiwano Ended/Goal, jest {controller.Phase} {controller.LastEndReason}.");
+                    return false;
+                }
+
+                if (!controller.TryGetEndState(out var state) || !state.HasScoringTeam || state.ScoringTeamId != 0)
+                {
+                    Debug.LogError("G4 first step goal: oczekiwano scoringTeam=0.");
+                    return false;
+                }
+
+                Debug.Log("G4 first step goal via arena simulation step OK.");
+                return true;
+            }
+            finally
+            {
+                controller.enabled = wasEnabled;
+            }
+        }
+
+        static bool TestFirstStepBallOutViaArenaStep(ArenaController controller, ArenaConfig cfg)
+        {
+            var wasEnabled = controller.enabled;
+            controller.enabled = false;
+            try
+            {
+                controller.ResetEpisode();
+                controller.MatchGoalLinesToPitchLength();
+                var halfX = cfg.HalfWidthX;
+                var y = BallY(cfg);
+                var root = controller.ArenaRootTransform;
+                var startLocal = new Vector3(halfX - 0.15f, y, 0f);
+                var startWorld = root.TransformPoint(startLocal);
+                controller.EditorSetBallPosition(startWorld);
+                controller.EditorSetBallLinearVelocity(root.TransformDirection(new Vector3(50f, 0f, 0f)));
+
+                var endWorld = startWorld + root.TransformDirection(new Vector3(1.5f, 0f, 0f));
+                StepArenaSimulationFrame(controller, startWorld, endWorld, Dt);
+
+                if (controller.Phase != ArenaPhase.Ended || controller.LastEndReason != RoundEndReason.BallOut)
+                {
+                    Debug.LogError(
+                        $"G4 first step BallOut: oczekiwano Ended/BallOut, jest {controller.Phase} {controller.LastEndReason}.");
+                    return false;
+                }
+
+                Debug.Log("G4 first step BallOut via arena simulation step OK.");
+                return true;
+            }
+            finally
+            {
+                controller.enabled = wasEnabled;
+            }
+        }
+
+        static bool TestFirstStepNoFalseGoalOnPitch(ArenaController controller, ArenaConfig cfg)
+        {
+            var wasEnabled = controller.enabled;
+            controller.enabled = false;
+            try
+            {
+                controller.ResetEpisode();
+                controller.MatchGoalLinesToPitchLength();
+                var y = BallY(cfg);
+                var root = controller.ArenaRootTransform;
+                var startWorld = root.TransformPoint(new Vector3(0f, y, 0f));
+                controller.EditorSetBallPosition(startWorld);
+                controller.EditorSetBallLinearVelocity(root.TransformDirection(new Vector3(2f, 0f, 0f)));
+
+                var endWorld = startWorld + root.TransformDirection(new Vector3(0.4f, 0f, 0f));
+                StepArenaSimulationFrame(controller, startWorld, endWorld, Dt);
+
+                if (controller.Phase == ArenaPhase.Ended && controller.LastEndReason == RoundEndReason.Goal)
+                {
+                    Debug.LogError("G4 first step: fałszywy gol gdy piłka zostaje na boisku.");
+                    return false;
+                }
+
+                if (controller.Phase != ArenaPhase.Running)
+                {
+                    Debug.LogError(
+                        $"G4 first step pitch: oczekiwano Running, jest {controller.Phase} {controller.LastEndReason}.");
+                    return false;
+                }
+
+                Debug.Log("G4 first step brak fałszywego gola OK.");
+                return true;
+            }
+            finally
+            {
+                controller.enabled = wasEnabled;
+            }
         }
     }
 }
