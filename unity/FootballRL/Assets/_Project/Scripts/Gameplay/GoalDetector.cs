@@ -5,6 +5,8 @@ namespace FootballRL.Gameplay
     /// <summary>Przejście całej piłki przez linię bramkową (segment poprzednia→aktualna).</summary>
     public static class GoalDetector
     {
+        const float HeightBoundaryEpsilon = 0.05f;
+
         public static bool TryDetectGoal(
             Vector3 previousCenter,
             Vector3 currentCenter,
@@ -66,7 +68,7 @@ namespace FootballRL.Gameplay
             if (Mathf.Abs(atCross.x) > maxAbsX)
                 return false;
 
-            if (atCross.y < minY || atCross.y > maxY)
+            if (atCross.y < minY - HeightBoundaryEpsilon || atCross.y > maxY + HeightBoundaryEpsilon)
                 return false;
 
             return true;

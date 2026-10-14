@@ -17,7 +17,7 @@ Pomocniczo: `Phase`, `EpisodeId`, `LastEndReason`, `TryGetEndState`, `TryGetActi
 ## PlayerCommand i commandId
 
 - `PlayerCommand` (`Forward`, `Strafe`, `Turn`, `Kick`, `Loft`) jest **wspólne** dla klawiatury, bota i RL.
-- **`commandId` musi rosnąć tylko przy nowej decyzji** (nowy impuls kopnięcia). Ten sam `commandId` z `Kick > 0` przez wiele kroków daje **co najwyżej jeden** impuls (deduplikacja w `ArenaController`).
+- **`commandId` zwiększaj przy każdej nowej decyzji agenta**, nawet gdy wektor akcji jest identyczny jak poprzednio. Gdy agent **powtarza tę samą już wysłaną decyzję** (ten sam `commandId`), numer zostaje — wtedy `Kick > 0` przez wiele kroków daje **co najwyżej jeden** impuls (deduplikacja w `ArenaController`).
 - Przy braku kopnięcia (`Kick` poniżej progu) arena i tak stosuje ruch/obrót z komendy.
 
 ## CaptureSnapshot
@@ -50,7 +50,7 @@ Pomocniczo: `Phase`, `EpisodeId`, `LastEndReason`, `TryGetEndState`, `TryGetActi
 1. **Nie przenoś** fizyki do `MonoBehaviour` agenta — zostaw `PlayerMotor` / `PlayerKicker` w Gameplay.
 2. Dodaj osobny komponent (np. w `Assets/_Project/MLAgents/` po instalacji pakietu) na obiekcie gracza lub obok areny:
    - W `FixedUpdate` / callbacku ML: zbuduj `PlayerCommand` z akcji sieci.
-   - Wywołaj `arena.SubmitCommand(mojPlayerId, cmd, ++_commandId)` tylko gdy akcja się zmieniła **lub** co krok dla ruchu (nowy `commandId` przy nowym kopnięciu).
+   - Wywołaj `arena.SubmitCommand(mojPlayerId, cmd, commandId)` z **nowym** `commandId` przy każdej nowej decyzji sieci (także gdy akcja się nie zmieniła). Ten sam `commandId` zostaw tylko przy ponownym wysłaniu tej samej decyzji bez nowego kroku decyzyjnego.
 3. Trzymaj referencję do **konkretnego** `ArenaController` (serializowana lub przekazana przy spawnie areny) — **bez** `FindObjectOfType` / globalnego singletonu.
 4. `CollectObservations`: wywołaj `arena.CaptureSnapshot()`, wybierz wpis gracza po `PlayerId`, zmapuj pola na wektor (normalizacja po stronie adaptera).
 5. Epizod: subskrybuj `RoundEnded` **raz** na arenę; po obsłużeniu końca wywołaj reset przez koordynator, nie z każdego agenta osobno.

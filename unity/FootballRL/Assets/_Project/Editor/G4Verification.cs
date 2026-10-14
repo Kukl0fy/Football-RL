@@ -56,19 +56,29 @@ namespace FootballRL.Editor
 
         static float BallY(ArenaConfig cfg) => cfg.ballRadius;
 
-        /// <summary>Jeden krok batch: ruch → Physics.Simulate → reguły na segmencie ruchu piłki.</summary>
-        static void StepArenaSimulationFrame(
-            ArenaController controller,
-            Vector3 prevSegmentWorld,
-            Vector3 endSegmentWorld,
-            float deltaTime)
+        static void MovePrimaryPlayerAside(ArenaController controller)
+        {
+            var identity = UnityEngine.Object.FindAnyObjectByType<PlayerIdentity>();
+            var motor = identity != null ? identity.GetComponent<PlayerMotor>() : null;
+            if (motor == null)
+                return;
+
+            var root = controller.ArenaRootTransform;
+            var away = root.TransformPoint(new Vector3(-6f, 0.5f, -4f));
+            var rb = motor.GetComponent<Rigidbody>();
+            rb.position = away;
+            rb.rotation = root.rotation;
+            rb.linearVelocity = Vector3.zero;
+            rb.angularVelocity = Vector3.zero;
+            rb.WakeUp();
+            Physics.SyncTransforms();
+        }
+
+        /// <summary>Jeden krok batch: normalna ścieżka areny (Before → Simulate → After).</summary>
+        static void StepArenaSimulationFrame(ArenaController controller, float deltaTime)
         {
             Physics.SyncTransforms();
-            controller.StepBeforeSharedSimulation(deltaTime);
-            Physics.SyncTransforms();
-            Physics.Simulate(deltaTime);
-            Physics.SyncTransforms();
-            controller.EditorEvaluateBallSegment(prevSegmentWorld, endSegmentWorld, deltaTime);
+            controller.StepArenaPhysicsWithRules(deltaTime);
         }
 
         static GoalDefinition[] BuildStandardGoals(ArenaConfig cfg)
@@ -164,6 +174,15 @@ namespace FootballRL.Editor
                     r, halfW, h, goals, out _))
             {
                 Debug.LogError("G4 unit: T12 szybki przelot powinien być golem.");
+                return false;
+            }
+
+            if (!GoalDetector.TryDetectGoal(
+                    new Vector3(0f, y, halfZ - 1f),
+                    new Vector3(0f, y, halfZ + 0.5f),
+                    r, halfW, h, goals, out _))
+            {
+                Debug.LogError("G4 unit: segment 24→25.5 (first step) powinien być golem.");
                 return false;
             }
 
@@ -505,26 +524,34 @@ namespace FootballRL.Editor
 
         static bool TestFirstStepGoalViaArenaStep(ArenaController controller, ArenaConfig cfg)
         {
-            var wasEnabled = controller.enabled;
-            controller.enabled = false;
             try
             {
                 controller.ResetEpisode();
+                controller.EditorPrepareForBatchVerification();
+                MovePrimaryPlayerAside(controller);
                 var root = controller.ArenaRootTransform;
-                var cross = PositiveGoalCrossSegment(cfg);
-                var startLocal = root.InverseTransformPoint(cross.prev);
-                var endLocal = root.InverseTransformPoint(cross.curr);
-                var travelZ = endLocal.z - startLocal.z;
                 controller.MatchGoalLinesToPitchLength();
-                controller.EditorSetBallPosition(cross.prev);
-                controller.EditorSetBallLinearVelocity(root.TransformDirection(new Vector3(0f, 0f, travelZ / Dt)));
+                var half = cfg.HalfPlayLengthZ;
+                var y = BallY(cfg);
+                var startLocal = new Vector3(0f, y, half - 1f);
+                var endLocal = new Vector3(0f, y, half + 0.5f);
+                var deltaLocal = endLocal - startLocal;
+                var startWorld = root.TransformPoint(startLocal);
+                controller.EditorSetBallPosition(startWorld);
+                controller.EditorSetBallLinearVelocity(root.TransformDirection(deltaLocal / Dt));
 
-                StepArenaSimulationFrame(controller, cross.prev, cross.curr, Dt);
+                StepArenaSimulationFrame(controller, Dt);
 
                 if (controller.Phase != ArenaPhase.Ended || controller.LastEndReason != RoundEndReason.Goal)
                 {
                     Debug.LogError(
                         $"G4 first step goal: oczekiwano Ended/Goal, jest {controller.Phase} {controller.LastEndReason}.");
+                    return false;
+                }
+
+                if (controller.ElapsedSeconds <= 0f)
+                {
+                    Debug.LogError("G4 first step goal: ElapsedSeconds powinien być > 0 po pierwszym kroku.");
                     return false;
                 }
 
@@ -537,19 +564,16 @@ namespace FootballRL.Editor
                 Debug.Log("G4 first step goal via arena simulation step OK.");
                 return true;
             }
-            finally
-            {
-                controller.enabled = wasEnabled;
-            }
+            finally { }
         }
 
         static bool TestFirstStepBallOutViaArenaStep(ArenaController controller, ArenaConfig cfg)
         {
-            var wasEnabled = controller.enabled;
-            controller.enabled = false;
             try
             {
                 controller.ResetEpisode();
+                controller.EditorPrepareForBatchVerification();
+                MovePrimaryPlayerAside(controller);
                 controller.MatchGoalLinesToPitchLength();
                 var halfX = cfg.HalfWidthX;
                 var y = BallY(cfg);
@@ -559,8 +583,7 @@ namespace FootballRL.Editor
                 controller.EditorSetBallPosition(startWorld);
                 controller.EditorSetBallLinearVelocity(root.TransformDirection(new Vector3(50f, 0f, 0f)));
 
-                var endWorld = startWorld + root.TransformDirection(new Vector3(1.5f, 0f, 0f));
-                StepArenaSimulationFrame(controller, startWorld, endWorld, Dt);
+                StepArenaSimulationFrame(controller, Dt);
 
                 if (controller.Phase != ArenaPhase.Ended || controller.LastEndReason != RoundEndReason.BallOut)
                 {
@@ -569,22 +592,25 @@ namespace FootballRL.Editor
                     return false;
                 }
 
+                if (controller.ElapsedSeconds <= 0f)
+                {
+                    Debug.LogError("G4 first step BallOut: ElapsedSeconds powinien być > 0 po pierwszym kroku.");
+                    return false;
+                }
+
                 Debug.Log("G4 first step BallOut via arena simulation step OK.");
                 return true;
             }
-            finally
-            {
-                controller.enabled = wasEnabled;
-            }
+            finally { }
         }
 
         static bool TestFirstStepNoFalseGoalOnPitch(ArenaController controller, ArenaConfig cfg)
         {
-            var wasEnabled = controller.enabled;
-            controller.enabled = false;
             try
             {
                 controller.ResetEpisode();
+                controller.EditorPrepareForBatchVerification();
+                MovePrimaryPlayerAside(controller);
                 controller.MatchGoalLinesToPitchLength();
                 var y = BallY(cfg);
                 var root = controller.ArenaRootTransform;
@@ -592,8 +618,7 @@ namespace FootballRL.Editor
                 controller.EditorSetBallPosition(startWorld);
                 controller.EditorSetBallLinearVelocity(root.TransformDirection(new Vector3(2f, 0f, 0f)));
 
-                var endWorld = startWorld + root.TransformDirection(new Vector3(0.4f, 0f, 0f));
-                StepArenaSimulationFrame(controller, startWorld, endWorld, Dt);
+                StepArenaSimulationFrame(controller, Dt);
 
                 if (controller.Phase == ArenaPhase.Ended && controller.LastEndReason == RoundEndReason.Goal)
                 {
@@ -611,10 +636,7 @@ namespace FootballRL.Editor
                 Debug.Log("G4 first step brak fałszywego gola OK.");
                 return true;
             }
-            finally
-            {
-                controller.enabled = wasEnabled;
-            }
+            finally { }
         }
     }
 }

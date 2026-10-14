@@ -64,6 +64,8 @@ namespace FootballRL.Editor
                 return false;
             if (!TestT20_FastBallTowardNeighbor())
                 return false;
+            if (!TestBatchGameplaySmoke())
+                return false;
 
             RunPerformanceBenchmarks();
 
@@ -116,9 +118,6 @@ namespace FootballRL.Editor
             go.name = objectName;
             go.transform.SetPositionAndRotation(worldPosition, worldRotation);
             Physics.SyncTransforms();
-            var physicsScene = scene.GetPhysicsScene();
-            if (physicsScene.IsValid())
-                physicsScene.Simulate(0f);
             return go;
         }
 
@@ -324,15 +323,31 @@ namespace FootballRL.Editor
                 a.TryResetEpisode(ResetEpisodeRequest.ForScenario(manual, 7), out _);
                 b.TryResetEpisode(ResetEpisodeRequest.ForScenario(manual, 8), out _);
 
+                var cfg = a.ArenaConfig;
+                if (cfg == null)
+                {
+                    UnityEngine.Debug.LogError("G6 T20: brak ArenaConfig na arenie A.");
+                    return false;
+                }
+
                 var snapB0 = b.CaptureSnapshot();
                 var playerB0 = snapB0.Players.Length > 0 ? snapB0.Players[0].LocalPosition : Vector3.zero;
                 var ballB0 = snapB0.Ball.LocalPosition;
+                var phaseB0 = b.Phase;
 
-                a.EditorSetBallPosition(a.ArenaRootTransform.TransformPoint(new Vector3(0f, 0.22f, 0f)));
-                a.EditorSetBallLinearVelocity(Vector3.right * 120f);
+                var root = a.ArenaRootTransform;
+                var y = cfg.ballRadius;
+                var halfX = cfg.HalfWidthX;
+                var startLocal = new Vector3(halfX - 2f, y, 0f);
+                var startWorld = root.TransformPoint(startLocal);
+                var launchLocal = new Vector3(55f, cfg.wallHeight + 12f, 0f);
+                var launchWorld = root.TransformDirection(launchLocal);
+
+                a.EditorSetBallPosition(startWorld);
+                a.EditorSetBallLinearVelocity(launchWorld);
 
                 var list = new List<ArenaController> { a, b };
-                for (var i = 0; i < 200 && a.Phase == ArenaPhase.Running; i++)
+                for (var i = 0; i < 400 && a.Phase == ArenaPhase.Running; i++)
                     ArenaController.StepManyWithSharedSimulation(list, Dt);
 
                 if (a.Phase != ArenaPhase.Ended || a.LastEndReason != RoundEndReason.BallOut)
@@ -341,9 +356,23 @@ namespace FootballRL.Editor
                     return false;
                 }
 
+                var ballBody = a.GetComponent<ArenaRoot>()?.BallBody;
+                var ballCol = ballBody != null ? ballBody.GetComponent<Collider>() : null;
+                if (ballCol == null || ballCol.enabled)
+                {
+                    UnityEngine.Debug.LogError("G6 T20: collider piłki A powinien być wyłączony po EndRound.");
+                    return false;
+                }
+
                 var snapB1 = b.CaptureSnapshot();
                 if (snapB1.Players.Length == 0)
                     return false;
+
+                if (b.Phase != phaseB0)
+                {
+                    UnityEngine.Debug.LogError($"G6 T20: faza B zmieniła się ({phaseB0} → {b.Phase}).");
+                    return false;
+                }
 
                 if (Vector3.Distance(playerB0, snapB1.Players[0].LocalPosition) > Epsilon ||
                     Vector3.Distance(ballB0, snapB1.Ball.LocalPosition) > Epsilon)
@@ -352,13 +381,143 @@ namespace FootballRL.Editor
                     return false;
                 }
 
-                UnityEngine.Debug.Log("G6 T20 OK: BallOut na A, B nietknięta.");
+                UnityEngine.Debug.Log("G6 T20 OK: BallOut na A (lot nad ścianą), B nietknięta.");
                 return true;
             }
             finally
             {
                 RestoreSimulationMode(prevSim);
             }
+        }
+
+        static bool TestBatchGameplaySmoke()
+        {
+            if (!TestWallBounceOnPlayground())
+                return false;
+            if (!TestTwoPitchLayoutsOnInstance())
+                return false;
+
+            UnityEngine.Debug.Log(
+                "G6 batch gameplay smoke OK (odbicie ściany, dwa rozmiary boiska; lob/strzał/kop — regresja G3).");
+            return true;
+        }
+
+        static bool TestWallBounceOnPlayground()
+        {
+            const string scenePath = "Assets/_Project/Scenes/ManualPlayground.unity";
+            var scene = EditorSceneManager.OpenScene(scenePath, OpenSceneMode.Single);
+            if (!scene.IsValid())
+                return false;
+
+            var controller = UnityEngine.Object.FindAnyObjectByType<ArenaController>();
+            if (controller == null)
+                return false;
+
+            PrepareSimulationMode(out var prevSim);
+            try
+            {
+                controller.EditorDisableAutoReset();
+                controller.EditorPrepareForBatchVerification();
+                controller.ResetEpisode();
+                var cfg = controller.ArenaConfig;
+                var root = controller.ArenaRootTransform;
+                var y = cfg.ballRadius;
+                var halfX = cfg.HalfWidthX;
+                var start = root.TransformPoint(new Vector3(halfX - 1.5f, y, 0f));
+                controller.EditorSetBallPosition(start);
+                controller.EditorSetBallLinearVelocity(root.TransformDirection(new Vector3(18f, 0f, 0f)));
+
+                var ball = UnityEngine.Object.FindAnyObjectByType<BallPhysicsSetup>()?.GetComponent<Rigidbody>();
+                if (ball == null)
+                    return false;
+
+                var vxBefore = ball.linearVelocity.x;
+                for (var i = 0; i < 80 && controller.Phase == ArenaPhase.Running; i++)
+                {
+                    controller.StepBeforeSharedSimulation(Dt);
+                    Physics.Simulate(Dt);
+                    controller.StepAfterSharedSimulation(Dt);
+                }
+
+                if (Mathf.Sign(vxBefore) * Mathf.Sign(ball.linearVelocity.x) >= 0f &&
+                    ball.linearVelocity.magnitude > 1f)
+                {
+                    UnityEngine.Debug.LogError("G6 wall bounce: oczekiwano odwrócenia składowej X po uderzeniu w bok.");
+                    return false;
+                }
+
+                UnityEngine.Debug.Log("G6 wall bounce OK.");
+                return true;
+            }
+            finally
+            {
+                RestoreSimulationMode(prevSim);
+            }
+        }
+
+        static bool TestTwoPitchLayoutsOnInstance()
+        {
+            var prefab = AssetDatabase.LoadAssetAtPath<GameObject>(PrefabPath);
+            if (prefab == null)
+                return false;
+
+            var template = AssetDatabase.LoadAssetAtPath<ArenaConfig>("Assets/_Project/Configs/ArenaConfig.asset");
+            if (template == null)
+                return false;
+
+            var go = InstantiateArenaInIsolatedPhysicsScene(prefab, "Arena_LayoutTest", Vector3.zero, Quaternion.identity);
+            var controller = go.GetComponent<ArenaController>();
+            var arenaRoot = go.GetComponent<ArenaRoot>();
+            if (controller == null || arenaRoot == null)
+                return false;
+
+            var small = ScriptableObject.Instantiate(template);
+            small.pitchPlayLengthZ = 24f;
+            small.pitchWidthX = 14f;
+            small.goalWidth = 4f;
+            small.goalHeight = 2f;
+
+            var large = ScriptableObject.Instantiate(template);
+            large.pitchPlayLengthZ = 40f;
+            large.pitchWidthX = 32f;
+            large.goalWidth = 7f;
+            large.goalHeight = 2.4f;
+
+            AssignConfigInstance(arenaRoot, small);
+            ArenaLayout.Apply(arenaRoot);
+            controller.MatchGoalLinesToPitchLength();
+            var halfSmall = small.HalfPlayLengthZ;
+            var wallPosX = arenaRoot.transform.Find("Walls/Wall_PosX");
+            var posSmall = wallPosX != null ? wallPosX.localPosition.x : 0f;
+
+            AssignConfigInstance(arenaRoot, large);
+            ArenaLayout.Apply(arenaRoot);
+            controller.MatchGoalLinesToPitchLength();
+            var halfLarge = large.HalfPlayLengthZ;
+            var posLarge = wallPosX != null ? wallPosX.localPosition.x : 0f;
+
+            if (Mathf.Abs(halfSmall - 12f) > 0.01f || Mathf.Abs(halfLarge - 20f) > 0.01f)
+            {
+                UnityEngine.Debug.LogError(
+                    $"G6 layout: HalfPlayLengthZ small={halfSmall} large={halfLarge} (oczekiwano 12 i 20).");
+                return false;
+            }
+
+            if (Mathf.Abs(posLarge - posSmall) < 2f)
+            {
+                UnityEngine.Debug.LogError("G6 layout: ściana +X nie przesunęła się między rozmiarami boiska.");
+                return false;
+            }
+
+            UnityEngine.Debug.Log("G6 two pitch layouts OK.");
+            return true;
+        }
+
+        static void AssignConfigInstance(ArenaRoot arenaRoot, ArenaConfig cfg)
+        {
+            var so = new SerializedObject(arenaRoot);
+            so.FindProperty("arenaConfig").objectReferenceValue = cfg;
+            so.ApplyModifiedPropertiesWithoutUndo();
         }
 
         static void RunPerformanceBenchmarks()
@@ -406,6 +565,17 @@ namespace FootballRL.Editor
             {
                 ArenaController.StepManyWithSharedSimulation(controllers, Dt);
                 steps++;
+                if (manual == null)
+                    continue;
+
+                for (var i = 0; i < controllers.Count; i++)
+                {
+                    var c = controllers[i];
+                    if (c.Phase != ArenaPhase.Ended)
+                        continue;
+
+                    c.TryResetEpisode(ResetEpisodeRequest.ForScenario(manual, 5000 + i * 31 + (int)steps), out _);
+                }
             }
 
             var stepsPerSec = steps / Math.Max(0.001, sw.Elapsed.TotalSeconds);

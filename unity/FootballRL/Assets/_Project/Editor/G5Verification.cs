@@ -313,7 +313,20 @@ namespace FootballRL.Editor
 
             var episodeBefore = controller.EpisodeId;
 
-            controller.EditorEvaluateBallSegment(new Vector3(0f, 0.22f, 9.5f), new Vector3(0f, 0.22f, 10.5f), Dt);
+            controller.MatchGoalLinesToPitchLength();
+            var cfg = controller.ArenaConfig;
+            if (cfg == null)
+            {
+                Debug.LogError("G5 snapshot: brak ArenaConfig.");
+                return false;
+            }
+
+            var half = cfg.HalfPlayLengthZ;
+            var y = cfg.ballRadius;
+            controller.EditorEvaluateBallSegment(
+                new Vector3(0f, y, half - 1f),
+                new Vector3(0f, y, half + 0.5f),
+                Dt);
             var snap = controller.CaptureSnapshot();
             if (snap.Arena.Phase != ArenaPhase.Ended || snap.RoundEnd.Reason != RoundEndReason.Goal)
             {

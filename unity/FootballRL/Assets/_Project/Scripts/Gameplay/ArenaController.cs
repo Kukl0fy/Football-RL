@@ -92,7 +92,9 @@ namespace FootballRL.Gameplay
                 if (Mathf.Approximately(goals[i].goalLineZ, line))
                     continue;
 
-                goals[i].goalLineZ = line;
+                var entry = goals[i];
+                entry.goalLineZ = line;
+                goals[i] = entry;
                 changed = true;
             }
 
@@ -225,6 +227,10 @@ namespace FootballRL.Gameplay
             }
         }
 
+        /// <param name="commandId">
+        /// Numer decyzji agenta w epizodzie: zwiększaj przy każdej nowej decyzji (także gdy wektor akcji jest identyczny).
+        /// Powtórzenie tej samej już wysłanej decyzji (ten sam commandId) nie powtarza kopnięcia.
+        /// </param>
         public void SubmitCommand(int playerId, PlayerCommand command, long commandId)
         {
             if (_phase != ArenaPhase.Running)
@@ -432,8 +438,14 @@ namespace FootballRL.Gameplay
         void BeginEpisodeRunning()
         {
             _phase = ArenaPhase.Running;
+            _bodiesFrozenForEndedRound = false;
             if (_ballBody != null)
             {
+                _ballBody.isKinematic = false;
+                EnsureBallBody();
+                if (_ballCollider != null)
+                    _ballCollider.enabled = true;
+                _ballBody.WakeUp();
                 _segmentStartBallPos = _ballBody.position;
                 _segmentSampleValid = false;
                 _pendingSegmentEvaluate = false;
@@ -542,6 +554,8 @@ namespace FootballRL.Gameplay
             var physicsScene = gameObject.scene.GetPhysicsScene();
             if (physicsScene.IsValid())
                 physicsScene.Simulate(deltaTime);
+            else
+                Physics.Simulate(deltaTime);
         }
 
         /// <summary>Batch (wiele aren): ruch/kopnięcia przed wspólnym <see cref="Physics.Simulate"/>.</summary>
@@ -573,6 +587,7 @@ namespace FootballRL.Gameplay
                 return;
 
             Physics.SyncTransforms();
+            EnsureBallBody();
             EvaluateAfterPhysics(deltaTime);
             if (_phase == ArenaPhase.Running && _ballBody != null)
                 _segmentStartBallPos = _ballBody.position;
@@ -613,7 +628,12 @@ namespace FootballRL.Gameplay
 
             EnsureBallBody();
             if (_ballBody == null)
+            {
+#if UNITY_EDITOR
+                Debug.LogError("ArenaController.EvaluateAfterPhysics: brak _ballBody — pominięto reguły rundy.");
+#endif
                 return;
+            }
 
             _physicsTick++;
 
@@ -650,6 +670,16 @@ namespace FootballRL.Gameplay
             return root != null ? root.InverseTransformPoint(worldPoint) : worldPoint;
         }
 
+        static GoalDefinition[] BuildGoalsForConfig(ArenaConfig config)
+        {
+            var half = config.HalfPlayLengthZ;
+            return new[]
+            {
+                new GoalDefinition { defendingTeamId = 1, goalLineZ = half, enterDirectionZ = 1f },
+                new GoalDefinition { defendingTeamId = 0, goalLineZ = -half, enterDirectionZ = -1f }
+            };
+        }
+
         void TryEndRoundFromPhysics(Vector3 prevBall, Vector3 currBall, float deltaTime)
         {
             if (_phase != ArenaPhase.Running)
@@ -657,7 +687,8 @@ namespace FootballRL.Gameplay
 
             _elapsedSeconds += deltaTime;
 
-            var config = arenaRoot != null ? arenaRoot.ArenaConfig : null;
+            EnsureInstanceArenaReferences();
+            var config = ArenaConfig;
             var playerPos = GetPrimaryPlayerPosition();
 
             if (ArenaBounds.IsInvalidState(currBall, playerPos))
@@ -670,9 +701,10 @@ namespace FootballRL.Gameplay
             var currLocal = WorldToArenaLocal(currBall);
 
             var scoringTeam = 0;
-            if (config != null &&
-                GoalDetector.TryDetectGoal(prevLocal, currLocal, config.ballRadius, config.HalfGoalWidth,
-                    config.goalHeight, goals, out scoringTeam))
+            var goalsForDetection = config != null ? BuildGoalsForConfig(config) : goals;
+            var hitGoal = config != null && GoalDetector.TryDetectGoal(prevLocal, currLocal, config.ballRadius,
+                config.HalfGoalWidth, config.goalHeight, goalsForDetection, out scoringTeam);
+            if (hitGoal)
             {
                 EndRound(RoundEndReason.Goal, true, scoringTeam);
                 return;
@@ -781,6 +813,7 @@ namespace FootballRL.Gameplay
 
         void EnsureBallBody()
         {
+            EnsureInstanceArenaReferences();
             if (_ballBody != null && _ballBody.gameObject.scene != gameObject.scene)
             {
                 _ballBody = null;

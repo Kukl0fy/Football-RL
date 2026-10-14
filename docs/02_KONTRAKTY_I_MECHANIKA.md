@@ -33,8 +33,9 @@ Komenda zerowa nie rusza i nie kopie. Loft = 0 oznacza 27,5°, ale sam nie powod
 Projektowane publiczne wejście: `SubmitCommand(playerId, command, commandId)`. `commandId` to rosnący numer decyzji dla gracza w danym epizodzie. Nie myl go z numerem klatki renderowania.
 
 - Ruch i obrót z ostatniej komendy utrzymują się do następnej komendy lub resetu.
+- Przy każdej nowej decyzji agenta zwiększaj commandId, nawet gdy akcja jest identyczna jak poprzednia.
 - Każdy nowy commandId daje najwyżej jedną próbę kopnięcia, na pierwszym obsługującym go kroku fizyki.
-- Ponowne przekazanie tego samego commandId nie powtarza kopnięcia.
+- Ponowne przekazanie tego samego commandId (ta sama już wysłana decyzja) nie powtarza kopnięcia.
 - Nieudana próba (poza zasięgiem/cooldown) jest zużyta; nie czeka na dogodny moment.
 - Kolejne decyzje z dodatnią komendą Kick mogą kopnąć ponownie, gdy cooldown minie.
 - Nowa komenda przed krokiem fizyki zastępuje poprzednią nieobsłużoną. Kontrakt zakłada najwyżej jedną decyzję RL na krok fizyki; klawiatura zatrzaskuje pojedyncze naciśnięcie do następnego kroku.
