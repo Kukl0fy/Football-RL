@@ -49,8 +49,8 @@ namespace FootballRL.Presentation
             var targetLine = arena.ExerciseTargetReached ? "TAK" : "—";
 
             const int pad = 10;
-            var rect = new Rect(pad, pad, 420f, 270f);
-            GUI.Box(rect, "Arena — G5 eksperyment");
+            var rect = new Rect(pad, pad, 460f, 300f);
+            GUI.Box(rect, "Football RL");
 
             var inner = new Rect(rect.x + 8f, rect.y + 24f, rect.width - 16f, rect.height - 32f);
             GUI.Label(inner,
@@ -60,7 +60,8 @@ namespace FootballRL.Presentation
                 $"Kąt: {angleDeg:F1}°  Loft: {loftDisplay:F2}\n" +
                 $"Siła (Kick): {kickDisplay:F2}  Cooldown: {cooldown:F2} s\n" +
                 $"Ostatnia próba: {attemptLine}\n" +
-                "W/S A/D Q/E | ↑↓ kąt | ←→ siła | Spacja — strzał | R — reset");
+                "W/S A/D Q/E | ↑↓ kąt | ←→ siła | Spacja — strzał | R — reset\n" +
+                "Kamera: prawy przycisk myszy — obrót, kółko — zoom, środkowy — przesuwanie");
         }
 
         static string FormatEndReason(RoundEndReason reason, ArenaController arena)

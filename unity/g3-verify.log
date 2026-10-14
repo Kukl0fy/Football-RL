@@ -1,0 +1,627 @@
+VBCSCompilerPreWarmer: pre-warm launched (dotnet PID 33480)
+VBCSCompiler prewarm took 24.11 ms
+[Licensing::Module] Trying to connect to existing licensing client channel...
+[Licensing::IpcConnector] Successfully connected to: "LicenseClient-huber" at "2026-10-13T17:07:18.9577954Z"
+Built from '6000.6/staging' branch; Version is '6000.6.2f1 (770e33f6875c) revision 7802419'; Using compiler version '194234433'; Build Type 'Release'
+OS: 'Windows 11  (10.0.26200) Core' Language: 'pl' Physical Memory: 15576 MB
+BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1
+System  architecture: x64
+Process architecture: x64
+Date: 2026-10-13T17:07:18Z
+[Licensing::Client] Code 10 while verifying Licensing Client signature (process Id: 28380, path: "C:/Program Files/Unity Hub/UnityLicensingClient_V1/Unity.Licensing.Client.exe")
+[Licensing::Module] LicensingClient has failed validation; ignoring
+[Licensing::Client] Handshaking with LicensingClient:
+  Version:                 1.18.3+d7ffd15
+  Session Id:              d486e146f96c48bc99cb7b16a9ac7739
+  Correlation Id:          1ed3e605d0269b4e3e284d14863992e6
+  External correlation Id: 1621198878525704817
+  Machine Id:              7nrxQ9WPW2YQq1xgSIJZt9KUb4s=
+[Licensing::Module] Successfully connected to LicensingClient on channel: "LicenseClient-huber" (connect: 0.00s, validation: 0.00s, handshake: 0.10s)
+[Licensing::IpcConnector] Successfully connected to: "LicenseClient-huber-notifications" at "2026-10-13T17:07:19.0591278Z"
+[Licensing::Module] Error: Access token is unavailable; failed to update
+[Licensing::Client] Successfully resolved entitlement details
+[Licensing::Module] License group:
+  Id: 7972623085896-UnityPersXXXX
+  Product: Unity Personal
+  Type: Assigned
+  Expiration: Unlimited
+[Licensing::Client] Successfully updated license, isAsync: True, time: 0.00
+[Licensing::Client] Successfully resolved entitlement details
+[Licensing::Module] Licensing Background thread has ended after 0.11s
+
+COMMAND LINE ARGUMENTS:
+C:\Program Files\Unity\Hub\Editor\6000.6.2f1\Editor\Unity.exe
+-batchmode
+-nographics
+-quit
+-projectPath
+D:\projekty\Football-RL\unity\FootballRL
+-executeMethod
+FootballRL.Editor.G3Verification.RunBatch
+-logFile
+D:\projekty\Football-RL\unity\g3-verify.log
+Successfully changed project path to: D:\projekty\Football-RL\unity\FootballRL
+D:/projekty/Football-RL/unity/FootballRL
+[UnityMemory] Configuration Parameters - Can be set up in boot.config
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-nav-mesh-worker=65536"
+    "memorysetup-temp-allocator-size-audio-worker=65536"
+    "memorysetup-temp-allocator-size-cloud-worker=32768"
+    "memorysetup-temp-allocator-size-gfx=262144"
+    "memorysetup-remapper-allocator-initial-capacity=32768"
+    "memorysetup-temp-allocator-size-preload-manager=33554432"
+    "memorysetup-allocator-temp-initial-block-size-main=262144"
+    "memorysetup-allocator-temp-initial-block-size-worker=262144"
+    "memorysetup-temp-allocator-size-job-worker=262144"
+    "memorysetup-temp-allocator-size-background-worker=32768"
+    "memorysetup-bucket-allocator-granularity=16"
+    "memorysetup-bucket-allocator-bucket-count=8"
+    "memorysetup-bucket-allocator-block-size=33554432"
+    "memorysetup-bucket-allocator-block-count=8"
+    "memorysetup-main-allocator-block-size=16777216"
+    "memorysetup-thread-allocator-block-size=16777216"
+    "memorysetup-main-allocator-mimalloc-enabled=1"
+    "memorysetup-gfx-main-allocator-block-size=16777216"
+    "memorysetup-gfx-thread-allocator-block-size=16777216"
+    "memorysetup-cache-allocator-block-size=4194304"
+    "memorysetup-typetree-allocator-block-size=2097152"
+    "memorysetup-profiler-bucket-allocator-granularity=16"
+    "memorysetup-profiler-bucket-allocator-bucket-count=8"
+    "memorysetup-profiler-bucket-allocator-block-size=33554432"
+    "memorysetup-profiler-bucket-allocator-block-count=8"
+    "memorysetup-profiler-allocator-block-size=16777216"
+    "memorysetup-profiler-editor-allocator-block-size=1048576"
+    "memorysetup-temp-allocator-size-main=16777216"
+    "memorysetup-job-temp-allocator-block-size=2097152"
+    "memorysetup-job-temp-allocator-block-size-background=1048576"
+    "memorysetup-job-temp-allocator-reduction-small-platforms=262144"
+Logging is directed to a specific file, skipping project log.
+Player connection [42740]  Target information:
+
+Player connection [42740]  * "[IP] 192.168.100.49 [Port] 55504 [Flags] 2 [Guid] 4175585415 [EditorId] 4175585415 [Version] 1048832 [Id] WindowsEditor(7,Hubert) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" 
+
+Player connection [42740] Host joined multi-casting on [225.0.0.222:54997]...
+Player connection [42740] Host joined alternative multi-casting on [225.0.0.222:34997]...
+Input System module state changed to: Initialized.
+[Physics::Module] Initialized fallback backend.
+[Physics::Module] Id: 0xdecafbad
+[Package Manager] Connected to IPC stream "Upm-35524" after 0.5 seconds.
+[Licensing::Client] Successfully resolved entitlement details
+Library Redirect Path: Library/
+Initialising UDS system complete:
+  - System type: Client
+  - Resource namespace: aed420a2e48709ce034677fd6dd5e66a
+  - Shared memory size: 1073741824
+  - Command buffer id: 1052576
+  - Command buffer size: 8192
+  - Hashmap size: 4194304
+  - Service connected: false
+Launching Unity Data Store - C:/Program Files/Unity/Hub/Editor/6000.6.2f1/Editor/Data/Tools/Unity.DataStore.exe 
+Unity Data Store artifact dir = Library/DataStore, working dir = D:/projekty/Football-RL/unity/FootballRL[Physics::Module] Selected backend.
+[Physics::Module] Name: PhysX
+[Physics::Module] Id: 0xf2b8ea05
+[Physics::Module] SDK Version: 4.1.2
+[Physics::Module] Integration Version: 1.0.0
+[Physics::Module] Threading Mode: Multi-Threaded
+Unity Data Store running and initialised
+Initialize engine version: 6000.6.2f1 (770e33f6875c)
+[EntityIdStore] init: VM path (explicit commit), pageSize=4096, blockCount=1048576, entitiesPerBlock=256, slots reserved=4294967296 bytes
+[Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/6000.6.2f1/Editor/Data/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path D:/projekty/Football-RL/unity/FootballRL/Assets
+Forcing GfxDevice: Null
+GfxDevice: creating device client; kGfxThreadingModeNonThreaded
+NullGfxDevice:
+    Version:  NULL 1.0 [1.0]
+    Renderer: Null Device
+    Vendor:   Unity Technologies
+Initialize mono
+Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/6000.6.2f1/Editor/Data/Managed'
+Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/6000.6.2f1/Editor/Data/BCLExtensions/runtime/netstandard2.1'
+Mono path[2] = 'C:/Program Files/Unity/Hub/Editor/6000.6.2f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
+Mono config path = 'C:/Program Files/Unity/Hub/Editor/6000.6.2f1/Editor/Data/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56524
+CodeReloadManager initialized
+ImportWorker Server TCP listen port: 0
+AcceleratorClientConnectionCallback - disconnected - :0
+Begin MonoManager ReloadAssembly
+Registering precompiled unity dll's ...
+Register platform support module: C:/Program Files/Unity/Hub/Editor/6000.6.2f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+Registered in 0.005169 seconds.
+Native extension for WindowsStandalone target not found
+Package Manager log level set to [2]
+ScheduleIndexationOnStartup MainProcess:False IndexOnStartup:True
+Scripting: successfully reloaded assembly
+- Finished resetting the current domain, in  1.611 seconds
+Domain Reload Profiling: 2849ms
+	BeginReloadAssembly (280ms)
+		CreateAndSetChildDomain (10ms)
+	RebuildCommonClasses (10ms)
+	RebuildNativeTypeToScriptingClass (33ms)
+	initialDomainReloadingComplete (154ms)
+	LoadAllAssembliesAndSetupDomain (759ms)
+		LoadAssemblies (260ms)
+		TypeCache.Refresh (491ms)
+			TypeCache.ScanAssembly (462ms)
+		AnalyzeDomain (2ms)
+	FinalizeReload (1613ms)
+		SetupLoadedEditorAssemblies (0ms)
+			LogAssemblyErrors (4ms)
+			InitializePlatformSupportModulesInManaged (5ms)
+			BeforeProcessingInitializeOnLoad (238ms)
+			ProcessInitializeOnLoadAttributes (266ms)
+			ProcessInitializeOnLoadMethodAttributes (626ms)
+[Licensing::Client] Successfully resolved entitlement details
+Application.AssetDatabase Initial Refresh Start
+[Package Manager] Restoring resolved packages state from cache
+[Licensing::Client] Successfully resolved entitlement details
+[Package Manager] Registered 43 packages:
+  Packages from [https://packages.unity.com]:
+    com.unity.inputsystem@1.20.1 (location: D:\projekty\Football-RL\unity\FootballRL\Library\PackageCache\com.unity.inputsystem@2436e68c60c4)
+    com.unity.ide.rider@3.0.38 (location: D:\projekty\Football-RL\unity\FootballRL\Library\PackageCache\com.unity.ide.rider@1f60b3138684)
+    com.unity.ide.visualstudio@2.0.26 (location: D:\projekty\Football-RL\unity\FootballRL\Library\PackageCache\com.unity.ide.visualstudio@a99d56dec63f)
+  Built-in packages:
+    com.unity.modules.accessibility@1.0.0 (location: D:\projekty\Football-RL\unity\FootballRL\Library\PackageCache\com.unity.modules.accessibility)
+    com.unity.modules.adaptiveperformance@1.0.0 (location: D:\projekty\Football-RL\unity\FootballRL\Library\PackageCache\com.unity.modules.adaptiveperformance)
+    com.unity.modules.ai@1.0.0 (location: D:\projekty\Football-RL\unity\FootballRL\Library\PackageCache\com.unity.modules.ai)
+    com.unity.modules.androidjni@1.0.0 (location: D:\projekty\Football-RL\unity\FootballRL\Library\PackageCache\com.unity.modules.androidjni)
+    com.unity.modules.animation@1.0.0 (location: D:\projekty\Football-RL\unity\FootballRL\Library\PackageCache\com.unity.modules.animation)
+    com.unity.modules.assetbundle@1.0.0 (location: D:\projekty\Football-RL\unity\FootballRL\Library\PackageCache\com.unity.modules.assetbundle)
+    com.unity.modules.audio@1.0.0 (location: D:\projekty\Football-RL\unity\FootballRL\Library\PackageCache\com.unity.modules.audio)
+    com.unity.modules.cloth@1.0.0 (location: D:\projekty\Football-RL\unity\FootballRL\Library\PackageCache\com.unity.modules.cloth)
+    com.unity.modules.director@1.0.0 (location: D:\projekty\Football-RL\unity\FootballRL\Library\PackageCache\com.unity.modules.director)
+    com.unity.modules.imageconversion@1.0.0 (location: D:\projekty\Football-RL\unity\FootballRL\Library\PackageCache\com.unity.modules.imageconversion)
+    com.unity.modules.imgui@1.0.0 (location: D:\projekty\Football-RL\unity\FootballRL\Library\PackageCache\com.unity.modules.imgui)
+    com.unity.modules.jsonserialize@1.0.0 (location: D:\projekty\Football-RL\unity\FootballRL\Library\PackageCache\com.unity.modules.jsonserialize)
+    com.unity.modules.particlesystem@1.0.0 (location: D:\projekty\Football-RL\unity\FootballRL\Library\PackageCache\com.unity.modules.particlesystem)
+    com.unity.modules.physics@1.0.0 (location: D:\projekty\Football-RL\unity\FootballRL\Library\PackageCache\com.unity.modules.physics)
+    com.unity.modules.physics2d@1.0.0 (location: D:\projekty\Football-RL\unity\FootballRL\Library\PackageCache\com.unity.modules.physics2d)
+    com.unity.modules.physicscore2d@1.0.0 (location: D:\projekty\Football-RL\unity\FootballRL\Library\PackageCache\com.unity.modules.physicscore2d)
+    com.unity.modules.screencapture@1.0.0 (location: D:\projekty\Football-RL\unity\FootballRL\Library\PackageCache\com.unity.modules.screencapture)
+    com.unity.modules.terrain@1.0.0 (location: D:\projekty\Football-RL\unity\FootballRL\Library\PackageCache\com.unity.modules.terrain)
+    com.unity.modules.terrainphysics@1.0.0 (location: D:\projekty\Football-RL\unity\FootballRL\Library\PackageCache\com.unity.modules.terrainphysics)
+    com.unity.modules.tetgen@1.0.0 (location: D:\projekty\Football-RL\unity\FootballRL\Library\PackageCache\com.unity.modules.tetgen)
+    com.unity.modules.tilemap@1.0.0 (location: D:\projekty\Football-RL\unity\FootballRL\Library\PackageCache\com.unity.modules.tilemap)
+    com.unity.modules.timelinefoundation@1.0.0 (location: D:\projekty\Football-RL\unity\FootballRL\Library\PackageCache\com.unity.modules.timelinefoundation)
+    com.unity.modules.ui@1.0.0 (location: D:\projekty\Football-RL\unity\FootballRL\Library\PackageCache\com.unity.modules.ui)
+    com.unity.modules.uielements@1.0.0 (location: D:\projekty\Football-RL\unity\FootballRL\Library\PackageCache\com.unity.modules.uielements)
+    com.unity.modules.umbra@1.0.0 (location: D:\projekty\Football-RL\unity\FootballRL\Library\PackageCache\com.unity.modules.umbra)
+    com.unity.modules.unityanalytics@1.0.0 (location: D:\projekty\Football-RL\unity\FootballRL\Library\PackageCache\com.unity.modules.unityanalytics)
+    com.unity.modules.unitywebrequest@1.0.0 (location: D:\projekty\Football-RL\unity\FootballRL\Library\PackageCache\com.unity.modules.unitywebrequest)
+    com.unity.modules.unitywebrequestassetbundle@1.0.0 (location: D:\projekty\Football-RL\unity\FootballRL\Library\PackageCache\com.unity.modules.unitywebrequestassetbundle)
+    com.unity.modules.unitywebrequestaudio@1.0.0 (location: D:\projekty\Football-RL\unity\FootballRL\Library\PackageCache\com.unity.modules.unitywebrequestaudio)
+    com.unity.modules.unitywebrequesttexture@1.0.0 (location: D:\projekty\Football-RL\unity\FootballRL\Library\PackageCache\com.unity.modules.unitywebrequesttexture)
+    com.unity.modules.unitywebrequestwww@1.0.0 (location: D:\projekty\Football-RL\unity\FootballRL\Library\PackageCache\com.unity.modules.unitywebrequestwww)
+    com.unity.modules.vectorgraphics@1.0.0 (location: D:\projekty\Football-RL\unity\FootballRL\Library\PackageCache\com.unity.modules.vectorgraphics)
+    com.unity.modules.vehicles@1.0.0 (location: D:\projekty\Football-RL\unity\FootballRL\Library\PackageCache\com.unity.modules.vehicles)
+    com.unity.modules.video@1.0.0 (location: D:\projekty\Football-RL\unity\FootballRL\Library\PackageCache\com.unity.modules.video)
+    com.unity.modules.wind@1.0.0 (location: D:\projekty\Football-RL\unity\FootballRL\Library\PackageCache\com.unity.modules.wind)
+    com.unity.modules.xr@1.0.0 (location: D:\projekty\Football-RL\unity\FootballRL\Library\PackageCache\com.unity.modules.xr)
+    com.unity.modules.subsystems@1.0.0 (location: D:\projekty\Football-RL\unity\FootballRL\Library\PackageCache\com.unity.modules.subsystems)
+    com.unity.modules.hierarchycore@1.0.0 (location: D:\projekty\Football-RL\unity\FootballRL\Library\PackageCache\com.unity.modules.hierarchycore)
+    com.unity.test-framework@1.8.0 (location: D:\projekty\Football-RL\unity\FootballRL\Library\PackageCache\com.unity.test-framework@7a3849e09bd0)
+    com.unity.ext.nunit@2.1.0 (location: D:\projekty\Football-RL\unity\FootballRL\Library\PackageCache\com.unity.ext.nunit@0198eae3b53e)
+[Subsystems] No new subsystems found in resolved package list.
+[Package Manager] Done registering packages in 0.04 seconds
+Starting: C:\Program Files\Unity\Hub\Editor\6000.6.2f1\Editor\Data\Tools\BuildPipeline\bee_backend.exe --ipc --defer-dag-verification --dagfile="Library/Bee/1900b0aE.dag" --continue-on-failure --profile="Library/Bee/backend1.traceevents" ScriptAssemblies
+WorkingDir: D:/projekty/Football-RL/unity/FootballRL
+DisplayProgressbar: Compiling Scripts
+ExitCode: 0 Duration: 0s363ms
+[246/274    0s] ILPP-Configuration Library/ilpp-configuration.nevergeneratedoutput
+*** Tundra build success (0.28 seconds), 1 items updated, 274 evaluated
+AssetDatabase: script compilation time: 1.186967s
+Total cache size 9466104
+Total cache size after purge 9466104, took 00:00:00.0542082
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+ScheduleIndexationOnStartup MainProcess:True IndexOnStartup:True
+Scripting: successfully reloaded assembly
+- Finished resetting the current domain, in  1.304 seconds
+Domain Reload Profiling: 2683ms
+	BeginReloadAssembly (589ms)
+		DisableScriptedObjects (63ms)
+		CreateAndSetChildDomain (124ms)
+	RebuildCommonClasses (26ms)
+	RebuildNativeTypeToScriptingClass (44ms)
+	initialDomainReloadingComplete (128ms)
+	LoadAllAssembliesAndSetupDomain (590ms)
+		LoadAssemblies (488ms)
+		TypeCache.Refresh (57ms)
+			TypeCache.ScanAssembly (48ms)
+		AnalyzeDomain (26ms)
+			BuildScriptInfoCaches (22ms)
+	FinalizeReload (1308ms)
+		SetupLoadedEditorAssemblies (0ms)
+			LogAssemblyErrors (3ms)
+			InitializePlatformSupportModulesInManaged (3ms)
+			BeforeProcessingInitializeOnLoad (265ms)
+			ProcessInitializeOnLoadAttributes (357ms)
+			ProcessInitializeOnLoadMethodAttributes (106ms)
+			AfterProcessingInitializeOnLoad (22ms)
+		AwakeInstancesAfterBackupRestoration (66ms)
+Starting new worker id: 0 with log in D:/projekty/Football-RL/unity/FootballRL/Logs/AssetImportWorkerHW0.log
+
+Asset Pipeline Refresh (id=cabe2265d6704a0459d6534a283cc96d): Total: 4.471 seconds - Initiated by InitialRefreshV2(ForceSynchronousImport)
+	(Values over 0.05ms)
+	Summary:
+		Imports: total=0 (actual=0, local cache=0, cache server=0)
+		Asset DB Process Time: managed=0 ms, native=1662 ms
+		Asset DB Callback time: managed=57 ms, native=44 ms
+		Scripting: domain reloads=1, domain reload time=1469 ms, compile time=1195 ms, other=42 ms
+		Project Asset Count: scripts=271, non-scripts=248
+		Asset File Changes: new=0, changed=0, moved=0, deleted=0
+		Scan Filter Count: 0
+	InvokePackagesCallback: 48.509ms
+	ApplyChangesToAssetFolders: 1.062ms
+	Scan: 75.291ms
+	Collect global state as custom dependencies: 20.941ms
+	CategorizeScriptCompilationAssets: 14.468ms
+	ProcessAssetsWithTransientArtifactChanges: 22.544ms
+	CategorizeAssets: 11.617ms
+	CompileScripts: 1194.768ms
+	ImportOutOfDateAssets: 1341.143ms (1310.300ms without children)
+		UnloadImportedAssets: 0.257ms
+		EnsureUptoDateAssetsAreRegisteredWithGuidPM: 0.203ms
+		ImportSchedulerStart: 30.378ms
+	PostProcessAllAssets: 57.191ms
+		MonoPostProcessAllAssets: 57.052ms
+			WindowAssetPostprocessingWatcher.OnPostprocessAllAssets 19.200ms
+			SyncVS.PostprocessSyncProject 9.356ms
+			SpeedTree9Postprocessor.OnPostprocessAllAssets 1.837ms
+			EditModeScopePostprocessor.OnPostprocessAllAssets 1.722ms
+			ReferencedClipsPostProcessor.OnPostprocessAllAssets 0.704ms
+			InputActionAssetPostprocessor.OnPostprocessAllAssets 0.677ms
+			TerrainToolbarOverlayPostProcessor.OnPostprocessAllAssets 0.542ms
+			AssetDatabaseCallbacks.OnPostprocessAllAssets 0.433ms
+			ProjectSettingsPostprocessor.OnPostprocessAllAssets 0.416ms
+			RenderPipelineGlobalSettingsPostprocessor.OnPostprocessAllAssets 0.221ms
+	UnloadStreamsBegin: 2.854ms
+	GenerateScriptTypeHashes: 2.925ms
+	GenerateScriptTypeSerializationHashes: 5.879ms
+	Untracked: 1627.563ms
+
+Application.AssetDatabase Initial Refresh End
+Scanning for USB devices : 10.985ms
+Initializing Unity extensions:
+[MODES] ModeService[none].Initialize
+[MODES] ModeService[none].LoadModes
+[MODES] Loading mode Default (0) for mode-current-id-FootballRL
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 970 unused Assets / (0.8 MB). Loaded Objects now: 1698.
+Memory consumption went from 235.3 MB to 234.5 MB.
+Total: 13.268400 ms (FindLiveObjects: 0.385300 ms CreateObjectMapping: 0.067000 ms MarkObjects: 11.765900 ms  DeleteObjects: 0.777700 ms)
+
+Loaded scene 'Library/Unused/4c557be6c26b8c149a0ab5e28af1c6de'
+	Deserialize:            11.348 ms
+	Integration:            4.220 ms
+	Integration of assets:  0.094 ms
+	Thread Wait Time:       0.210 ms
+	Total Operation Time:   15.873 ms
+Asset Pipeline Refresh (id=61533715e6c139c45aed68d2bd528710): Total: 0.052 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Opening scene 'Assets/_Project/Scenes/ManualPlayground.unity'
+Unloading 0 Unused Serialized files (Serialized files now loaded: 0)
+Loaded scene 'Assets/_Project/Scenes/ManualPlayground.unity'
+	Deserialize:            2.067 ms
+	Integration:            14.117 ms
+	Integration of assets:  0.005 ms
+	Thread Wait Time:       0.027 ms
+	Total Operation Time:   16.216 ms
+Unloading 3 unused Assets / (10.8 KB). Loaded Objects now: 2042.
+Memory consumption went from 236.1 MB to 236.1 MB.
+Total: 15.137900 ms (FindLiveObjects: 0.304900 ms CreateObjectMapping: 0.033400 ms MarkObjects: 14.427100 ms  DeleteObjects: 0.060100 ms)
+
+Importing 'GUID: 80ccbecd8c55fe4449897427d9ee9bd4 - Path: Assets/_Project/Scenes/ManualPlayground.unity' with importer (DefaultImporter)
+Imported 'GUID: 80ccbecd8c55fe4449897427d9ee9bd4' -> (Import Result ID: 'c0a8785b6686d5cf17c75eb4b72043c6') in 0.008 seconds [static dependencies only]. Details - ImportResultOutputID=9b8187918fc49a1dd780d186a0d67d17 DependenciesID=38d276790835a91c94dc1a4822d7f11a StaticDependenciesID=03cc2a01aa6c62312adb54ee81d59207 
+Asset Pipeline Refresh (id=b07b5b8e234dbaa468cf28e31cf57e15): Total: 0.093 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Loaded scene 'Library/Unused/c6af1e83130e6c44eab8662412cbe7fa'
+	Deserialize:            3.905 ms
+	Integration:            0.931 ms
+	Integration of assets:  0.005 ms
+	Thread Wait Time:       31.389 ms
+	Total Operation Time:   36.229 ms
+Asset Pipeline Refresh (id=63a55665f41e1674bac023e38a727bcd): Total: 0.013 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Opening scene 'Assets/_Project/Scenes/ManualPlayground.unity'
+Unloading 0 Unused Serialized files (Serialized files now loaded: 0)
+Loaded scene 'Assets/_Project/Scenes/ManualPlayground.unity'
+	Deserialize:            0.989 ms
+	Integration:            13.258 ms
+	Integration of assets:  0.003 ms
+	Thread Wait Time:       0.020 ms
+	Total Operation Time:   14.269 ms
+Unloading 4 unused Assets / (20.0 KB). Loaded Objects now: 2042.
+Memory consumption went from 238.5 MB to 238.5 MB.
+Total: 17.827000 ms (FindLiveObjects: 0.388300 ms CreateObjectMapping: 0.049200 ms MarkObjects: 17.069500 ms  DeleteObjects: 0.053000 ms)
+
+Importing 'GUID: 80ccbecd8c55fe4449897427d9ee9bd4 - Path: Assets/_Project/Scenes/ManualPlayground.unity' with importer (DefaultImporter)
+Imported 'GUID: 80ccbecd8c55fe4449897427d9ee9bd4' -> (Import Result ID: 'c0a8785b6686d5cf17c75eb4b72043c6') in 0.001 seconds [static dependencies only]. Details - ImportResultOutputID=9b8187918fc49a1dd780d186a0d67d17 DependenciesID=38d276790835a91c94dc1a4822d7f11a StaticDependenciesID=03cc2a01aa6c62312adb54ee81d59207 
+Asset Pipeline Refresh (id=a87b907e7d959a342b1afd177f6974bc): Total: 0.025 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+G3 map OK.
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+FootballRL.Editor.G3Verification:RunKeyboardKickMappingTests () (at Assets/_Project/Editor/G3Verification.cs:85)
+FootballRL.Editor.G3Verification:RunAllTests () (at Assets/_Project/Editor/G3Verification.cs:41)
+FootballRL.Editor.G3Verification:RunBatch () (at Assets/_Project/Editor/G3Verification.cs:28)
+
+(Filename: Assets/_Project/Editor/G3Verification.cs Line: 85)
+
+Opening scene 'Assets/_Project/Scenes/ManualPlayground.unity'
+Unloading 0 Unused Serialized files (Serialized files now loaded: 0)
+Loaded scene 'Assets/_Project/Scenes/ManualPlayground.unity'
+	Deserialize:            1.018 ms
+	Integration:            9.894 ms
+	Integration of assets:  0.003 ms
+	Thread Wait Time:       0.019 ms
+	Total Operation Time:   10.934 ms
+Unloading 4 unused Assets / (20.3 KB). Loaded Objects now: 2042.
+Memory consumption went from 238.7 MB to 238.7 MB.
+Total: 9.852700 ms (FindLiveObjects: 0.321100 ms CreateObjectMapping: 0.036600 ms MarkObjects: 9.250500 ms  DeleteObjects: 0.041900 ms)
+
+G3 focus cancel OK.
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+FootballRL.Editor.G3Verification:TestFocusCancelClearsPendingKick () (at Assets/_Project/Editor/G3Verification.cs:161)
+FootballRL.Editor.G3Verification:RunAllTests () (at Assets/_Project/Editor/G3Verification.cs:44)
+FootballRL.Editor.G3Verification:RunBatch () (at Assets/_Project/Editor/G3Verification.cs:28)
+
+(Filename: Assets/_Project/Editor/G3Verification.cs Line: 161)
+
+Opening scene 'Assets/_Project/Scenes/ManualPlayground.unity'
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0)
+Loaded scene 'Assets/_Project/Scenes/ManualPlayground.unity'
+	Deserialize:            1.048 ms
+	Integration:            9.134 ms
+	Integration of assets:  0.002 ms
+	Thread Wait Time:       0.024 ms
+	Total Operation Time:   10.208 ms
+Unloading 2 unused Assets / (7.8 KB). Loaded Objects now: 2042.
+Memory consumption went from 239.4 MB to 239.4 MB.
+Total: 10.558300 ms (FindLiveObjects: 0.374300 ms CreateObjectMapping: 0.040500 ms MarkObjects: 9.897500 ms  DeleteObjects: 0.031400 ms)
+
+Opening scene 'Assets/_Project/Scenes/ManualPlayground.unity'
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0)
+Loaded scene 'Assets/_Project/Scenes/ManualPlayground.unity'
+	Deserialize:            1.151 ms
+	Integration:            10.494 ms
+	Integration of assets:  0.003 ms
+	Thread Wait Time:       0.021 ms
+	Total Operation Time:   11.669 ms
+Unloading 2 unused Assets / (7.6 KB). Loaded Objects now: 2042.
+Memory consumption went from 239.6 MB to 239.6 MB.
+Total: 11.254100 ms (FindLiveObjects: 0.366400 ms CreateObjectMapping: 0.036700 ms MarkObjects: 10.552500 ms  DeleteObjects: 0.036600 ms)
+
+G3 T05 OK: jeden impuls przy powtarzanym commandId.
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+FootballRL.Editor.G3Verification:TestT05_SingleImpulsePerCommandId (FootballRL.Gameplay.ArenaController) (at Assets/_Project/Editor/G3Verification.cs:287)
+FootballRL.Editor.G3Verification:RunKickPhysicsTests () (at Assets/_Project/Editor/G3Verification.cs:190)
+FootballRL.Editor.G3Verification:RunAllTests () (at Assets/_Project/Editor/G3Verification.cs:47)
+FootballRL.Editor.G3Verification:RunBatch () (at Assets/_Project/Editor/G3Verification.cs:28)
+
+(Filename: Assets/_Project/Editor/G3Verification.cs Line: 287)
+
+Opening scene 'Assets/_Project/Scenes/ManualPlayground.unity'
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0)
+Loaded scene 'Assets/_Project/Scenes/ManualPlayground.unity'
+	Deserialize:            1.348 ms
+	Integration:            11.453 ms
+	Integration of assets:  0.003 ms
+	Thread Wait Time:       0.016 ms
+	Total Operation Time:   12.820 ms
+Unloading 2 unused Assets / (7.6 KB). Loaded Objects now: 2042.
+Memory consumption went from 239.7 MB to 239.7 MB.
+Total: 13.876900 ms (FindLiveObjects: 0.378500 ms CreateObjectMapping: 0.042000 ms MarkObjects: 13.133000 ms  DeleteObjects: 0.046800 ms)
+
+G3 T06 OK.
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+FootballRL.Editor.G3Verification:TestT06_CooldownNoPending (FootballRL.Gameplay.ArenaController) (at Assets/_Project/Editor/G3Verification.cs:345)
+FootballRL.Editor.G3Verification:RunKickPhysicsTests () (at Assets/_Project/Editor/G3Verification.cs:192)
+FootballRL.Editor.G3Verification:RunAllTests () (at Assets/_Project/Editor/G3Verification.cs:47)
+FootballRL.Editor.G3Verification:RunBatch () (at Assets/_Project/Editor/G3Verification.cs:28)
+
+(Filename: Assets/_Project/Editor/G3Verification.cs Line: 345)
+
+Opening scene 'Assets/_Project/Scenes/ManualPlayground.unity'
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0)
+Loaded scene 'Assets/_Project/Scenes/ManualPlayground.unity'
+	Deserialize:            1.074 ms
+	Integration:            10.355 ms
+	Integration of assets:  0.003 ms
+	Thread Wait Time:       0.024 ms
+	Total Operation Time:   11.455 ms
+Unloading 2 unused Assets / (7.6 KB). Loaded Objects now: 2042.
+Memory consumption went from 239.7 MB to 239.7 MB.
+Total: 11.395300 ms (FindLiveObjects: 0.310400 ms CreateObjectMapping: 0.035800 ms MarkObjects: 10.784800 ms  DeleteObjects: 0.041700 ms)
+
+G3 T07 OK.
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+FootballRL.Editor.G3Verification:TestT07_RejectionCases (FootballRL.Gameplay.ArenaController) (at Assets/_Project/Editor/G3Verification.cs:394)
+FootballRL.Editor.G3Verification:RunKickPhysicsTests () (at Assets/_Project/Editor/G3Verification.cs:194)
+FootballRL.Editor.G3Verification:RunAllTests () (at Assets/_Project/Editor/G3Verification.cs:47)
+FootballRL.Editor.G3Verification:RunBatch () (at Assets/_Project/Editor/G3Verification.cs:28)
+
+(Filename: Assets/_Project/Editor/G3Verification.cs Line: 394)
+
+Opening scene 'Assets/_Project/Scenes/ManualPlayground.unity'
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
+Loaded scene 'Assets/_Project/Scenes/ManualPlayground.unity'
+	Deserialize:            1.565 ms
+	Integration:            10.560 ms
+	Integration of assets:  0.003 ms
+	Thread Wait Time:       0.066 ms
+	Total Operation Time:   12.194 ms
+Unloading 3 unused Assets / (10.8 KB). Loaded Objects now: 2042.
+Memory consumption went from 239.7 MB to 239.7 MB.
+Total: 12.712000 ms (FindLiveObjects: 0.287600 ms CreateObjectMapping: 0.046800 ms MarkObjects: 12.145100 ms  DeleteObjects: 0.038600 ms)
+
+Opening scene 'Assets/_Project/Scenes/ManualPlayground.unity'
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0)
+Loaded scene 'Assets/_Project/Scenes/ManualPlayground.unity'
+	Deserialize:            0.990 ms
+	Integration:            10.947 ms
+	Integration of assets:  0.003 ms
+	Thread Wait Time:       0.054 ms
+	Total Operation Time:   11.994 ms
+Unloading 2 unused Assets / (7.6 KB). Loaded Objects now: 2042.
+Memory consumption went from 239.7 MB to 239.7 MB.
+Total: 12.075100 ms (FindLiveObjects: 0.399000 ms CreateObjectMapping: 0.043100 ms MarkObjects: 11.357000 ms  DeleteObjects: 0.043700 ms)
+
+Opening scene 'Assets/_Project/Scenes/ManualPlayground.unity'
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0)
+Loaded scene 'Assets/_Project/Scenes/ManualPlayground.unity'
+	Deserialize:            0.966 ms
+	Integration:            9.653 ms
+	Integration of assets:  0.003 ms
+	Thread Wait Time:       0.023 ms
+	Total Operation Time:   10.646 ms
+Unloading 2 unused Assets / (6.6 KB). Loaded Objects now: 2042.
+Memory consumption went from 239.7 MB to 239.7 MB.
+Total: 12.601800 ms (FindLiveObjects: 0.395400 ms CreateObjectMapping: 0.046800 ms MarkObjects: 11.874000 ms  DeleteObjects: 0.031100 ms)
+
+G3 T08 OK: Δv weak=6.659 m/s, strong=17.750 m/s.
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+FootballRL.Editor.G3Verification:TestT08_StrengthScaling (FootballRL.Gameplay.ArenaController) (at Assets/_Project/Editor/G3Verification.cs:439)
+FootballRL.Editor.G3Verification:RunKickPhysicsTests () (at Assets/_Project/Editor/G3Verification.cs:196)
+FootballRL.Editor.G3Verification:RunAllTests () (at Assets/_Project/Editor/G3Verification.cs:47)
+FootballRL.Editor.G3Verification:RunBatch () (at Assets/_Project/Editor/G3Verification.cs:28)
+
+(Filename: Assets/_Project/Editor/G3Verification.cs Line: 439)
+
+Opening scene 'Assets/_Project/Scenes/ManualPlayground.unity'
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0)
+Loaded scene 'Assets/_Project/Scenes/ManualPlayground.unity'
+	Deserialize:            0.917 ms
+	Integration:            9.761 ms
+	Integration of assets:  0.003 ms
+	Thread Wait Time:       0.017 ms
+	Total Operation Time:   10.698 ms
+Unloading 2 unused Assets / (7.5 KB). Loaded Objects now: 2042.
+Memory consumption went from 239.7 MB to 239.7 MB.
+Total: 9.898400 ms (FindLiveObjects: 0.316500 ms CreateObjectMapping: 0.041000 ms MarkObjects: 9.289900 ms  DeleteObjects: 0.042000 ms)
+
+Opening scene 'Assets/_Project/Scenes/ManualPlayground.unity'
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0)
+Loaded scene 'Assets/_Project/Scenes/ManualPlayground.unity'
+	Deserialize:            1.253 ms
+	Integration:            9.512 ms
+	Integration of assets:  0.003 ms
+	Thread Wait Time:       0.026 ms
+	Total Operation Time:   10.794 ms
+Unloading 2 unused Assets / (7.6 KB). Loaded Objects now: 2042.
+Memory consumption went from 239.7 MB to 239.7 MB.
+Total: 12.962700 ms (FindLiveObjects: 0.280900 ms CreateObjectMapping: 0.031500 ms MarkObjects: 12.403300 ms  DeleteObjects: 0.035600 ms)
+
+Opening scene 'Assets/_Project/Scenes/ManualPlayground.unity'
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0)
+Loaded scene 'Assets/_Project/Scenes/ManualPlayground.unity'
+	Deserialize:            1.181 ms
+	Integration:            14.054 ms
+	Integration of assets:  0.003 ms
+	Thread Wait Time:       0.035 ms
+	Total Operation Time:   15.273 ms
+Unloading 2 unused Assets / (7.6 KB). Loaded Objects now: 2042.
+Memory consumption went from 239.7 MB to 239.7 MB.
+Total: 13.015700 ms (FindLiveObjects: 0.378600 ms CreateObjectMapping: 0.044000 ms MarkObjects: 12.347200 ms  DeleteObjects: 0.032100 ms)
+
+G3 T09 OK: impuls 0° dirY=0.000, 45° dirY=0.707, lobAngle=45.0°.
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+FootballRL.Editor.G3Verification:TestT09_LoftAngles (FootballRL.Gameplay.ArenaController) (at Assets/_Project/Editor/G3Verification.cs:512)
+FootballRL.Editor.G3Verification:RunKickPhysicsTests () (at Assets/_Project/Editor/G3Verification.cs:198)
+FootballRL.Editor.G3Verification:RunAllTests () (at Assets/_Project/Editor/G3Verification.cs:47)
+FootballRL.Editor.G3Verification:RunBatch () (at Assets/_Project/Editor/G3Verification.cs:28)
+
+(Filename: Assets/_Project/Editor/G3Verification.cs Line: 512)
+
+G3 physics OK.
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+FootballRL.Editor.G3Verification:RunKickPhysicsTests () (at Assets/_Project/Editor/G3Verification.cs:201)
+FootballRL.Editor.G3Verification:RunAllTests () (at Assets/_Project/Editor/G3Verification.cs:47)
+FootballRL.Editor.G3Verification:RunBatch () (at Assets/_Project/Editor/G3Verification.cs:28)
+
+(Filename: Assets/_Project/Editor/G3Verification.cs Line: 201)
+
+Opening scene 'Assets/_Project/Scenes/ManualPlayground.unity'
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0)
+Loaded scene 'Assets/_Project/Scenes/ManualPlayground.unity'
+	Deserialize:            1.492 ms
+	Integration:            11.314 ms
+	Integration of assets:  0.002 ms
+	Thread Wait Time:       0.027 ms
+	Total Operation Time:   12.835 ms
+Unloading 2 unused Assets / (7.8 KB). Loaded Objects now: 2042.
+Memory consumption went from 239.7 MB to 239.7 MB.
+Total: 12.560700 ms (FindLiveObjects: 0.337900 ms CreateObjectMapping: 0.042500 ms MarkObjects: 11.894100 ms  DeleteObjects: 0.042500 ms)
+
+G3 verification completed successfully.
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+FootballRL.Editor.G3Verification:RunBatch () (at Assets/_Project/Editor/G3Verification.cs:35)
+
+(Filename: Assets/_Project/Editor/G3Verification.cs Line: 35)
+
+MonoPathRemapper: Attempts to remap: 2077; Successful remaps: 0
+Serialized file version minimum: 23, current 23
+Importing 'GUID: 00000000000000008000000000000000 - Path: ProjectSettings/DynamicsManager.asset' with importer (LibraryAssetImporter)
+Imported 'GUID: 00000000000000008000000000000000' -> (Import Result ID: '23ddf6fbe10c2b6b5e8bec0228f7ac7e') in 0.003 seconds [static dependencies only]. Details - ImportResultOutputID=f4e5ea74158efa9a7415a6abc5cfeedf DependenciesID=d4c306ea373454e2dcd748eabdb4077a StaticDependenciesID=426956d523914bf9eb4eac107536faaf 
+Asset Pipeline Refresh (id=9e74919861634204991bded3dc0273fd): Total: 0.024 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+[Physics::Module] Cleanup current backend.
+[Physics::Module] Id: 0xf2b8ea05
+Input System module state changed to: ShutdownInProgress.
+Input Polling Thread exited.
+Input System module state changed to: Shutdown.
+[Licensing::IpcConnector] LicenseClient-huber-notifications channel disconnected successfully.
+[Licensing::IpcConnector] LicenseClient-huber channel disconnected successfully.
+Unity Data Store service was successfully shut down
+UDS shutting down local client system
+Shut down UDS service system complete
+AcceleratorClientConnectionCallback - disconnected - :0
+Cleanup mono
+CodeReloadManager destroyed
+Checking for leaked weakptr:
+  Found no leaked weakptrs.
+[Package Manager] Server process was shutdown
+##utp:{"type":"MemoryLeaks","version":2,"phase":"Immediate","time":1791911251644,"processId":35524,"allocatedMemory":11228524,"memoryLabels":[{"Default":175253},{"Permanent":15516},{"NewDelete":69287},{"Thread":4198024},{"Manager":33885},{"VertexData":8},{"Geometry":816},{"Texture":24},{"Shader":846872},{"Material":68},{"GfxDevice":55968},{"Animation":952},{"FreeType":8},{"FontEngine":736},{"Physics":1970},{"Physics2D":16},{"Serialization":20864},{"Input":42840},{"JobScheduler":256},{"TextLib":280},{"Mono":48},{"ScriptingNativeRuntime":1210712},{"BaseObject":49104},{"Resource":1252},{"Renderer":2376},{"Transform":4685},{"File":7393},{"WebCam":616},{"Culling":32},{"Terrain":11442},{"Wind":24},{"STL":40},{"String":460731},{"StaticString":3808},{"Utility":2674806},{"Curl":2579},{"PoolAlloc":2168},{"AI":80},{"TypeTree":14869},{"ScriptManager":12656},{"CodeReload":448},{"RuntimeInitializeOnLoadManager":64},{"Sprites":102},{"SpriteAtlas":120},{"GI":7816},{"Director":8296},{"CloudService":7296},{"WebRequest":4517},{"VR":49650},{"SceneManager":608},{"Video":64},{"LazyScriptCache":32},{"Camera":729},{"Secure":2377},{"SerializationCache":9256},{"APIUpdating":10320},{"Subsystems":336},{"VirtualTexturing":57888},{"StaticSafetyDebugInfo":278528},{"Analytics":768},{"Hierarchy":1188},{"UIElements":40},{"CoreStats":14456},{"Identifiers":7152},{"Gui":128},{"EditorUtility":99402},{"VersionControl":8},{"Undo":931},{"AssetDatabase":675900},{"AssetImporter":40},{"EditorGi":328},{"UnityConnect":40441},{"Upm":1912},{"UpmDiagnostics":8},{"AssetCompliance":96},{"DrivenProperties":72},{"LocalIPC":260},{"ProfilerEditor":9746},{"CoreBusinessMetrics":3620},{"Windowing":456},{"Licensing":12757},{"AssetReference":32},{"IPCStream":32}]}
+~StackAllocator(ALLOC_TEMP_MAIN) m_LastAlloc not NULL. Did you forget to call FreeAllStackAllocations()? To get more information, run app with -diag-temp-memory-leak-validation cmd line argument

@@ -17,6 +17,16 @@ namespace FootballRL.Gameplay
         public Rigidbody BallBody => ballBody;
         Transform BallTransform => ballTransform;
 
+        void Awake()
+        {
+            ArenaLayout.Apply(this);
+        }
+
+        void OnValidate()
+        {
+            ArenaLayout.ScheduleApply();
+        }
+
         public void SetReferences(
             ArenaConfig config,
             Transform players,

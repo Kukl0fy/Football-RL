@@ -10,7 +10,7 @@ namespace FootballRL.Gameplay
         [Tooltip("Drużyna broniąca tej bramki.")]
         public int defendingTeamId;
 
-        [Tooltip("Płaszczyzna linii bramkowej (Z). +10 = Goal_PosZ, −10 = Goal_NegZ.")]
+        [Tooltip("Płaszczyzna linii bramkowej (Z). Ustawiana z połowy długości boiska: +Z i −Z.")]
         public float goalLineZ;
 
         [Tooltip("+1: gol gdy piłka przechodzi w rosnącym Z przez linię. −1: malejący Z.")]

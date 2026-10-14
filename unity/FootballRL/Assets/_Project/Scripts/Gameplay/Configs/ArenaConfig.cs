@@ -40,5 +40,19 @@ namespace FootballRL.Gameplay
         public float HalfPlayLengthZ => pitchPlayLengthZ * 0.5f;
         public float HalfWidthX => pitchWidthX * 0.5f;
         public float HalfGoalWidth => goalWidth * 0.5f;
+
+        void OnValidate()
+        {
+            pitchPlayLengthZ = Mathf.Max(4f, pitchPlayLengthZ);
+            pitchWidthX = Mathf.Max(4f, pitchWidthX);
+            wallThickness = Mathf.Max(0.05f, wallThickness);
+            wallHeight = Mathf.Max(0.5f, wallHeight);
+            goalDepth = Mathf.Max(0.2f, goalDepth);
+            goalHeight = Mathf.Clamp(goalHeight, 0.4f, wallHeight);
+            goalWidth = Mathf.Clamp(goalWidth, 0.5f, Mathf.Max(0.5f, pitchWidthX - 0.4f));
+            ballRadius = Mathf.Max(0.05f, ballRadius);
+            emergencyFloorDepth = Mathf.Max(0.1f, emergencyFloorDepth);
+            ArenaLayout.ScheduleApply();
+        }
     }
 }

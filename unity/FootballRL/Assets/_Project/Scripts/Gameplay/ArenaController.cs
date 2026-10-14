@@ -74,6 +74,29 @@ namespace FootballRL.Gameplay
         public Transform ArenaRootTransform => arenaRoot != null ? arenaRoot.transform : transform;
         public ArenaConfig ArenaConfig => arenaRoot != null ? arenaRoot.ArenaConfig : null;
         public GoalDefinition[] GoalDefinitions => goals;
+
+        /// <summary>Linie bramkowe zostają na końcach boiska z konfiguracji. Kierunek gola i drużyny bez zmian.</summary>
+        public bool MatchGoalLinesToPitchLength()
+        {
+            var cfg = ArenaConfig;
+            if (cfg == null || goals == null)
+                return false;
+
+            var half = cfg.HalfPlayLengthZ;
+            var changed = false;
+            for (var i = 0; i < goals.Length; i++)
+            {
+                var sign = goals[i].enterDirectionZ < 0f ? -1f : 1f;
+                var line = sign * half;
+                if (Mathf.Approximately(goals[i].goalLineZ, line))
+                    continue;
+
+                goals[i].goalLineZ = line;
+                changed = true;
+            }
+
+            return changed;
+        }
         public string LastResetError { get; private set; }
         public ScenarioDefinition DefaultScenarioAsset => defaultScenario;
         public ExerciseTarget ExerciseTargetComponent => exerciseTarget;

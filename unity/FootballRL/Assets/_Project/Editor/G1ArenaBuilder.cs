@@ -225,6 +225,8 @@ namespace FootballRL.Editor
             var ball = BuildBall(root.transform, cfg, ballCfg, phys.Ball, visuals.Ball);
 
             arenaRoot.SetReferences(cfg, players.transform, obstacles.transform, ball.body, ball.transform);
+            BuildPitchDressing(root.transform);
+            ArenaLayout.Apply(arenaRoot);
 
             var prefab = SaveOrReplacePrefab(root, PrefabPath);
             Object.DestroyImmediate(root);
@@ -463,6 +465,53 @@ namespace FootballRL.Editor
             var light = Object.FindFirstObjectByType<Light>();
             if (light != null && light.type == LightType.Directional)
                 light.transform.rotation = Quaternion.Euler(50f, -30f, 0f);
+        }
+
+        static void BuildPitchDressing(Transform arena)
+        {
+            var wall = AssetDatabase.LoadAssetAtPath<Material>($"{MatDir}/Wall.mat");
+            var boards = AssetDatabase.LoadAssetAtPath<Texture2D>("Assets/_Project/Art/WallBoards.png");
+            if (wall != null && boards != null)
+            {
+                wall.mainTexture = boards;
+                wall.color = Color.white;
+                EditorUtility.SetDirty(wall);
+            }
+
+            var apron = AssetDatabase.LoadAssetAtPath<Material>($"{MatDir}/Apron.mat");
+            var carpet = AssetDatabase.LoadAssetAtPath<Material>($"{MatDir}/PitchCarpet.mat");
+            var net = AssetDatabase.LoadAssetAtPath<Material>($"{MatDir}/NetVisual.mat");
+            var seats = AssetDatabase.LoadAssetAtPath<Material>($"{MatDir}/Seats.mat");
+            if (apron == null || carpet == null || net == null || seats == null)
+                return;
+
+            var root = new GameObject("PitchDressing");
+            root.transform.SetParent(arena, false);
+            VisualOnly(PrimitiveType.Plane, root.transform, "Apron", new Vector3(0f, -0.04f, 0f), Quaternion.identity, new Vector3(5f, 1f, 6.4f), apron);
+            VisualOnly(PrimitiveType.Plane, root.transform, "PitchCarpet", new Vector3(0f, 0.015f, 0f), Quaternion.identity, new Vector3(1.2f, 1f, 2f), carpet);
+            VisualOnly(PrimitiveType.Quad, root.transform, "NetPos", new Vector3(0f, 0.92f, 10.82f), Quaternion.Euler(0f, 180f, 0f), new Vector3(2.7f, 1.75f, 1f), net);
+            VisualOnly(PrimitiveType.Quad, root.transform, "NetNeg", new Vector3(0f, 0.92f, -10.82f), Quaternion.identity, new Vector3(2.7f, 1.75f, 1f), net);
+            VisualOnly(PrimitiveType.Cube, root.transform, "StandPosX", new Vector3(7.5f, 0.675f, 0f), Quaternion.identity, new Vector3(2.3f, 1.35f, 22f), seats);
+            VisualOnly(PrimitiveType.Cube, root.transform, "StandNegX", new Vector3(-7.5f, 0.675f, 0f), Quaternion.identity, new Vector3(2.3f, 1.35f, 22f), seats);
+            VisualOnly(PrimitiveType.Cube, root.transform, "StandPosZ", new Vector3(0f, 0.8f, 12.4f), Quaternion.identity, new Vector3(14f, 1.6f, 2f), seats);
+            VisualOnly(PrimitiveType.Cube, root.transform, "StandNegZ", new Vector3(0f, 0.8f, -12.4f), Quaternion.identity, new Vector3(14f, 1.6f, 2f), seats);
+        }
+
+        static void VisualOnly(PrimitiveType type, Transform parent, string objectName, Vector3 localPosition, Quaternion localRotation, Vector3 localScale, Material material)
+        {
+            var go = GameObject.CreatePrimitive(type);
+            go.name = objectName;
+            var collider = go.GetComponent<Collider>();
+            if (collider != null)
+                Object.DestroyImmediate(collider);
+
+            go.transform.SetParent(parent, false);
+            go.transform.localPosition = localPosition;
+            go.transform.localRotation = localRotation;
+            go.transform.localScale = localScale;
+            var renderer = go.GetComponent<MeshRenderer>();
+            if (renderer != null)
+                renderer.sharedMaterial = material;
         }
     }
 }

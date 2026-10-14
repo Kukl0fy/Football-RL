@@ -1,0 +1,467 @@
+VBCSCompilerPreWarmer: pre-warm launched (dotnet PID 39924)
+VBCSCompiler prewarm took 19.33 ms
+[Licensing::Module] Trying to connect to existing licensing client channel...
+Built from '6000.6/staging' branch; Version is '6000.6.2f1 (770e33f6875c) revision 7802419'; Using compiler version '194234433'; Build Type 'Release'
+[Licensing::IpcConnector] Successfully connected to: "LicenseClient-huber" at "2026-10-13T15:33:32.6243707Z"
+OS: 'Windows 11  (10.0.26200) Core' Language: 'pl' Physical Memory: 15576 MB
+BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1
+System  architecture: x64
+Process architecture: x64
+Date: 2026-10-13T15:33:32Z
+[Licensing::Client] Code 10 while verifying Licensing Client signature (process Id: 28380, path: "C:/Program Files/Unity Hub/UnityLicensingClient_V1/Unity.Licensing.Client.exe")
+[Licensing::Module] LicensingClient has failed validation; ignoring
+[Licensing::Client] Handshaking with LicensingClient:
+  Version:                 1.18.3+d7ffd15
+  Session Id:              0c48880c902b453e8b058c74bf205801
+  Correlation Id:          1ed3e605d0269b4e3e284d14863992e6
+  External correlation Id: 2398280208851844578
+  Machine Id:              7nrxQ9WPW2YQq1xgSIJZt9KUb4s=
+[Licensing::Module] Successfully connected to LicensingClient on channel: "LicenseClient-huber" (connect: 0.00s, validation: 0.00s, handshake: 0.08s)
+[Licensing::IpcConnector] Successfully connected to: "LicenseClient-huber-notifications" at "2026-10-13T15:33:32.7097084Z"
+[Licensing::Module] Error: Access token is unavailable; failed to update
+[Licensing::Client] Successfully resolved entitlement details
+[Licensing::Module] License group:
+  Id: 7972623085896-UnityPersXXXX
+  Product: Unity Personal
+  Type: Assigned
+  Expiration: Unlimited
+[Licensing::Client] Successfully updated license, isAsync: True, time: 0.00
+[Licensing::Client] Successfully resolved entitlement details
+[Licensing::Module] Licensing Background thread has ended after 0.10s
+
+COMMAND LINE ARGUMENTS:
+C:\Program Files\Unity\Hub\Editor\6000.6.2f1\Editor\Unity.exe
+-batchmode
+-quit
+-projectPath
+d:\projekty\Football-RL\unity\FootballRL
+-logFile
+d:\projekty\Football-RL\unity\g0-refresh.log
+Successfully changed project path to: d:\projekty\Football-RL\unity\FootballRL
+D:/projekty/Football-RL/unity/FootballRL
+[UnityMemory] Configuration Parameters - Can be set up in boot.config
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-nav-mesh-worker=65536"
+    "memorysetup-temp-allocator-size-audio-worker=65536"
+    "memorysetup-temp-allocator-size-cloud-worker=32768"
+    "memorysetup-temp-allocator-size-gfx=262144"
+    "memorysetup-remapper-allocator-initial-capacity=32768"
+    "memorysetup-temp-allocator-size-preload-manager=33554432"
+    "memorysetup-allocator-temp-initial-block-size-main=262144"
+    "memorysetup-allocator-temp-initial-block-size-worker=262144"
+    "memorysetup-temp-allocator-size-job-worker=262144"
+    "memorysetup-temp-allocator-size-background-worker=32768"
+    "memorysetup-bucket-allocator-granularity=16"
+    "memorysetup-bucket-allocator-bucket-count=8"
+    "memorysetup-bucket-allocator-block-size=33554432"
+    "memorysetup-bucket-allocator-block-count=8"
+    "memorysetup-main-allocator-block-size=16777216"
+    "memorysetup-thread-allocator-block-size=16777216"
+    "memorysetup-main-allocator-mimalloc-enabled=1"
+    "memorysetup-gfx-main-allocator-block-size=16777216"
+    "memorysetup-gfx-thread-allocator-block-size=16777216"
+    "memorysetup-cache-allocator-block-size=4194304"
+    "memorysetup-typetree-allocator-block-size=2097152"
+    "memorysetup-profiler-bucket-allocator-granularity=16"
+    "memorysetup-profiler-bucket-allocator-bucket-count=8"
+    "memorysetup-profiler-bucket-allocator-block-size=33554432"
+    "memorysetup-profiler-bucket-allocator-block-count=8"
+    "memorysetup-profiler-allocator-block-size=16777216"
+    "memorysetup-profiler-editor-allocator-block-size=1048576"
+    "memorysetup-temp-allocator-size-main=16777216"
+    "memorysetup-job-temp-allocator-block-size=2097152"
+    "memorysetup-job-temp-allocator-block-size-background=1048576"
+    "memorysetup-job-temp-allocator-reduction-small-platforms=262144"
+Logging is directed to a specific file, skipping project log.
+Player connection [24768]  Target information:
+
+Player connection [24768]  * "[IP] 192.168.100.49 [Port] 55504 [Flags] 2 [Guid] 1798668681 [EditorId] 1798668681 [Version] 1048832 [Id] WindowsEditor(7,Hubert) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" 
+
+Player connection [24768] Host joined multi-casting on [225.0.0.222:54997]...
+Player connection [24768] Host joined alternative multi-casting on [225.0.0.222:34997]...
+Input System module state changed to: Initialized.
+[Physics::Module] Initialized fallback backend.
+[Physics::Module] Id: 0xdecafbad
+[Package Manager] Connected to IPC stream "Upm-29944" after 0.6 seconds.
+[Licensing::Client] Successfully resolved entitlement details
+Library Redirect Path: Library/
+Initialising UDS system complete:
+  - System type: Client
+  - Resource namespace: aed420a2e48709ce034677fd6dd5e66a
+  - Shared memory size: 1073741824
+  - Command buffer id: 1052576
+  - Command buffer size: 8192
+  - Hashmap size: 4194304
+  - Service connected: false
+Launching Unity Data Store - C:/Program Files/Unity/Hub/Editor/6000.6.2f1/Editor/Data/Tools/Unity.DataStore.exe 
+Unity Data Store artifact dir = Library/DataStore, working dir = D:/projekty/Football-RL/unity/FootballRL[Physics::Module] Selected backend.
+[Physics::Module] Name: PhysX
+[Physics::Module] Id: 0xf2b8ea05
+[Physics::Module] SDK Version: 4.1.2
+[Physics::Module] Integration Version: 1.0.0
+[Physics::Module] Threading Mode: Multi-Threaded
+Unity Data Store running and initialised
+Initialize engine version: 6000.6.2f1 (770e33f6875c)
+[EntityIdStore] init: VM path (explicit commit), pageSize=4096, blockCount=1048576, entitiesPerBlock=256, slots reserved=4294967296 bytes
+[Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/6000.6.2f1/Editor/Data/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path D:/projekty/Football-RL/unity/FootballRL/Assets
+GfxDevice: creating device client; kGfxThreadingModeNonThreaded
+d3d12: failed to query info queue interface (0x80004002).
+Direct3D:
+    Version:         Direct3D 12 [level 12.2]
+    Renderer:        NVIDIA GeForce RTX 4050 Laptop GPU (ID=0x28e1)
+    Vendor:          NVIDIA
+    VRAM:            5921 MB
+    App VRAM Budget: 5153 MB
+    Driver:          32.0.15.7270
+Initialize mono
+Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/6000.6.2f1/Editor/Data/Managed'
+Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/6000.6.2f1/Editor/Data/BCLExtensions/runtime/netstandard2.1'
+Mono path[2] = 'C:/Program Files/Unity/Hub/Editor/6000.6.2f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
+Mono config path = 'C:/Program Files/Unity/Hub/Editor/6000.6.2f1/Editor/Data/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56944
+CodeReloadManager initialized
+ImportWorker Server TCP listen port: 0
+AcceleratorClientConnectionCallback - disconnected - :0
+Begin MonoManager ReloadAssembly
+Registering precompiled unity dll's ...
+Register platform support module: C:/Program Files/Unity/Hub/Editor/6000.6.2f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+Registered in 0.005469 seconds.
+Native extension for WindowsStandalone target not found
+Package Manager log level set to [2]
+ScheduleIndexationOnStartup MainProcess:False IndexOnStartup:False
+Scripting: successfully reloaded assembly
+- Finished resetting the current domain, in  1.723 seconds
+Domain Reload Profiling: 2931ms
+	BeginReloadAssembly (300ms)
+		CreateAndSetChildDomain (11ms)
+	RebuildCommonClasses (9ms)
+	RebuildNativeTypeToScriptingClass (37ms)
+	initialDomainReloadingComplete (166ms)
+	LoadAllAssembliesAndSetupDomain (689ms)
+		LoadAssemblies (277ms)
+		TypeCache.Refresh (465ms)
+			TypeCache.ScanAssembly (439ms)
+		AnalyzeDomain (1ms)
+	FinalizeReload (1729ms)
+		SetupLoadedEditorAssemblies (0ms)
+			LogAssemblyErrors (3ms)
+			InitializePlatformSupportModulesInManaged (6ms)
+			BeforeProcessingInitializeOnLoad (247ms)
+			ProcessInitializeOnLoadAttributes (228ms)
+			ProcessInitializeOnLoadMethodAttributes (791ms)
+[Licensing::Client] Successfully resolved entitlement details
+Application.AssetDatabase Initial Refresh Start
+[Package Manager] Restoring resolved packages state from cache
+[Licensing::Client] Successfully resolved entitlement details
+[Package Manager] Registered 43 packages:
+  Packages from [https://packages.unity.com]:
+    com.unity.inputsystem@1.20.1 (location: D:\projekty\Football-RL\unity\FootballRL\Library\PackageCache\com.unity.inputsystem@2436e68c60c4)
+    com.unity.ide.rider@3.0.38 (location: D:\projekty\Football-RL\unity\FootballRL\Library\PackageCache\com.unity.ide.rider@1f60b3138684)
+    com.unity.ide.visualstudio@2.0.26 (location: D:\projekty\Football-RL\unity\FootballRL\Library\PackageCache\com.unity.ide.visualstudio@a99d56dec63f)
+  Built-in packages:
+    com.unity.modules.accessibility@1.0.0 (location: D:\projekty\Football-RL\unity\FootballRL\Library\PackageCache\com.unity.modules.accessibility)
+    com.unity.modules.adaptiveperformance@1.0.0 (location: D:\projekty\Football-RL\unity\FootballRL\Library\PackageCache\com.unity.modules.adaptiveperformance)
+    com.unity.modules.ai@1.0.0 (location: D:\projekty\Football-RL\unity\FootballRL\Library\PackageCache\com.unity.modules.ai)
+    com.unity.modules.androidjni@1.0.0 (location: D:\projekty\Football-RL\unity\FootballRL\Library\PackageCache\com.unity.modules.androidjni)
+    com.unity.modules.animation@1.0.0 (location: D:\projekty\Football-RL\unity\FootballRL\Library\PackageCache\com.unity.modules.animation)
+    com.unity.modules.assetbundle@1.0.0 (location: D:\projekty\Football-RL\unity\FootballRL\Library\PackageCache\com.unity.modules.assetbundle)
+    com.unity.modules.audio@1.0.0 (location: D:\projekty\Football-RL\unity\FootballRL\Library\PackageCache\com.unity.modules.audio)
+    com.unity.modules.cloth@1.0.0 (location: D:\projekty\Football-RL\unity\FootballRL\Library\PackageCache\com.unity.modules.cloth)
+    com.unity.modules.director@1.0.0 (location: D:\projekty\Football-RL\unity\FootballRL\Library\PackageCache\com.unity.modules.director)
+    com.unity.modules.imageconversion@1.0.0 (location: D:\projekty\Football-RL\unity\FootballRL\Library\PackageCache\com.unity.modules.imageconversion)
+    com.unity.modules.imgui@1.0.0 (location: D:\projekty\Football-RL\unity\FootballRL\Library\PackageCache\com.unity.modules.imgui)
+    com.unity.modules.jsonserialize@1.0.0 (location: D:\projekty\Football-RL\unity\FootballRL\Library\PackageCache\com.unity.modules.jsonserialize)
+    com.unity.modules.particlesystem@1.0.0 (location: D:\projekty\Football-RL\unity\FootballRL\Library\PackageCache\com.unity.modules.particlesystem)
+    com.unity.modules.physics@1.0.0 (location: D:\projekty\Football-RL\unity\FootballRL\Library\PackageCache\com.unity.modules.physics)
+    com.unity.modules.physics2d@1.0.0 (location: D:\projekty\Football-RL\unity\FootballRL\Library\PackageCache\com.unity.modules.physics2d)
+    com.unity.modules.physicscore2d@1.0.0 (location: D:\projekty\Football-RL\unity\FootballRL\Library\PackageCache\com.unity.modules.physicscore2d)
+    com.unity.modules.screencapture@1.0.0 (location: D:\projekty\Football-RL\unity\FootballRL\Library\PackageCache\com.unity.modules.screencapture)
+    com.unity.modules.terrain@1.0.0 (location: D:\projekty\Football-RL\unity\FootballRL\Library\PackageCache\com.unity.modules.terrain)
+    com.unity.modules.terrainphysics@1.0.0 (location: D:\projekty\Football-RL\unity\FootballRL\Library\PackageCache\com.unity.modules.terrainphysics)
+    com.unity.modules.tetgen@1.0.0 (location: D:\projekty\Football-RL\unity\FootballRL\Library\PackageCache\com.unity.modules.tetgen)
+    com.unity.modules.tilemap@1.0.0 (location: D:\projekty\Football-RL\unity\FootballRL\Library\PackageCache\com.unity.modules.tilemap)
+    com.unity.modules.timelinefoundation@1.0.0 (location: D:\projekty\Football-RL\unity\FootballRL\Library\PackageCache\com.unity.modules.timelinefoundation)
+    com.unity.modules.ui@1.0.0 (location: D:\projekty\Football-RL\unity\FootballRL\Library\PackageCache\com.unity.modules.ui)
+    com.unity.modules.uielements@1.0.0 (location: D:\projekty\Football-RL\unity\FootballRL\Library\PackageCache\com.unity.modules.uielements)
+    com.unity.modules.umbra@1.0.0 (location: D:\projekty\Football-RL\unity\FootballRL\Library\PackageCache\com.unity.modules.umbra)
+    com.unity.modules.unityanalytics@1.0.0 (location: D:\projekty\Football-RL\unity\FootballRL\Library\PackageCache\com.unity.modules.unityanalytics)
+    com.unity.modules.unitywebrequest@1.0.0 (location: D:\projekty\Football-RL\unity\FootballRL\Library\PackageCache\com.unity.modules.unitywebrequest)
+    com.unity.modules.unitywebrequestassetbundle@1.0.0 (location: D:\projekty\Football-RL\unity\FootballRL\Library\PackageCache\com.unity.modules.unitywebrequestassetbundle)
+    com.unity.modules.unitywebrequestaudio@1.0.0 (location: D:\projekty\Football-RL\unity\FootballRL\Library\PackageCache\com.unity.modules.unitywebrequestaudio)
+    com.unity.modules.unitywebrequesttexture@1.0.0 (location: D:\projekty\Football-RL\unity\FootballRL\Library\PackageCache\com.unity.modules.unitywebrequesttexture)
+    com.unity.modules.unitywebrequestwww@1.0.0 (location: D:\projekty\Football-RL\unity\FootballRL\Library\PackageCache\com.unity.modules.unitywebrequestwww)
+    com.unity.modules.vectorgraphics@1.0.0 (location: D:\projekty\Football-RL\unity\FootballRL\Library\PackageCache\com.unity.modules.vectorgraphics)
+    com.unity.modules.vehicles@1.0.0 (location: D:\projekty\Football-RL\unity\FootballRL\Library\PackageCache\com.unity.modules.vehicles)
+    com.unity.modules.video@1.0.0 (location: D:\projekty\Football-RL\unity\FootballRL\Library\PackageCache\com.unity.modules.video)
+    com.unity.modules.wind@1.0.0 (location: D:\projekty\Football-RL\unity\FootballRL\Library\PackageCache\com.unity.modules.wind)
+    com.unity.modules.xr@1.0.0 (location: D:\projekty\Football-RL\unity\FootballRL\Library\PackageCache\com.unity.modules.xr)
+    com.unity.modules.subsystems@1.0.0 (location: D:\projekty\Football-RL\unity\FootballRL\Library\PackageCache\com.unity.modules.subsystems)
+    com.unity.modules.hierarchycore@1.0.0 (location: D:\projekty\Football-RL\unity\FootballRL\Library\PackageCache\com.unity.modules.hierarchycore)
+    com.unity.test-framework@1.8.0 (location: D:\projekty\Football-RL\unity\FootballRL\Library\PackageCache\com.unity.test-framework@7a3849e09bd0)
+    com.unity.ext.nunit@2.1.0 (location: D:\projekty\Football-RL\unity\FootballRL\Library\PackageCache\com.unity.ext.nunit@0198eae3b53e)
+[Subsystems] No new subsystems found in resolved package list.
+[Package Manager] Done registering packages in 0.04 seconds
+AcceleratorClientConnectionCallback - disconnected - :0
+Starting: C:\Program Files\Unity\Hub\Editor\6000.6.2f1\Editor\Data\Tools\BuildPipeline\bee_backend.exe --ipc --defer-dag-verification --dagfile="Library/Bee/1900b0aE.dag" --continue-on-failure --profile="Library/Bee/backend1.traceevents" ScriptAssemblies
+WorkingDir: D:/projekty/Football-RL/unity/FootballRL
+DisplayProgressbar: Compiling Scripts
+Starting: C:\Program Files\Unity\Hub\Editor\6000.6.2f1\Editor\Data\DotNetSdk\dotnet.exe "C:\Program Files\Unity\Hub\Editor\6000.6.2f1\Editor\Data\Tools\BuildPipeline\ScriptCompilationBuildProgram.exe" "Library/Bee/1900b0aE.dag.json" "Library/Bee/1900b0aE-inputdata.json" "Library\Bee\buildprogram0.traceevents"
+WorkingDir: D:/projekty/Football-RL/unity/FootballRL
+ExitCode: 4 Duration: 0s376ms
+Rebuilding DAG because FileSignature timestamp changed: Library/Bee/1900b0aE-inputdata.json
+[239/264    0s] ILPP-Configuration Library/ilpp-configuration.nevergeneratedoutput
+*** Tundra requires additional run (0.28 seconds), 1 items updated, 238 evaluated
+ExitCode: 0 Duration: 0s714ms
+Starting: C:\Program Files\Unity\Hub\Editor\6000.6.2f1\Editor\Data\Tools\BuildPipeline\bee_backend.exe --ipc --defer-dag-verification --dagfile="Library/Bee/1900b0aE.dag" --continue-on-failure --dagfilejson="Library\Bee\1900b0aE.dag.json" --profile="Library/Bee/backend2.traceevents" ScriptAssemblies
+WorkingDir: D:/projekty/Football-RL/unity/FootballRL
+ExitCode: 0 Duration: 10s
+Finished compiling graph: 267 nodes, 2320 flattened edges (2198 ToBuild, 20 ToUse), maximum node priority 86
+[192/264    0s] WriteText Library/Bee/artifacts/1900b0aE.dag/Unity.InputSystem.TestFramework.rsp
+[193/264    0s] WriteText Library/Bee/artifacts/1900b0aE.dag/Unity.InputSystem.rsp
+[194/264    0s] WriteText Library/Bee/artifacts/1900b0aE.dag/Unity.Rider.Editor.rsp
+[195/264    0s] WriteText Library/Bee/artifacts/1900b0aE.dag/Assembly-CSharp-Editor.rsp
+[196/264    0s] WriteResponseFile Library/Bee/artifacts/rsp/2655319114021734818.rsp
+[197/264    0s] WriteText Library/Bee/artifacts/1900b0aE.dag/Unity.InputSystem.ForUI.Editor.rsp
+[198/264    0s] WriteResponseFile Library/Bee/artifacts/rsp/8863518860715653438.rsp
+[199/264    0s] WriteResponseFile Library/Bee/artifacts/rsp/3071285868016441895.rsp
+[200/264    0s] WriteText Library/Bee/artifacts/1900b0aE.dag/UnityEditor.TestRunner.rsp
+[201/264    0s] WriteResponseFile Library/Bee/artifacts/rsp/11294775302662683298.rsp
+[202/264    0s] WriteText Library/Bee/artifacts/1900b0aE.dag/Unity.InputSystem.ForUI.rsp
+[203/264    0s] WriteText Library/Bee/artifacts/1900b0aE.dag/Unity.VisualStudio.Editor.rsp
+[204/264    0s] WriteText Library/Bee/artifacts/1900b0aE.dag/Unity.InputSystem.DocCodeSamples.rsp
+[205/264    0s] WriteResponseFile Library/Bee/artifacts/rsp/3064155424177982801.rsp
+[206/264    0s] WriteResponseFile Library/Bee/artifacts/rsp/2953117779104569460.rsp
+[207/264    0s] WriteResponseFile Library/Bee/artifacts/rsp/17346584914308636752.rsp
+[208/264    0s] WriteText Library/Bee/artifacts/1900b0aE.dag/UnityEngine.TestRunner.rsp
+[209/264    0s] WriteResponseFile Library/Bee/artifacts/rsp/2781082588993088484.rsp
+[           0s] Csc Library/Bee/artifacts/1900b0aE.dag/Unity.InputSystem.dll (+2 others) [CacheMiss 8576dda3dd4efdbd94764e4a044f00c200000000000000000000000000000006]
+[           0s] Csc Library/Bee/artifacts/1900b0aE.dag/UnityEngine.TestRunner.dll (+2 others) [CacheMiss 00758965aa535c7f56a32fb9d580d3d700000000000000000000000000000006]
+[210/264    0s] ILPP-Configuration Library/ilpp-configuration.nevergeneratedoutput
+[211/264    1s] Csc Library/Bee/artifacts/1900b0aE.dag/UnityEngine.TestRunner.dll (+2 others)
+[           0s] Csc Library/Bee/artifacts/1900b0aE.dag/UnityEngine.TestRunner.dll (+2 others) [CacheWrite 00758965aa535c7f56a32fb9d580d3d700000000000000000000000000000006]
+[           0s] Csc Library/Bee/artifacts/1900b0aE.dag/UnityEditor.TestRunner.dll (+2 others) [CacheMiss f1b96f49ccc3e75b1342e8e66ea3f83a00000000000000000000000000000006]
+[214/264    0s] ILPostProcess Library/Bee/artifacts/1900b0aE.dag/post-processed/UnityEngine.TestRunner.dll (+pdb)
+Processing assembly Library/Bee/artifacts/1900b0aE.dag/UnityEngine.TestRunner.dll, with 149 defines and 287 references
+
+processors: zzzUnity.Burst.CodeGen.BurstILPostProcessor
+
+1 processor(s) skipped this assembly
+[215/264    0s] CopyFiles Library/ScriptAssemblies/UnityEngine.TestRunner.pdb
+[216/264    0s] CopyFiles Library/ScriptAssemblies/UnityEngine.TestRunner.dll
+[217/264    3s] Csc Library/Bee/artifacts/1900b0aE.dag/UnityEditor.TestRunner.dll (+2 others)
+[           0s] Csc Library/Bee/artifacts/1900b0aE.dag/UnityEditor.TestRunner.dll (+2 others) [CacheWrite f1b96f49ccc3e75b1342e8e66ea3f83a00000000000000000000000000000006]
+[           0s] Csc Library/Bee/artifacts/1900b0aE.dag/Unity.Rider.Editor.dll (+2 others) [CacheMiss 2c3a4fb6717cdcd32c134777988e07cd00000000000000000000000000000006]
+[           0s] Csc Library/Bee/artifacts/1900b0aE.dag/Unity.VisualStudio.Editor.dll (+2 others) [CacheMiss fd6b95ac4c47281138167dee07d4756a00000000000000000000000000000006]
+[221/264    0s] ILPostProcess Library/Bee/artifacts/1900b0aE.dag/post-processed/UnityEditor.TestRunner.dll (+pdb)
+Processing assembly Library/Bee/artifacts/1900b0aE.dag/UnityEditor.TestRunner.dll, with 147 defines and 296 references
+
+processors: zzzUnity.Burst.CodeGen.BurstILPostProcessor
+
+1 processor(s) skipped this assembly
+[222/264    0s] CopyFiles Library/ScriptAssemblies/UnityEditor.TestRunner.pdb
+[223/264    0s] CopyFiles Library/ScriptAssemblies/UnityEditor.TestRunner.dll
+[224/264    1s] Csc Library/Bee/artifacts/1900b0aE.dag/Unity.Rider.Editor.dll (+2 others)
+[           0s] Csc Library/Bee/artifacts/1900b0aE.dag/Unity.Rider.Editor.dll (+2 others) [CacheWrite 2c3a4fb6717cdcd32c134777988e07cd00000000000000000000000000000006]
+[226/264    0s] CopyFiles Library/ScriptAssemblies/Unity.Rider.Editor.pdb
+[227/264    1s] Csc Library/Bee/artifacts/1900b0aE.dag/Unity.VisualStudio.Editor.dll (+2 others)
+[           0s] Csc Library/Bee/artifacts/1900b0aE.dag/Unity.VisualStudio.Editor.dll (+2 others) [CacheWrite fd6b95ac4c47281138167dee07d4756a00000000000000000000000000000006]
+[229/264    0s] CopyFiles Library/ScriptAssemblies/Unity.VisualStudio.Editor.pdb
+[230/264    0s] CopyFiles Library/ScriptAssemblies/Unity.VisualStudio.Editor.dll
+[231/264    0s] CopyFiles Library/ScriptAssemblies/Unity.Rider.Editor.dll
+[232/264    7s] Csc Library/Bee/artifacts/1900b0aE.dag/Unity.InputSystem.dll (+2 others)
+[           0s] Csc Library/Bee/artifacts/1900b0aE.dag/Unity.InputSystem.dll (+2 others) [CacheWrite 8576dda3dd4efdbd94764e4a044f00c200000000000000000000000000000006]
+[           0s] Csc Library/Bee/artifacts/1900b0aE.dag/Unity.InputSystem.TestFramework.dll (+2 others) [CacheMiss 8e6c64031b54f2ee62cb72a34d9e2cc500000000000000000000000000000006]
+[           0s] Csc Library/Bee/artifacts/1900b0aE.dag/Unity.InputSystem.ForUI.dll (+2 others) [CacheMiss c62e2a71b0f18780fc45cf99b31913e000000000000000000000000000000006]
+[           0s] Csc Library/Bee/artifacts/1900b0aE.dag/Unity.InputSystem.DocCodeSamples.dll (+2 others) [CacheMiss e5989eacc551fe5d8a83b9b8077b33d100000000000000000000000000000006]
+[237/264    0s] ILPostProcess Library/Bee/artifacts/1900b0aE.dag/post-processed/Unity.InputSystem.dll (+pdb)
+Processing assembly Library/Bee/artifacts/1900b0aE.dag/Unity.InputSystem.dll, with 160 defines and 289 references
+
+processors: zzzUnity.Burst.CodeGen.BurstILPostProcessor
+
+1 processor(s) skipped this assembly
+[238/264    0s] CopyFiles Library/ScriptAssemblies/Unity.InputSystem.pdb
+[239/264    0s] Csc Library/Bee/artifacts/1900b0aE.dag/Unity.InputSystem.DocCodeSamples.dll (+2 others)
+[240/264    0s] CopyFiles Library/ScriptAssemblies/Unity.InputSystem.dll
+[           0s] Csc Library/Bee/artifacts/1900b0aE.dag/Unity.InputSystem.DocCodeSamples.dll (+2 others) [CacheWrite e5989eacc551fe5d8a83b9b8077b33d100000000000000000000000000000006]
+[241/264    0s] Csc Library/Bee/artifacts/1900b0aE.dag/Unity.InputSystem.ForUI.dll (+2 others)
+[242/264    0s] Csc Library/Bee/artifacts/1900b0aE.dag/Unity.InputSystem.TestFramework.dll (+2 others)
+[           0s] Csc Library/Bee/artifacts/1900b0aE.dag/Unity.InputSystem.ForUI.dll (+2 others) [CacheWrite c62e2a71b0f18780fc45cf99b31913e000000000000000000000000000000006]
+[           0s] Csc Library/Bee/artifacts/1900b0aE.dag/Unity.InputSystem.TestFramework.dll (+2 others) [CacheWrite 8e6c64031b54f2ee62cb72a34d9e2cc500000000000000000000000000000006]
+[245/264    0s] ILPostProcess Library/Bee/artifacts/1900b0aE.dag/post-processed/Unity.InputSystem.DocCodeSamples.dll (+pdb)
+Processing assembly Library/Bee/artifacts/1900b0aE.dag/Unity.InputSystem.DocCodeSamples.dll, with 146 defines and 298 references
+
+processors: zzzUnity.Burst.CodeGen.BurstILPostProcessor
+
+1 processor(s) skipped this assembly
+[           0s] Csc Library/Bee/artifacts/1900b0aE.dag/Unity.InputSystem.ForUI.Editor.dll (+2 others) [CacheMiss 70e4b649759e0d863bbb4d8a7646c85300000000000000000000000000000006]
+[246/264    0s] CopyFiles Library/ScriptAssemblies/Unity.InputSystem.DocCodeSamples.dll
+[247/264    0s] CopyFiles Library/ScriptAssemblies/Unity.InputSystem.DocCodeSamples.pdb
+[248/264    0s] ILPostProcess Library/Bee/artifacts/1900b0aE.dag/post-processed/Unity.InputSystem.ForUI.dll (+pdb)
+Processing assembly Library/Bee/artifacts/1900b0aE.dag/Unity.InputSystem.ForUI.dll, with 148 defines and 290 references
+
+processors: zzzUnity.Burst.CodeGen.BurstILPostProcessor
+
+1 processor(s) skipped this assembly
+[249/264    0s] CopyFiles Library/ScriptAssemblies/Unity.InputSystem.ForUI.pdb
+[250/264    0s] CopyFiles Library/ScriptAssemblies/Unity.InputSystem.ForUI.dll
+[251/264    0s] ILPostProcess Library/Bee/artifacts/1900b0aE.dag/post-processed/Unity.InputSystem.TestFramework.dll (+pdb)
+Processing assembly Library/Bee/artifacts/1900b0aE.dag/Unity.InputSystem.TestFramework.dll, with 150 defines and 290 references
+
+processors: zzzUnity.Burst.CodeGen.BurstILPostProcessor
+
+1 processor(s) skipped this assembly
+[252/264    0s] CopyFiles Library/ScriptAssemblies/Unity.InputSystem.TestFramework.pdb
+[253/264    0s] CopyFiles Library/ScriptAssemblies/Unity.InputSystem.TestFramework.dll
+[254/264    0s] Csc Library/Bee/artifacts/1900b0aE.dag/Unity.InputSystem.ForUI.Editor.dll (+2 others)
+[           0s] Csc Library/Bee/artifacts/1900b0aE.dag/Unity.InputSystem.ForUI.Editor.dll (+2 others) [CacheWrite 70e4b649759e0d863bbb4d8a7646c85300000000000000000000000000000006]
+[255/264    0s] ILPostProcess Library/Bee/artifacts/1900b0aE.dag/post-processed/Unity.InputSystem.ForUI.Editor.dll (+pdb)
+Processing assembly Library/Bee/artifacts/1900b0aE.dag/Unity.InputSystem.ForUI.Editor.dll, with 146 defines and 300 references
+
+processors: zzzUnity.Burst.CodeGen.BurstILPostProcessor
+
+1 processor(s) skipped this assembly
+[256/264    0s] MovedFromExtractor Library/Bee/artifacts/mvdfrm/Unity.InputSystem.ForUI.Editor.ref.dll_40FECCA5C63FF041.mvfrm
+[257/264    0s] CopyFiles Library/ScriptAssemblies/Unity.InputSystem.ForUI.Editor.dll
+[258/264    0s] CopyFiles Library/ScriptAssemblies/Unity.InputSystem.ForUI.Editor.pdb
+[259/264    0s] MovedFromExtractor-Combine Library/Bee/artifacts/1900b0aE.dag/Assembly-CSharp-Editor.dll.mvfrm
+[260/264    0s] Csc Library/Bee/artifacts/1900b0aE.dag/Assembly-CSharp-Editor.dll (+2 others)
+Assets\_Project\Editor\G0Bootstrap.cs(116,25): warning CS0618: 'Object.FindFirstObjectByType<T>()' is obsolete: 'FindFirstObjectByType has been deprecated because it relies on instance ID ordering. Use FindAnyObjectByType instead, which does not depend on ordering.'
+[261/264    0s] ILPostProcess Library/Bee/artifacts/1900b0aE.dag/post-processed/Assembly-CSharp-Editor.dll (+pdb)
+Processing assembly Library/Bee/artifacts/1900b0aE.dag/Assembly-CSharp-Editor.dll, with 146 defines and 303 references
+
+processors: zzzUnity.Burst.CodeGen.BurstILPostProcessor
+
+1 processor(s) skipped this assembly
+[262/264    0s] CopyFiles Library/ScriptAssemblies/Assembly-CSharp-Editor.pdb
+[263/264    0s] CopyFiles Library/ScriptAssemblies/Assembly-CSharp-Editor.dll
+*** Tundra build success (10.71 seconds), 59 items updated, 264 evaluated
+Assets\_Project\Editor\G0Bootstrap.cs(116,25): warning CS0618: 'Object.FindFirstObjectByType<T>()' is obsolete: 'FindFirstObjectByType has been deprecated because it relies on instance ID ordering. Use FindAnyObjectByType instead, which does not depend on ordering.'
+Total cache size 9466104
+Total cache size after purge 9466104, took 00:00:00.0744086
+AssetDatabase: script compilation time: 14.368097s
+Begin MonoManager ReloadAssembly
+Importing 'GUID: 0000000000000000b000000000000000 - Path: ProjectSettings/EditorBuildSettings.asset' with importer (LibraryAssetImporter)
+Imported 'GUID: 0000000000000000b000000000000000' -> (Import Result ID: '106f8b9c80e4b7970db9eecd19b1d4d6') in 0.040 seconds [static dependencies only]. Details - ImportResultOutputID=0a89a5c5f492143e0fa186859e17ba6f DependenciesID=88feadcbdff4874c1812d1b10549c935 StaticDependenciesID=4fce23996ae0d400da5e79427e645d14 
+Refreshing native plugins compatible for Editor in 57.28 ms, found 0 plugins.
+Native extension for WindowsStandalone target not found
+ScheduleIndexationOnStartup MainProcess:True IndexOnStartup:True
+Scripting: successfully reloaded assembly
+- Finished resetting the current domain, in  1.274 seconds
+Domain Reload Profiling: 2670ms
+	BeginReloadAssembly (619ms)
+		DisableScriptedObjects (63ms)
+		CreateAndSetChildDomain (107ms)
+	RebuildCommonClasses (23ms)
+	RebuildNativeTypeToScriptingClass (41ms)
+	initialDomainReloadingComplete (125ms)
+	LoadAllAssembliesAndSetupDomain (586ms)
+		LoadAssemblies (533ms)
+		TypeCache.Refresh (54ms)
+			TypeCache.ScanAssembly (44ms)
+		AnalyzeDomain (25ms)
+			BuildScriptInfoCaches (21ms)
+	FinalizeReload (1276ms)
+		SetupLoadedEditorAssemblies (0ms)
+			LogAssemblyErrors (3ms)
+			InitializePlatformSupportModulesInManaged (3ms)
+			BeforeProcessingInitializeOnLoad (251ms)
+			ProcessInitializeOnLoadAttributes (342ms)
+			ProcessInitializeOnLoadMethodAttributes (115ms)
+			AfterProcessingInitializeOnLoad (23ms)
+		AwakeInstancesAfterBackupRestoration (68ms)
+Starting new worker id: 0 with log in D:/projekty/Football-RL/unity/FootballRL/Logs/AssetImportWorkerHW0.log
+
+Asset Pipeline Refresh (id=240fc0a4a514fe74b8e759ecd746a4e1): Total: 18.094 seconds - Initiated by InitialRefreshV2(ForceSynchronousImport)
+	(Values over 0.05ms)
+	Summary:
+		Imports: total=1 (actual=1, local cache=0, cache server=0)
+		Asset DB Process Time: managed=7 ms, native=1913 ms
+		Asset DB Callback time: managed=208 ms, native=51 ms
+		Scripting: domain reloads=1, domain reload time=1496 ms, compile time=14374 ms, other=43 ms
+		Project Asset Count: scripts=261, non-scripts=234
+		Asset File Changes: new=0, changed=1, moved=0, deleted=0
+		Scan Filter Count: 0
+	InvokePackagesCallback: 50.749ms
+	ApplyChangesToAssetFolders: 1.233ms
+	Scan: 167.422ms
+	Collect global state as custom dependencies: 32.420ms
+	OnSourceAssetsModified: 2.137ms
+	CategorizeScriptCompilationAssets: 77.967ms
+	ProcessAssetsWithTransientArtifactChanges: 22.546ms
+	CategorizeAssets: 12.095ms
+	CompileScripts: 14373.887ms
+	ImportOutOfDateAssets: 1417.320ms (1335.541ms without children)
+		ImportManagerImport: 48.175ms (7.401ms without children)
+		UnloadImportedAssets: 0.160ms
+		EnsureUptoDateAssetsAreRegisteredWithGuidPM: 0.146ms
+		ImportSchedulerStart: 33.292ms
+	PostProcessAllAssets: 209.633ms
+		VCAutoAddAssetPostprocess 2.121ms
+		XRBuildSystem.XRAssetImported 0.129ms
+		MonoPostProcessAllAssets: 206.463ms
+			AssetPostprocessor.OnPostprocessAllAssets 81.932ms
+			StyleCatalogPostProcessor.OnPostprocessAllAssets 33.412ms
+			WindowAssetPostprocessingWatcher.OnPostprocessAllAssets 21.844ms
+			BuilderAssetPostprocessor.OnPostprocessAllAssets 14.628ms
+			SyncVS.PostprocessSyncProject 7.948ms
+			AssetChangedListener.OnPostprocessAllAssets 4.563ms
+			RetainedModeAssetPostprocessor.OnPostprocessAllAssets 3.777ms
+			EditModeScopePostprocessor.OnPostprocessAllAssets 2.379ms
+			SpeedTree9Postprocessor.OnPostprocessAllAssets 1.793ms
+			ArtifactBrowserPostProcessor.OnPostprocessAllAssets 1.522ms
+			TextAssetPostProcessor.OnPostprocessAllAssets 1.253ms
+			InputActionAssetPostprocessor.OnPostprocessAllAssets 0.971ms
+			AudioMixerPostprocessor.OnPostprocessAllAssets 0.793ms
+			InputActionJsonNameModifierAssetProcessor.OnPostprocessAllAssets 0.689ms
+			ReferencedClipsPostProcessor.OnPostprocessAllAssets 0.689ms
+			AssetEvents.OnPostprocessAllAssets 0.614ms
+			ConfigAssetsTracker.OnPostprocessAllAssets 0.442ms
+			TerrainToolbarOverlayPostProcessor.OnPostprocessAllAssets 0.430ms
+			AssetDatabaseCallbacks.OnPostprocessAllAssets 0.425ms
+			ScenarioDriftAssetsTracker.OnPostprocessAllAssets 0.422ms
+			ProjectSettingsPostprocessor.OnPostprocessAllAssets 0.380ms
+			ThemePostprocessor.OnPostprocessAllAssets 0.342ms
+			SpeedTreePostProcessor.OnPostprocessAllAssets 0.298ms
+			RenderPipelineGlobalSettingsPostprocessor.OnPostprocessAllAssets 0.275ms
+			AudioContainerPostProcessor.OnPostprocessAllAssets 0.188ms
+	PostAssetChangesProfiler: 1.459ms
+	UnloadStreamsBegin: 2.703ms
+	PersistCurrentRevisions: 0.142ms
+	GenerateScriptTypeHashes: 3.293ms
+	GenerateScriptTypeSerializationHashes: 6.740ms
+	Untracked: 1666.613ms
+
+Application.AssetDatabase Initial Refresh End
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.04 seconds
+Scanning for USB devices : 11.200ms
+Initializing Unity extensions:
+[MODES] ModeService[none].Initialize
+[MODES] ModeService[none].LoadModes
+[MODES] Loading mode Default (0) for mode-current-id-FootballRL
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 942 unused Assets / (1.2 MB). Loaded Objects now: 1673.
+Memory consumption went from 240.8 MB to 239.6 MB.
+Total: 13.502300 ms (FindLiveObjects: 0.289500 ms CreateObjectMapping: 0.046600 ms MarkObjects: 11.900100 ms  DeleteObjects: 1.058800 ms)
+
+Batchmode quit successfully invoked - shutting down!
+Curl error 42: Callback aborted
+[Physics::Module] Cleanup current backend.
+[Physics::Module] Id: 0xf2b8ea05
+Input System module state changed to: ShutdownInProgress.
+Input Polling Thread exited.
+Input System module state changed to: Shutdown.
+[Licensing::IpcConnector] LicenseClient-huber-notifications channel disconnected successfully.
+[Licensing::IpcConnector] LicenseClient-huber channel disconnected successfully.
+Unity Data Store service was successfully shut down
+UDS shutting down local client system
+Shut down UDS service system complete
+AcceleratorClientConnectionCallback - disconnected - :0
+Cleanup mono
+CodeReloadManager destroyed
+Exiting batchmode successfully now!
+[ExitDontLaunchBugReporter] Exiting without the bug reporter. Application will exit with return code 0

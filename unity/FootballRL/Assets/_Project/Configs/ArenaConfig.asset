@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 377302cacd05b9f429ceb6384d66937c, type: 3}
   m_Name: ArenaConfig
   m_EditorClassIdentifier: Assembly-CSharp::FootballRL.Gameplay.ArenaConfig
-  pitchPlayLengthZ: 20
-  pitchWidthX: 12
-  goalWidth: 3
-  goalHeight: 2
-  goalDepth: 1
+  pitchPlayLengthZ: 50
+  pitchWidthX: 45
+  goalWidth: 6
+  goalHeight: 2.5
+  goalDepth: 2
   ballRadius: 0.22
   wallHeight: 2.5
   wallThickness: 0.2
