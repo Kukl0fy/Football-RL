@@ -54,6 +54,7 @@ namespace FootballRL.Gameplay
         bool _ballKinematicBeforeEnded;
         Collider _ballCollider;
         bool _ballColliderEnabledBeforeEnded;
+        bool _bodiesFrozenForEndedRound;
         readonly Dictionary<int, bool> _playerKinematicBeforeEnded = new Dictionary<int, bool>();
         long _physicsTick;
         ResetEpisodeRequest _lastResetRequest;
@@ -614,10 +615,10 @@ namespace FootballRL.Gameplay
             _physicsTick++;
 
             var curr = _ballBody.position;
-            if (_segmentSampleValid)
-                TryEndRoundFromPhysics(_segmentStartBallPos, curr, deltaTime);
-            else
+            if (!_segmentSampleValid)
                 _segmentSampleValid = true;
+
+            TryEndRoundFromPhysics(_segmentStartBallPos, curr, deltaTime);
 
             UpdateExerciseTargetReach();
             _segmentStartBallPos = curr;
@@ -698,6 +699,7 @@ namespace FootballRL.Gameplay
             GetPrimaryPlayerBody(out _frozenPlayerPos, out _frozenPlayerVel);
             _frozenPlayerAngVelY = GetPrimaryPlayerAngularVelocityY();
             FreezeBodiesAfterEnd();
+            _bodiesFrozenForEndedRound = true;
 
             var delay = roundConfig != null ? roundConfig.autoResetDelaySeconds : 1.5f;
             _postRoundDelayRemaining = roundConfig == null || roundConfig.autoResetEnabled ? delay : 0f;
@@ -913,6 +915,22 @@ namespace FootballRL.Gameplay
 
         void RestoreDynamicSimulation()
         {
+            if (!_bodiesFrozenForEndedRound)
+            {
+                if (_ballBody != null)
+                {
+                    _ballBody.isKinematic = false;
+                    if (_ballCollider != null)
+                        _ballCollider.enabled = true;
+                }
+
+                foreach (var kv in _motorsByPlayerId)
+                    kv.Value.Body.isKinematic = false;
+
+                _playerKinematicBeforeEnded.Clear();
+                return;
+            }
+
             if (_ballBody != null)
             {
                 _ballBody.isKinematic = _ballKinematicBeforeEnded;
@@ -929,6 +947,7 @@ namespace FootballRL.Gameplay
             }
 
             _playerKinematicBeforeEnded.Clear();
+            _bodiesFrozenForEndedRound = false;
         }
 
         void SyncPhysicsTransforms()

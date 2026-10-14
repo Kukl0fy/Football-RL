@@ -247,46 +247,58 @@ namespace FootballRL.Editor
             {
                 var (controller, _) = CreateDualArenaScene(ArenaFactory.DefaultSeparationMeters);
                 controller.TryResetEpisode(ResetEpisodeRequest.ForScenario(manual, 5), out _);
+                controller.MatchGoalLinesToPitchLength();
 
                 var root = controller.ArenaRootTransform;
+                var cfg = controller.ArenaConfig;
+                if (cfg == null)
+                {
+                    UnityEngine.Debug.LogError("G6 T19: brak ArenaConfig.");
+                    return false;
+                }
+
                 var baselineBall = controller.CaptureSnapshot().Ball.LocalPosition;
 
                 var originalPos = root.position;
                 var originalRot = root.rotation;
-                try
+                root.SetPositionAndRotation(new Vector3(4f, 0f, -2f), Quaternion.Euler(0f, 40f, 0f));
+                Physics.SyncTransforms();
+                var afterMove = controller.CaptureSnapshot().Ball.LocalPosition;
+                if (Vector3.Distance(baselineBall, afterMove) > 0.15f)
                 {
-                    root.SetPositionAndRotation(new Vector3(4f, 0f, -2f), Quaternion.Euler(0f, 40f, 0f));
-                    Physics.SyncTransforms();
-                    var afterMove = controller.CaptureSnapshot().Ball.LocalPosition;
-                    if (Vector3.Distance(baselineBall, afterMove) > 0.15f)
-                    {
-                        UnityEngine.Debug.LogError($"G6 T19: lokalna piłka powinna być stabilna ({baselineBall} vs {afterMove}).");
-                        return false;
-                    }
-                }
-                finally
-                {
-                    root.SetPositionAndRotation(originalPos, originalRot);
-                    Physics.SyncTransforms();
+                    UnityEngine.Debug.LogError(
+                        $"G6 T19: lokalna piłka powinna być stabilna ({baselineBall} vs {afterMove}).");
+                    return false;
                 }
 
                 controller.EditorDisableAutoReset();
                 controller.TryResetEpisode(ResetEpisodeRequest.ForScenario(manual, 6), out _);
+
+                var half = cfg.HalfPlayLengthZ;
+                var y = cfg.ballRadius;
+                var prevLocal = new Vector3(0f, y, half - 1f);
+                var currLocal = new Vector3(0f, y, half + 0.5f);
+                var prevWorld = root.TransformPoint(prevLocal);
+                var currWorld = root.TransformPoint(currLocal);
+
                 var ended = 0;
                 void OnRoundEnded(RoundEndedEventArgs _) => ended++;
                 controller.RoundEnded += OnRoundEnded;
                 try
                 {
-                    controller.EditorEvaluateBallSegment(new Vector3(0f, 0.22f, 9.5f), new Vector3(0f, 0.22f, 10.5f), Dt);
+                    controller.EditorEvaluateBallSegment(prevWorld, currWorld, Dt);
                 }
                 finally
                 {
                     controller.RoundEnded -= OnRoundEnded;
+                    root.SetPositionAndRotation(originalPos, originalRot);
+                    Physics.SyncTransforms();
                 }
 
                 if (ended != 1 || controller.LastEndReason != RoundEndReason.Goal)
                 {
-                    UnityEngine.Debug.LogError($"G6 T19: gol po obrocie areny — ended={ended} reason={controller.LastEndReason}.");
+                    UnityEngine.Debug.LogError(
+                        $"G6 T19: gol po obrocie areny — ended={ended} reason={controller.LastEndReason}.");
                     return false;
                 }
 

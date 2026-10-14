@@ -10,8 +10,8 @@ namespace FootballRL.Editor
     public static class G4Verification
     {
         const string ScenePath = "Assets/_Project/Scenes/ManualPlayground.unity";
+        const string ArenaConfigAssetPath = "Assets/_Project/Configs/ArenaConfig.asset";
         const float Dt = 0.02f;
-        const float BallY = 0.22f;
 
         public static void RunBatch()
         {
@@ -35,10 +35,12 @@ namespace FootballRL.Editor
 
         public static bool RunAllTests()
         {
-            if (!RunBallBoundsUnitTests())
+            var cfg = LoadArenaConfigForTests();
+
+            if (!RunBallBoundsUnitTests(cfg))
                 return false;
 
-            if (!RunGoalDetectorUnitTests())
+            if (!RunGoalDetectorUnitTests(cfg))
                 return false;
 
             return RunArenaRoundTests();
@@ -46,30 +48,57 @@ namespace FootballRL.Editor
 
         static ArenaConfig CreateDefaultArenaConfig() => ScriptableObject.CreateInstance<ArenaConfig>();
 
-        static bool RunBallBoundsUnitTests()
+        static ArenaConfig LoadArenaConfigForTests()
         {
-            var cfg = CreateDefaultArenaConfig();
+            var asset = AssetDatabase.LoadAssetAtPath<ArenaConfig>(ArenaConfigAssetPath);
+            return asset != null ? asset : CreateDefaultArenaConfig();
+        }
+
+        static float BallY(ArenaConfig cfg) => cfg.ballRadius;
+
+        static GoalDefinition[] BuildStandardGoals(ArenaConfig cfg)
+        {
+            var half = cfg.HalfPlayLengthZ;
+            return new[]
+            {
+                new GoalDefinition { defendingTeamId = 1, goalLineZ = half, enterDirectionZ = 1f },
+                new GoalDefinition { defendingTeamId = 0, goalLineZ = -half, enterDirectionZ = -1f }
+            };
+        }
+
+        static (Vector3 prev, Vector3 curr) PositiveGoalCrossSegment(ArenaConfig cfg)
+        {
+            var half = cfg.HalfPlayLengthZ;
+            var y = BallY(cfg);
+            return (new Vector3(0f, y, half - 1f), new Vector3(0f, y, half + 0.5f));
+        }
+
+        static bool RunBallBoundsUnitTests(ArenaConfig cfg)
+        {
             var r = cfg.ballRadius;
+            var halfZ = cfg.HalfPlayLengthZ;
+            var halfX = cfg.HalfWidthX;
+            var y = BallY(cfg);
 
-            if (ArenaBounds.IsBallOutOfPlay(new Vector3(1.4f, BallY, 10.5f), r, cfg))
+            if (ArenaBounds.IsBallOutOfPlay(new Vector3(halfX - 0.2f, y, halfZ + 0.5f), r, cfg))
             {
-                Debug.LogError("G4 bounds: x=1,4 z=10,5 w otworze nie powinno być BallOut.");
+                Debug.LogError("G4 bounds: x w otworze bramkowym nie powinno być BallOut.");
                 return false;
             }
 
-            if (!ArenaBounds.IsBallOutOfPlay(new Vector3(0f, 2.3f, 10.5f), r, cfg))
+            if (!ArenaBounds.IsBallOutOfPlay(new Vector3(0f, cfg.goalHeight + 0.3f, halfZ + 0.5f), r, cfg))
             {
-                Debug.LogError("G4 bounds: y=2,3 za poprzeczką w bramce powinno być BallOut.");
+                Debug.LogError("G4 bounds: y za poprzeczką w bramce powinno być BallOut.");
                 return false;
             }
 
-            if (ArenaBounds.IsBallOutOfPlay(new Vector3(0f, 1f, 10.5f), r, cfg))
+            if (ArenaBounds.IsBallOutOfPlay(new Vector3(0f, cfg.goalHeight * 0.5f, halfZ + 0.5f), r, cfg))
             {
                 Debug.LogError("G4 bounds: piłka w środku siatki nie powinna być BallOut.");
                 return false;
             }
 
-            if (!ArenaBounds.IsBallOutOfPlay(new Vector3(6.5f, BallY, 0f), r, cfg))
+            if (!ArenaBounds.IsBallOutOfPlay(new Vector3(halfX + 0.5f, y, 0f), r, cfg))
             {
                 Debug.LogError("G4 bounds: wyjście bokiem boiska nadal BallOut.");
                 return false;
@@ -79,30 +108,25 @@ namespace FootballRL.Editor
             return true;
         }
 
-        static bool RunGoalDetectorUnitTests()
+        static bool RunGoalDetectorUnitTests(ArenaConfig cfg)
         {
-            var goals = new[]
-            {
-                new GoalDefinition { defendingTeamId = 1, goalLineZ = 10f, enterDirectionZ = 1f },
-                new GoalDefinition { defendingTeamId = 0, goalLineZ = -10f, enterDirectionZ = -1f }
-            };
+            var goals = BuildStandardGoals(cfg);
+            var r = cfg.ballRadius;
+            var halfW = cfg.HalfGoalWidth;
+            var h = cfg.goalHeight;
+            var halfZ = cfg.HalfPlayLengthZ;
+            var y = BallY(cfg);
 
-            var r = 0.22f;
-            var halfW = 1.5f;
-            var h = 2f;
-
-            if (!GoalDetector.TryDetectGoal(
-                    new Vector3(0f, BallY, 9.5f),
-                    new Vector3(0f, BallY, 10.5f),
-                    r, halfW, h, goals, out var team) || team != 0)
+            var cross = PositiveGoalCrossSegment(cfg);
+            if (!GoalDetector.TryDetectGoal(cross.prev, cross.curr, r, halfW, h, goals, out var team) || team != 0)
             {
                 Debug.LogError("G4 unit: T10 oczekiwano gola drużyny 0 w +Z.");
                 return false;
             }
 
             if (GoalDetector.TryDetectGoal(
-                    new Vector3(0f, 2.3f, 9.5f),
-                    new Vector3(0f, 2.3f, 10.5f),
+                    new Vector3(0f, cfg.goalHeight + 0.3f, halfZ - 1f),
+                    new Vector3(0f, cfg.goalHeight + 0.3f, halfZ + 0.5f),
                     r, halfW, h, goals, out _))
             {
                 Debug.LogError("G4 unit: T11 nad poprzeczką nie powinien być golem.");
@@ -110,8 +134,8 @@ namespace FootballRL.Editor
             }
 
             if (GoalDetector.TryDetectGoal(
-                    new Vector3(2f, BallY, 9.5f),
-                    new Vector3(2f, BallY, 10.5f),
+                    new Vector3(halfW + 0.5f, y, halfZ - 1f),
+                    new Vector3(halfW + 0.5f, y, halfZ + 0.5f),
                     r, halfW, h, goals, out _))
             {
                 Debug.LogError("G4 unit: T11 obok słupka nie powinien być golem.");
@@ -119,8 +143,8 @@ namespace FootballRL.Editor
             }
 
             if (!GoalDetector.TryDetectGoal(
-                    new Vector3(0f, BallY, 9f),
-                    new Vector3(0f, BallY, 11f),
+                    new Vector3(0f, y, halfZ - 2f),
+                    new Vector3(0f, y, halfZ + 2f),
                     r, halfW, h, goals, out _))
             {
                 Debug.LogError("G4 unit: T12 szybki przelot powinien być golem.");
@@ -128,8 +152,8 @@ namespace FootballRL.Editor
             }
 
             if (GoalDetector.TryDetectGoal(
-                    new Vector3(0f, BallY, 10.5f),
-                    new Vector3(0f, BallY, 10.6f),
+                    new Vector3(0f, y, halfZ + 0.5f),
+                    new Vector3(0f, y, halfZ + 0.6f),
                     r, halfW, h, goals, out _))
             {
                 Debug.LogError("G4 unit: T12 brak drugiego gola gdy piłka już za linią.");
@@ -153,6 +177,9 @@ namespace FootballRL.Editor
                 return false;
             }
 
+            var cfg = controller.ArenaConfig ?? LoadArenaConfigForTests();
+            controller.MatchGoalLinesToPitchLength();
+
             controller.RefreshPlayerRegistry();
             controller.EditorDisableAutoReset();
 
@@ -161,19 +188,19 @@ namespace FootballRL.Editor
 
             try
             {
-                if (!TestT10_GoalTeam(controller))
+                if (!TestT10_GoalTeam(controller, cfg))
                     return false;
-                if (!TestT13_TimeoutAndManualReset(controller))
+                if (!TestT13_TimeoutAndManualReset(controller, cfg))
                     return false;
                 if (!TestT14_ResetClearsState(controller))
                     return false;
-                if (!TestT15_EndStateBeforeReset(controller))
+                if (!TestT15_EndStateBeforeReset(controller, cfg))
                     return false;
-                if (!TestBallOutVsGoalInterior(controller))
+                if (!TestBallOutVsGoalInterior(controller, cfg))
                     return false;
-                if (!TestOverBarSegmentBallOut(controller))
+                if (!TestOverBarSegmentBallOut(controller, cfg))
                     return false;
-                if (!TestEndedPauseFreezesBodies(controller))
+                if (!TestEndedPauseFreezesBodies(controller, cfg))
                     return false;
 
                 Debug.Log("G4 arena round OK.");
@@ -186,7 +213,7 @@ namespace FootballRL.Editor
             }
         }
 
-        static bool TestT10_GoalTeam(ArenaController controller)
+        static bool TestT10_GoalTeam(ArenaController controller, ArenaConfig cfg)
         {
             controller.ResetEpisode();
             var ended = 0;
@@ -200,7 +227,8 @@ namespace FootballRL.Editor
             controller.RoundEnded += Handler;
             try
             {
-                controller.EditorEvaluateBallSegment(new Vector3(0f, BallY, 9.5f), new Vector3(0f, BallY, 10.5f), Dt);
+                var cross = PositiveGoalCrossSegment(cfg);
+                controller.EditorEvaluateBallSegment(cross.prev, cross.curr, Dt);
                 if (ended != 1 || reason != RoundEndReason.Goal)
                 {
                     Debug.LogError($"G4 T10: oczekiwano 1 Goal, jest ended={ended} reason={reason}.");
@@ -222,11 +250,12 @@ namespace FootballRL.Editor
             }
         }
 
-        static bool TestT13_TimeoutAndManualReset(ArenaController controller)
+        static bool TestT13_TimeoutAndManualReset(ArenaController controller, ArenaConfig cfg)
         {
             controller.ResetEpisode();
             controller.EditorForceElapsedSeconds(59.99f);
-            controller.EditorEvaluateBallSegment(new Vector3(0f, BallY, 0f), new Vector3(0f, BallY, 0.01f), Dt);
+            var y = BallY(cfg);
+            controller.EditorEvaluateBallSegment(new Vector3(0f, y, 0f), new Vector3(0f, y, 0.01f), Dt);
             if (controller.LastEndReason != RoundEndReason.TimeLimit)
             {
                 Debug.LogError($"G4 T13: oczekiwano TimeLimit, jest {controller.LastEndReason}.");
@@ -289,6 +318,12 @@ namespace FootballRL.Editor
                 return false;
             }
 
+            if (ball.GetComponent<Collider>() != null && !ball.GetComponent<Collider>().enabled)
+            {
+                Debug.LogError("G4 T14: collider piłki powinien być włączony po resecie z Running.");
+                return false;
+            }
+
             if (controller.GetKickCooldownRemaining(0) > 0.001f)
             {
                 Debug.LogError("G4 T14: cooldown powinien być wyzerowany.");
@@ -306,10 +341,11 @@ namespace FootballRL.Editor
             return true;
         }
 
-        static bool TestT15_EndStateBeforeReset(ArenaController controller)
+        static bool TestT15_EndStateBeforeReset(ArenaController controller, ArenaConfig cfg)
         {
             controller.ResetEpisode();
-            controller.EditorEvaluateBallSegment(new Vector3(0f, BallY, 9.5f), new Vector3(0f, BallY, 10.5f), Dt);
+            var cross = PositiveGoalCrossSegment(cfg);
+            controller.EditorEvaluateBallSegment(cross.prev, cross.curr, Dt);
             if (controller.Phase != ArenaPhase.Ended)
             {
                 Debug.LogError("G4 T15: oczekiwano Ended po golu.");
@@ -322,7 +358,9 @@ namespace FootballRL.Editor
                 return false;
             }
 
-            if (endState.BallPosition.z < 10f)
+            var half = cfg.HalfPlayLengthZ;
+            var localBall = controller.ArenaRootTransform.InverseTransformPoint(endState.BallPosition);
+            if (localBall.z < half)
             {
                 Debug.LogError("G4 T15: piłka końcowa powinna być za linią bramkową.");
                 return false;
@@ -344,10 +382,17 @@ namespace FootballRL.Editor
             return true;
         }
 
-        static bool TestBallOutVsGoalInterior(ArenaController controller)
+        static bool TestBallOutVsGoalInterior(ArenaController controller, ArenaConfig cfg)
         {
+            var halfX = cfg.HalfWidthX;
+            var halfZ = cfg.HalfPlayLengthZ;
+            var y = BallY(cfg);
+
             controller.ResetEpisode();
-            controller.EditorEvaluateBallSegment(new Vector3(6.5f, BallY, 0f), new Vector3(6.6f, BallY, 0f), Dt);
+            controller.EditorEvaluateBallSegment(
+                new Vector3(halfX + 0.5f, y, 0f),
+                new Vector3(halfX + 0.6f, y, 0f),
+                Dt);
             if (controller.LastEndReason != RoundEndReason.BallOut)
             {
                 Debug.LogError($"G4 BallOut: oczekiwano BallOut poza boiskiem, jest {controller.LastEndReason}.");
@@ -355,7 +400,10 @@ namespace FootballRL.Editor
             }
 
             controller.ResetEpisode();
-            controller.EditorEvaluateBallSegment(new Vector3(0f, BallY, 10.3f), new Vector3(0f, BallY, 10.35f), Dt);
+            controller.EditorEvaluateBallSegment(
+                new Vector3(0f, y, halfZ + 0.3f),
+                new Vector3(0f, y, halfZ + 0.35f),
+                Dt);
             if (controller.Phase == ArenaPhase.Ended && controller.LastEndReason == RoundEndReason.BallOut)
             {
                 Debug.LogError("G4 BallOut: piłka w bramce +Z nie powinna kończyć BallOut.");
@@ -366,10 +414,16 @@ namespace FootballRL.Editor
             return true;
         }
 
-        static bool TestOverBarSegmentBallOut(ArenaController controller)
+        static bool TestOverBarSegmentBallOut(ArenaController controller, ArenaConfig cfg)
         {
+            var halfZ = cfg.HalfPlayLengthZ;
+            var yOver = cfg.goalHeight + 0.3f;
+
             controller.ResetEpisode();
-            controller.EditorEvaluateBallSegment(new Vector3(0f, 2.3f, 9.5f), new Vector3(0f, 2.3f, 10.5f), Dt);
+            controller.EditorEvaluateBallSegment(
+                new Vector3(0f, yOver, halfZ - 1f),
+                new Vector3(0f, yOver, halfZ + 0.5f),
+                Dt);
             if (controller.LastEndReason != RoundEndReason.BallOut)
             {
                 Debug.LogError($"G4 over bar: oczekiwano BallOut, jest {controller.LastEndReason}.");
@@ -380,7 +434,7 @@ namespace FootballRL.Editor
             return true;
         }
 
-        static bool TestEndedPauseFreezesBodies(ArenaController controller)
+        static bool TestEndedPauseFreezesBodies(ArenaController controller, ArenaConfig cfg)
         {
             controller.ResetEpisode();
             var ball = Object.FindAnyObjectByType<BallPhysicsSetup>()?.GetComponent<Rigidbody>();
@@ -388,7 +442,8 @@ namespace FootballRL.Editor
                 return false;
 
             ball.linearVelocity = new Vector3(0f, 0f, 8f);
-            controller.EditorEvaluateBallSegment(new Vector3(0f, BallY, 9.5f), new Vector3(0f, BallY, 10.5f), Dt);
+            var cross = PositiveGoalCrossSegment(cfg);
+            controller.EditorEvaluateBallSegment(cross.prev, cross.curr, Dt);
             if (controller.Phase != ArenaPhase.Ended || controller.LastEndReason != RoundEndReason.Goal)
             {
                 Debug.LogError("G4 freeze: oczekiwano Ended/Goal przed pauzą.");

@@ -129,13 +129,29 @@ namespace FootballRL.Gameplay
             if (dist < 1e-4f)
                 return false;
 
-            var hits = Physics.RaycastAll(origin, dir / dist, dist, Physics.DefaultRaycastLayers,
-                QueryTriggerInteraction.Ignore);
+            var direction = dir / dist;
+            var layerMask = Physics.DefaultRaycastLayers;
+            var query = QueryTriggerInteraction.Ignore;
+            var hitBuffer = new RaycastHit[32];
+            var hitCount = 0;
 
-            System.Array.Sort(hits, (a, b) => a.distance.CompareTo(b.distance));
-
-            foreach (var hit in hits)
+            var physicsScene = ballBody != null ? ballBody.gameObject.scene.GetPhysicsScene() : default;
+            if (physicsScene.IsValid())
+                hitCount = physicsScene.Raycast(origin, direction, hitBuffer, dist, layerMask, query);
+            else
             {
+                var globalHits = Physics.RaycastAll(origin, direction, dist, layerMask, query);
+                hitCount = System.Math.Min(globalHits.Length, hitBuffer.Length);
+                for (var i = 0; i < hitCount; i++)
+                    hitBuffer[i] = globalHits[i];
+            }
+
+            System.Array.Sort(hitBuffer, 0, hitCount, System.Collections.Generic.Comparer<RaycastHit>.Create(
+                (a, b) => a.distance.CompareTo(b.distance)));
+
+            for (var i = 0; i < hitCount; i++)
+            {
+                var hit = hitBuffer[i];
                 if (hit.rigidbody == ballBody)
                     return false;
 
